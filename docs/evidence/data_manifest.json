@@ -1,0 +1,410 @@
+{
+  "source_snapshots": [
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:34:02.192789+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-08-16T00:00Z/2026-08-30T00:00Z"
+      },
+      "payload_sha256": "18a32045752c3b25d3c60fe00774ded627125016e0f9c5593b2a0c7286ebcaaa"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-30T04:50:59.892680+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-28T04:30Z/2026-09-30T04:30Z"
+      },
+      "payload_sha256": "1daa635a4346833868221273bdbe5511fd1f2ab1fe4ab5329534c9ae3e0ca6f1"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-30T04:50:58.390898+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-08-31T04:30Z/2026-09-14T04:30Z"
+      },
+      "payload_sha256": "25398176850292471e22ac8dfa1633ba86b73f09aa5b8272f891ccadf872a0d5"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-30T04:51:13.845502+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-21T05:00Z/2026-10-01T05:00Z"
+      },
+      "payload_sha256": "26152aade4834a60f2db8cdd4550332701c2d7cd705b36ebf3ba17705c35075a"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:57.735728+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-06-21T00:00Z/2026-07-05T00:00Z"
+      },
+      "payload_sha256": "2eefd6687e93608beba8da75bb1e042b28d0106b1c29355c79634428b0435254"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:34:00.953406+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-08-02T00:00Z/2026-08-16T00:00Z"
+      },
+      "payload_sha256": "421b743cba9c927a9feaadfccccfcbc1a763e9ea9af5db1e90de7bbce975276f"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:54.463438+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-05-10T00:00Z/2026-05-24T00:00Z"
+      },
+      "payload_sha256": "4ead1638519900c309b54530b99a809e319ba15c7409fb1bdffc27a73c2dd238"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T18:49:47.239751+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-16T19:00Z/2026-09-26T19:00Z"
+      },
+      "payload_sha256": "56704e564ac21b89cd440c0a195b6cb0b542f52d78f6464f54c3be0118a3929c"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:50.786341+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-03-29T00:00Z/2026-04-12T00:00Z"
+      },
+      "payload_sha256": "5768f1b0b909374b4732f2bf7c4312f7bdfa4aa2a0fdc80e12243120b279038c"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:48.824985+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-03-01T00:00Z/2026-03-15T00:00Z"
+      },
+      "payload_sha256": "6124704d19449e3d74aa39d82ee6a2ff8c93fbe6da9191bf42fa2a6c35f09ee8"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:56.490736+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-06-07T00:00Z/2026-06-21T00:00Z"
+      },
+      "payload_sha256": "68a4ec55b1e80cecd9519521e38dad838b3c5aecc7e1de7c526c1697974f6a23"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:46:37.568550+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-12T00:00Z/2026-09-23T00:00Z"
+      },
+      "payload_sha256": "72d702f37d0dfa770dc9329135cc879f4d4ac73ea9faa1d1534ce2a54f478380"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-30T04:50:59.266619+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-14T04:30Z/2026-09-28T04:30Z"
+      },
+      "payload_sha256": "7613a756ff1a279ff9b5b27f449bdb87818c3d4fc05657a7b91f529a787ea735"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:49.544460+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-03-15T00:00Z/2026-03-29T00:00Z"
+      },
+      "payload_sha256": "892babbf9ca835cc74caca83d59e2cf33450541fd8a3e0935719313d59077e19"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:59.716623+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-07-19T00:00Z/2026-08-02T00:00Z"
+      },
+      "payload_sha256": "8cb972529bbdf2474a6f00bf15ed59d68b857baf7368d56d6c171a811752d1aa"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:53.243384+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-04-26T00:00Z/2026-05-10T00:00Z"
+      },
+      "payload_sha256": "9ef8d40028bb84552f67cbde99c9616fdc71058a254929424e09119d5fafe722"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:34:02.926662+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-08-30T00:00Z/2026-09-13T00:00Z"
+      },
+      "payload_sha256": "9f67d52cb597ae5cc02e19addd81273473446e6b0d9d7d5e5e4089684358265a"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:55.191986+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-05-24T00:00Z/2026-06-07T00:00Z"
+      },
+      "payload_sha256": "b543a5f24f0084c381832185e21cf40fcb43636956b477677a173a4b5e83f88a"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:52.007098+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-04-12T00:00Z/2026-04-26T00:00Z"
+      },
+      "payload_sha256": "be908eea3d9d3b1c82264a0047304627ae03c039abdaeee8d86fafb52a1fbbbc"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:34:04.037402+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-13T00:00Z/2026-09-21T00:00Z"
+      },
+      "payload_sha256": "bef02b8544b3456d99071afa7e27e62d27e88193b46a555d32dc2a1d42d46e5f"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T18:49:32.532879+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-23T18:30Z/2026-09-25T18:30Z"
+      },
+      "payload_sha256": "d634dcd0f5542da97be2306feafb609b528bf9f803741beba330e0315884202b"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T18:42:20.920148+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-16T19:00Z/2026-09-26T19:00Z"
+      },
+      "payload_sha256": "df744258de65f1e9a16a69227f30b80dbec04f98fb62bbe0e82cdd94bb5ddb36"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T13:33:58.478667+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-07-05T00:00Z/2026-07-19T00:00Z"
+      },
+      "payload_sha256": "f4b429eefa94c68d92d9713221123dd9109d20479ee02c103e3b6277c846bc3e"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T18:49:31.749018+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-09-09T18:30Z/2026-09-23T18:30Z"
+      },
+      "payload_sha256": "f9e28c97ca9c5fd7744c3c7d672522a6f90144df22830d42b0753d9eb7fda9fc"
+    },
+    {
+      "source": "neso",
+      "retrieved_at": "2026-09-25T18:49:30.694349+00:00",
+      "request": {
+        "url": "https://api.carbonintensity.org.uk/intensity/2026-08-26T18:30Z/2026-09-09T18:30Z"
+      },
+      "payload_sha256": "fdb2a8001ecf4395db82985cb8e8b30c2f1bd277e01c2437b6e4c58912e49bc1"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T18:49:39.100936+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 53.4808,
+          "longitude": -2.2426,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "00d53c54c743d22c48e249ab5d54d0365f091b787abe0f784c2642a33a273139"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T13:34:12.495684+00:00",
+      "request": {
+        "url": "https://archive-api.open-meteo.com/v1/archive",
+        "params": {
+          "latitude": 53.4808,
+          "longitude": -2.2426,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "start_date": "2026-03-01",
+          "end_date": "2026-09-20"
+        }
+      },
+      "payload_sha256": "0dc0c11f267433d3518fe5dcb80b9a29c8bb42286df3ddd0c8e7c25e62f50feb"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:54:01.311122+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 53.4808,
+          "longitude": -2.2426,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "3a7101048a31f8171ecc3e40491615f00b8e8a0f5ae4f1b7de16e746512788bf"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:51:06.271910+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "5e74f1f8f5eac7ecd6713f3b708f86377fad42e243cc7a49651ca6918f81e7c6"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T13:34:12.209270+00:00",
+      "request": {
+        "url": "https://archive-api.open-meteo.com/v1/archive",
+        "params": {
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "start_date": "2026-03-01",
+          "end_date": "2026-09-20"
+        }
+      },
+      "payload_sha256": "9ab38699db89814dcaa8990b45657762791c6a707332a043481cd89b98a06b2e"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:54:01.537754+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 55.9533,
+          "longitude": -3.1883,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "a0fb6239fe4a68b77819319df22ec80d012a3b57cf67ef00ecc6f4fa9235db92"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T18:49:39.317183+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 55.9533,
+          "longitude": -3.1883,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "a15d1da9b8b7b242faba2d07fc36cdb95622554579b572a0f7cd7910194a8874"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T18:49:38.879412+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "a2662d484b029d1b21f2ecef53d09f81ac7f5bf60b390190a115317f4f3c2c4c"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:51:06.489155+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 53.4808,
+          "longitude": -2.2426,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "a55ee6e8820a39f156d41b2286cdb7b5a0ef018c8db66738c2566bcb091f45c1"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-25T13:34:12.795318+00:00",
+      "request": {
+        "url": "https://archive-api.open-meteo.com/v1/archive",
+        "params": {
+          "latitude": 55.9533,
+          "longitude": -3.1883,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "start_date": "2026-03-01",
+          "end_date": "2026-09-20"
+        }
+      },
+      "payload_sha256": "e27c6fa872227bf71e7e87bc43ed64cab56a3c458c14cbf5ba1dd83cf30f0c99"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:54:01.084185+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "e42f8e9c8ec2abe86724d2a26f4a1b6800a0ed6514dc0b93bbde37b5c7ebdc61"
+    },
+    {
+      "source": "open-meteo",
+      "retrieved_at": "2026-09-30T04:51:06.708311+00:00",
+      "request": {
+        "url": "https://api.open-meteo.com/v1/forecast",
+        "params": {
+          "latitude": 55.9533,
+          "longitude": -3.1883,
+          "hourly": "temperature_2m,wind_speed_10m,cloud_cover,shortwave_radiation",
+          "timezone": "UTC",
+          "wind_speed_unit": "kmh",
+          "forecast_days": 2,
+          "past_days": 1
+        }
+      },
+      "payload_sha256": "f921d85243b4ea54e00e36adcbb79ef400e81536617e5687b43ec10c221f9a36"
+    }
+  ],
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "committed_training_csv_sha256": "c6940fe20f05cbe9763385eb186e92a354b68dbf7b580f47759f9ef030a5b9cf"
+}

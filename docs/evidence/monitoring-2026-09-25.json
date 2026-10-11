@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-09-25T18:49:47.541255+00:00",
+  "drift": {
+    "status": "alert",
+    "samples": 84,
+    "features": {
+      "latest": 0.16484,
+      "mean_24h": 0.26593,
+      "std_24h": 0.11331
+    },
+    "threshold": 0.25,
+    "note": "PSI is a heuristic alert, not proof of model failure."
+  },
+  "performance": {
+    "status": "insufficient_data",
+    "scored_forecasts": 0
+  },
+  "status": "alert"
+}

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uk-grid-flexibility-ml-platform"
+version = "1.0.0"
+description = "Auditable GB carbon forecasting and flexible EV/battery charging"
+requires-python = ">=3.12,<3.14"
+license = "MIT"
+authors = [{name = "Nouman Sameer"}]
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx[socks]>=0.27,<1",
+  "pandas>=2.2,<4", "numpy>=2,<3", "lightgbm>=4.5,<5",
+  "scikit-learn>=1.5,<2", "duckdb>=1.1,<2", "prometheus-client>=0.21,<1"
+]
+
+[project.optional-dependencies]
+tracking = ["mlflow>=3.10,<4", "sqlalchemy>=2.0.44,<2.1"]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "httpx>=0.27,<1", "mlflow>=3.10,<4", "sqlalchemy>=2.0.44,<2.1"]
+
+[project.scripts]
+gridflex = "gridflex.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gridflex = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

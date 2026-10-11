@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    ports: ["8000:8000"]
+    volumes: ["gridflex-data:/app/data"]
+    restart: unless-stopped
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    read_only: true
+    tmpfs: ["/tmp"]
+  maintenance:
+    build: .
+    profiles: ["maintenance"]
+    command: ["gridflex", "maintenance"]
+    volumes: ["gridflex-data:/app/data"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+volumes:
+  gridflex-data:

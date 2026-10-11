@@ -1,0 +1,14 @@
+.git
+.venv
+node_modules
+data
+tests
+docs
+infra
+mlruns
+mlflow.db*
+artifacts
+**/__pycache__
+**/*.csv
+.env*
+*.zip

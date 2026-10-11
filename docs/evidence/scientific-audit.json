@@ -1,0 +1,148 @@
+{
+  "protocol": "Post-build diagnostics; fitted weights, features and calibration untouched. No model selection on these added comparisons.",
+  "summary": {
+    "lightgbm": {
+      "mae": 36.60813068976355,
+      "rmse": 45.493371375601036,
+      "coverage": 0.8627232142857143,
+      "interval_width": 141.6547510530233
+    },
+    "persistence": {
+      "mae": 42.47718253968254,
+      "rmse": 54.02960222569352
+    },
+    "weekly_seasonal": {
+      "mae": 47.505580357142854,
+      "rmse": 58.87172357175832
+    },
+    "daily_seasonal": {
+      "mae": 41.13603670634921,
+      "rmse": 51.91931674616769
+    },
+    "seven_day_mean": {
+      "mae": 35.46355938208617,
+      "rmse": 43.2776442767955
+    }
+  },
+  "best_baseline": "seven_day_mean",
+  "horizon_metrics": {
+    "0\u20136h": {
+      "lightgbm": {
+        "mae": 30.75141678756882,
+        "rmse": 38.615041558019385,
+        "coverage": 0.9161706349206349,
+        "interval_width": 141.00224315171
+      },
+      "persistence": {
+        "mae": 29.71031746031746,
+        "rmse": 39.118067619524794
+      },
+      "weekly_seasonal": {
+        "mae": 47.145833333333336,
+        "rmse": 58.42795896562611
+      },
+      "daily_seasonal": {
+        "mae": 41.46031746031746,
+        "rmse": 52.23108566288671
+      },
+      "seven_day_mean": {
+        "mae": 35.254606009070294,
+        "rmse": 43.05470020415404
+      }
+    },
+    "6\u201312h": {
+      "lightgbm": {
+        "mae": 36.522045211943535,
+        "rmse": 45.44108112650819,
+        "coverage": 0.8591269841269841,
+        "interval_width": 141.56759842833335
+      },
+      "persistence": {
+        "mae": 47.52777777777778,
+        "rmse": 58.721658141784744
+      },
+      "weekly_seasonal": {
+        "mae": 47.06646825396825,
+        "rmse": 58.35694250125891
+      },
+      "daily_seasonal": {
+        "mae": 41.286210317460316,
+        "rmse": 52.136606088663314
+      },
+      "seven_day_mean": {
+        "mae": 35.145337301587304,
+        "rmse": 42.96002685183592
+      }
+    },
+    "12\u201318h": {
+      "lightgbm": {
+        "mae": 38.904222956905514,
+        "rmse": 48.18497443847278,
+        "coverage": 0.8467261904761905,
+        "interval_width": 142.05946800209753
+      },
+      "persistence": {
+        "mae": 48.170138888888886,
+        "rmse": 59.8472717217726
+      },
+      "weekly_seasonal": {
+        "mae": 47.66269841269841,
+        "rmse": 59.09526207742885
+      },
+      "daily_seasonal": {
+        "mae": 41.27827380952381,
+        "rmse": 52.135721271885004
+      },
+      "seven_day_mean": {
+        "mae": 35.3516156462585,
+        "rmse": 43.09835699241233
+      }
+    },
+    "18\u201324h": {
+      "lightgbm": {
+        "mae": 40.25483780263631,
+        "rmse": 48.99777858601026,
+        "coverage": 0.8288690476190477,
+        "interval_width": 141.98969462995223
+      },
+      "persistence": {
+        "mae": 44.50049603174603,
+        "rmse": 55.82686973958539
+      },
+      "weekly_seasonal": {
+        "mae": 48.14732142857143,
+        "rmse": 59.59790447871442
+      },
+      "daily_seasonal": {
+        "mae": 40.51934523809524,
+        "rmse": 51.16655518058275
+      },
+      "seven_day_mean": {
+        "mae": 36.10267857142857,
+        "rmse": 43.98952698506701
+      }
+    }
+  },
+  "paired_difference": {
+    "mean_mae_difference": 1.1445713076773798,
+    "lower": -6.769408168090425,
+    "upper": 7.497229787270924,
+    "issue_days": 42,
+    "block_days": 7,
+    "resamples": 1000,
+    "note": "Exploratory paired moving-block bootstrap; negative favours LightGBM. Limited seasonal coverage; not a significance guarantee."
+  },
+  "charging": {
+    "simulated_origins": 168,
+    "mean_schedule_proxy_kg": 2.6189235830833333,
+    "mean_immediate_proxy_kg": 3.782074404761905,
+    "mean_regret_kg": 0.2888681068928572,
+    "baseline_schedule_proxy_means_kg": {
+      "daily_seasonal": 2.973919611095238,
+      "seven_day_mean": 2.664688464726191
+    },
+    "fraction_better_than_immediate": 0.8809523809523809,
+    "aggregate_proxy_reduction_pct": 30.754308276275076,
+    "note": "Fixed default battery on overlapping historical horizons. Simulated average-intensity proxy; no actual charging or avoided-emissions claim."
+  }
+}

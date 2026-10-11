@@ -1,0 +1,9 @@
+file '01-forecast.png'
+duration 7
+file '02-charging.png'
+duration 7
+file '03-evaluation.png'
+duration 7
+file '04-workflow.png'
+duration 7
+file '04-workflow.png'

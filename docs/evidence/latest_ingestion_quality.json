@@ -1,0 +1,8 @@
+{
+  "rows": 1440,
+  "start": "2026-08-31T04:30:00+00:00",
+  "end": "2026-09-30T04:30:00+00:00",
+  "missing_intervals": 0,
+  "missing_actuals": 19,
+  "coverage": 1.0
+}

@@ -1,0 +1,905 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Explore GB electricity carbon forecasts and plan lower-impact EV or battery charging.">
+    <title>GridFlex GB — Charge with the forecast</title>
+
+
+  <style>:root {
+  --bg: #0b141a;
+  --panel: #111e27;
+  --line: #263842;
+  --text: #eef4f2;
+  --muted: #98aeb7;
+  --green: #aceda0;
+  --teal: #65cabe;
+  --radius: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    15px/1.55 system-ui,
+    -apple-system,
+    Segoe UI,
+    sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select,
+textarea {
+  outline-offset: 4px;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+[hidden] {
+  display: none !important;
+}
+.topbar,
+main,
+footer {
+  max-width: 1280px;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.topbar {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.mark {
+  color: var(--green);
+  font-size: 34px;
+  font-weight: 500;
+}
+.gb {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+nav {
+  display: flex;
+  gap: 28px;
+  font-size: 13px;
+  color: #bfd0d5;
+}
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 245px;
+  gap: 70px;
+  padding: 64px 0 46px;
+  align-items: center;
+}
+.eyebrow {
+  color: var(--teal);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 2px;
+  margin: 0 0 14px;
+}
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background: var(--green);
+  margin: 0 7px 1px 0;
+}
+h1 {
+  font-size: clamp(46px, 5.5vw, 72px);
+  font-weight: 600;
+  letter-spacing: -3.8px;
+  line-height: 1.03;
+  margin: 0 0 24px;
+}
+h1 span {
+  color: var(--green);
+}
+.intro {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 610px;
+}
+.hero-note {
+  border-left: 1px solid var(--line);
+  padding: 12px 0 12px 35px;
+}
+.label {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.hero-note strong {
+  display: block;
+  font-size: 90px;
+  line-height: 1.2;
+  font-weight: 350;
+  letter-spacing: -5px;
+}
+.hero-note strong span {
+  font-size: 33px;
+  color: var(--green);
+  letter-spacing: 0;
+}
+.hero-note p {
+  color: var(--muted);
+  font-size: 13px;
+}
+.research {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  color: var(--green);
+  border: 1px solid #456446;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+.modebar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+}
+.tabs {
+  background: #15232b;
+  padding: 4px;
+  border-radius: 9px;
+  display: flex;
+  flex-shrink: 0;
+}
+.tabs button {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 9px 13px;
+  border-radius: 6px;
+}
+.tabs .active {
+  background: #dce9e4;
+  color: #18251e;
+  font-weight: 600;
+}
+.modebar p {
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+}
+.ghost {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.error {
+  background: #3a2223;
+  color: #ffceca;
+  border: 1px solid #6d3b3b;
+  border-radius: 9px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin: 0 0 25px;
+  overflow: hidden;
+}
+.stats article {
+  padding: 23px 24px;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+}
+.stats article:last-child {
+  border: 0;
+}
+.stats p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.stats strong {
+  font-size: 32px;
+  letter-spacing: -1.4px;
+  font-weight: 550;
+  display: block;
+  line-height: 1.2;
+}
+.stats span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 24px;
+  align-items: start;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+h2 {
+  font-size: 22px;
+  letter-spacing: -0.7px;
+  font-weight: 550;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.section-head h2 {
+  margin: 0;
+}
+.section-head .eyebrow {
+  margin-bottom: 8px;
+}
+.small-link {
+  font-size: 11px;
+  color: var(--green);
+  white-space: nowrap;
+}
+.legend {
+  display: flex;
+  gap: 18px;
+  font-size: 9px;
+  color: var(--muted);
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.line-key {
+  height: 2px;
+  width: 15px;
+  background: var(--green);
+}
+.band-key {
+  height: 9px;
+  width: 15px;
+  background: #6f9c783a;
+}
+.actual-key {
+  height: 2px;
+  width: 15px;
+  background: var(--teal);
+}
+.chart {
+  margin-top: 18px;
+  height: 295px;
+}
+.chart svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.chart-caption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.subtle {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+details {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+summary {
+  cursor: pointer;
+}
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 16px;
+}
+.fields label,
+.full-label {
+  font-size: 11px;
+  color: #cedadd;
+  display: block;
+}
+.fields label span {
+  color: var(--muted);
+  float: right;
+  font-size: 10px;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #354a55;
+  border-radius: 6px;
+  background: #0d1820;
+  color: var(--text);
+  padding: 10px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--teal);
+}
+.full-label {
+  margin-top: 18px;
+}
+select {
+  font-size: 12px;
+}
+textarea {
+  resize: vertical;
+}
+.full-label small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.primary {
+  background: var(--green);
+  border: 0;
+  border-radius: 7px;
+  color: #172618;
+  font-size: 12px;
+  font-weight: 650;
+  padding: 13px 16px;
+  width: 100%;
+  margin-top: 23px;
+  display: flex;
+  justify-content: space-between;
+}
+.primary:hover {
+  background: #c3f9b8;
+}
+.result-panel {
+  margin-top: 24px;
+}
+.pill {
+  font-size: 10px;
+  color: var(--green);
+  border: 1px solid #3d5747;
+  border-radius: 100px;
+  padding: 6px 10px;
+}
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 25px 0;
+  gap: 20px;
+}
+.result-grid strong {
+  font-size: 25px;
+  font-weight: 500;
+}
+.result-grid .label {
+  font-size: 9px;
+}
+.schedule-chart {
+  height: 115px;
+}
+.schedule-chart svg {
+  width: 100%;
+  height: 100%;
+}
+.table-scroll {
+  max-height: 270px;
+  overflow: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+  margin-top: 12px;
+}
+th,
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 500;
+}
+td {
+  font-variant-numeric: tabular-nums;
+}
+caption {
+  text-align: left;
+  font-size: 11px;
+  color: var(--muted);
+  padding-bottom: 10px;
+}
+.evidence {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  padding: 66px 0 35px;
+}
+.evidence > div > p:not(.eyebrow) {
+  color: var(--muted);
+  max-width: 450px;
+  font-size: 13px;
+}
+.evidence h2 {
+  font-size: 29px;
+}
+.checks {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+  font-size: 12px;
+  color: #cbddd6;
+}
+.checks li {
+  margin: 7px 0;
+}
+.checks li:before {
+  content: "✓";
+  color: var(--green);
+  margin-right: 12px;
+}
+.evidence-table td:first-child {
+  font-weight: 600;
+}
+.evidence-table tbody tr:first-child {
+  color: var(--green);
+}
+.context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 8px 0 50px;
+}
+.context h2 {
+  margin-bottom: 8px;
+}
+.context p {
+  margin-bottom: 0;
+}
+.weather-cities {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+}
+.weather-cities strong {
+  display: block;
+  font-size: 19px;
+  font-weight: 450;
+}
+.weather-cities span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+footer {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+footer .brand {
+  font-size: 15px;
+}
+footer .mark {
+  font-size: 24px;
+}
+footer p {
+  font-size: 10px;
+  color: var(--muted);
+}
+footer a {
+  text-decoration: underline;
+}
+@media (max-width: 1000px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) 310px;
+  }
+  .panel {
+    padding: 20px;
+  }
+  .legend {
+    gap: 10px;
+  }
+  .stats article {
+    padding: 19px 16px;
+  }
+  .chart {
+    height: 310px;
+  }
+  .section-head {
+    align-items: flex-start;
+  }
+  .small-link {
+    font-size: 10px;
+  }
+}
+@media (max-width: 780px) {
+  .topbar,
+  main,
+  footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .topbar {
+    height: 76px;
+  }
+  nav {
+    gap: 15px;
+  }
+  nav a:nth-child(1),
+  nav a:nth-child(3) {
+    display: none;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 40px 0 25px;
+  }
+  .hero-note {
+    display: none;
+  }
+  h1 {
+    letter-spacing: -2.5px;
+  }
+  .intro {
+    font-size: 14px;
+  }
+  .modebar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .modebar p {
+    order: 3;
+    flex-basis: 100%;
+    margin: 0;
+  }
+  .modebar .ghost {
+    margin-left: auto;
+  }
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stats article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+  .stats article:nth-child(2) {
+    border-right: 0;
+  }
+  .stats strong {
+    font-size: 29px;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .chart {
+    height: 270px;
+  }
+  .evidence {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 42px;
+  }
+  .result-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .result-panel .section-head {
+    flex-wrap: wrap;
+  }
+  .context {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .weather-cities {
+    gap: 25px;
+  }
+  footer {
+    display: block;
+  }
+  .chart-caption {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legend {
+    font-size: 9px;
+  }
+  .small-link {
+    white-space: normal;
+    text-align: right;
+  }
+}
+</style></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="GridFlex home"><span class="mark">↯</span> GridFlex <span class="gb">GB</span></a>
+      <nav aria-label="Main">
+        <a href="#forecast">Forecast</a><a href="#planner">Charging planner</a><a href="#evidence">Model evidence</a><a href="/docs">API ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">
+            <span class="dot"></span> ELECTRICITY · CARBON · FLEXIBILITY
+          </p>
+          <h1>Same charge.<br><span>Better timing.</span></h1>
+          <p class="intro">
+            Find lower-carbon windows for your EV or battery. Explore the
+            forecast, set your charging needs, and compare a flexible schedule
+            with charging immediately.
+          </p>
+        </div>
+        <div class="hero-note">
+          <span class="label">GREAT BRITAIN</span><strong>24<span>h</span></strong>
+          <p>Half-hour forecasts.<br>Uncertainty included.</p>
+          <span class="research">RESEARCH PROJECT</span>
+        </div>
+      </section>
+      <div class="modebar">
+        <div class="tabs" role="group" aria-label="Data mode">
+          <button id="replay-mode" class="active" aria-pressed="true" disabled="">
+            Historical replay</button><button id="live-mode" aria-pressed="false" disabled="">Live forecast</button>
+        </div>
+        <p id="mode-note" role="status">Static recorded replay from the running API · 21 Sep 2026 · start the app for interaction</p>
+        <button id="refresh" class="ghost" aria-label="Refresh forecast" disabled="">
+          ↻ Refresh
+        </button>
+      </div>
+      <div id="error" class="error" role="alert" hidden=""></div>
+      <section class="stats" aria-label="Forecast summary">
+        <article>
+          <p>Average carbon intensity</p>
+          <strong id="average">91</strong><span>gCO₂/kWh over 24 hours</span>
+        </article>
+        <article>
+          <p>Lowest forecast window</p>
+          <strong id="lowest">64</strong><span id="lowest-time">12:30 · 21 Sept 2026</span>
+        </article>
+        <article>
+          <p>Measured backtest MAE</p>
+          <strong id="mae">36.6</strong><span>gCO₂/kWh · three test periods</span>
+        </article>
+        <article>
+          <p>Observed interval coverage</p>
+          <strong id="coverage">86.3%</strong><span>90% nominal prediction intervals</span>
+        </article>
+      </section>
+      <div class="workspace">
+        <section id="forecast" class="panel forecast-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">THE NEXT 48 INTERVALS</p>
+              <h2>Carbon outlook</h2>
+            </div>
+            <a id="download" class="small-link" href="/api/v1/forecast.csv?mode=replay&amp;expected_forecast_id=88fb03fbdde6cef6badd39c97ccc4662decca1609a13ab01baaf4c89803267f3">Download CSV ↓</a>
+          </div>
+          <div class="legend">
+            <span><i class="line-key"></i>LightGBM forecast</span><span><i class="band-key"></i>90% nominal interval</span><span><i class="actual-key"></i>Actuals, when available</span>
+          </div>
+          <div id="chart" class="chart" role="img" aria-label="24-hour carbon intensity forecast with uncertainty"><svg viewBox="0 0 700 280"><line x1="44" x2="692" y1="252" y2="252" stroke="#263842" stroke-dasharray="3 5"></line><text x="36" y="256" fill="#98aeb7" font-size="10" text-anchor="end">0</text><line x1="44" x2="692" y1="191.5" y2="191.5" stroke="#263842" stroke-dasharray="3 5"></line><text x="36" y="195.5" fill="#98aeb7" font-size="10" text-anchor="end">63</text><line x1="44" x2="692" y1="131" y2="131" stroke="#263842" stroke-dasharray="3 5"></line><text x="36" y="135" fill="#98aeb7" font-size="10" text-anchor="end">125</text><line x1="44" x2="692" y1="70.5" y2="70.5" stroke="#263842" stroke-dasharray="3 5"></line><text x="36" y="74.5" fill="#98aeb7" font-size="10" text-anchor="end">188</text><line x1="44" x2="692" y1="10" y2="10" stroke="#263842" stroke-dasharray="3 5"></line><text x="36" y="14" fill="#98aeb7" font-size="10" text-anchor="end">250</text><polygon points="44,87.7578460335072 57.787234042553195,87.7578460335072 71.57446808510639,87.7578460335072 85.36170212765958,87.7578460335072 99.14893617021276,87.7578460335072 112.93617021276596,87.7578460335072 126.72340425531915,86.98719610877677 140.51063829787233,88.53373327712879 154.29787234042553,86.59288240803761 168.08510638297872,82.7206941958288 181.87234042553192,80.744861441496 195.6595744680851,80.5892125538688 209.4468085106383,81.1444390433744 223.2340425531915,84.73133399814719 237.0212765957447,85.5900219035104 250.80851063829786,97.211945611164 264.59574468085106,99.0294612512096 278.3829787234042,106.01576624868801 292.17021276595744,107.4113474694976 305.9574468085106,111.22829673286 319.74468085106383,114.30477237029518 333.531914893617,114.84281172156 347.3191489361702,114.84281172156 361.1063829787234,114.84281172156 374.8936170212766,114.18231655085759 388.6808510638298,113.5246856756024 402.468085106383,112.27473490096719 416.25531914893617,111.238738690672 430.0425531914894,111.238738690672 443.82978723404256,101.3615548738552 457.6170212765957,99.54336493052719 471.40425531914894,87.29247989537359 485.1914893617021,76.5733951669512 498.97872340425533,66.89579651368803 512.7659574468084,61.77139428815198 526.5531914893618,58.062887684574406 540.3404255319149,58.64740014384799 554.1276595744681,59.2846403133216 567.9148936170212,60.7837509968536 581.7021276595744,58.84015998702719 595.4893617021277,62.466771156192806 609.2765957446809,63.9965809857232 623.063829787234,66.8700770044968 636.8510638297872,83.6323232387424 650.6382978723404,88.2257253966232 664.4255319148937,89.11062598752721 678.2127659574468,98.99270759849361 692,98.99270759849361 692,249.4453408049384 678.2127659574468,249.4453408049384 664.4255319148937,239.563259193972 650.6382978723404,238.678358603068 636.8510638297872,234.0849564451872 623.063829787234,217.3227102109416 609.2765957446809,214.449214192168 595.4893617021277,212.9194043626376 581.7021276595744,209.292793193472 567.9148936170212,211.2363842032984 554.1276595744681,209.7372735197664 540.3404255319149,209.1000333502928 526.5531914893618,208.5155208910192 512.7659574468084,212.22402749459678 498.97872340425533,217.3484297201328 485.1914893617021,227.026028373396 471.40425531914894,237.7451131018184 457.6170212765957,249.995998136972 443.82978723404256,251.8141880803 430.0425531914894,252 416.25531914893617,252 402.468085106383,252 388.6808510638298,252 374.8936170212766,252 361.1063829787234,252 347.3191489361702,252 333.531914893617,252 319.74468085106383,252 305.9574468085106,252 292.17021276595744,252 278.3829787234042,252 264.59574468085106,249.4820944576544 250.80851063829786,247.6645788176088 237.0212765957447,236.0426551099552 223.2340425531915,235.18396720449522 209.4468085106383,231.5970722498192 195.6595744680851,231.0418457603136 181.87234042553192,231.1974946479408 168.08510638297872,233.1733274022736 154.29787234042553,237.0455156144824 140.51063829787233,238.9863664835736 126.72340425531915,237.4398293152216 112.93617021276596,238.210479239952 99.14893617021276,238.210479239952 85.36170212765958,238.210479239952 71.57446808510639,238.210479239952 57.787234042553195,238.210479239952 44,238.210479239952" fill="#78ad8033"></polygon><polyline points="44,162.9841626367296 57.787234042553195,162.9841626367296 71.57446808510639,162.9841626367296 85.36170212765958,162.9841626367296 99.14893617021276,162.9841626367296 112.93617021276596,162.9841626367296 126.72340425531915,162.21351271199921 140.51063829787233,163.7600498803512 154.29787234042553,161.81919901126 168.08510638297872,157.94701079905118 181.87234042553192,155.97117804471839 195.6595744680851,155.8155291570912 209.4468085106383,156.37075564659682 223.2340425531915,159.9576506013696 237.0212765957447,160.8163385067328 250.80851063829786,172.43826221438638 264.59574468085106,174.25577785443198 278.3829787234042,181.2420828519104 292.17021276595744,182.63766407272 305.9574468085106,186.4546133360824 319.74468085106383,189.5310889735176 333.531914893617,190.0691283247824 347.3191489361702,190.0691283247824 361.1063829787234,190.0691283247824 374.8936170212766,189.40863315408 388.6808510638298,188.75100227882479 402.468085106383,187.5010515041896 416.25531914893617,186.4650552938944 430.0425531914894,186.4650552938944 443.82978723404256,176.5878714770776 457.6170212765957,174.76968153374958 471.40425531914894,162.518796498596 485.1914893617021,151.7997117701736 498.97872340425533,142.12211311691038 512.7659574468084,136.9977108913744 526.5531914893618,133.2892042877968 540.3404255319149,133.8737167470704 554.1276595744681,134.510956916544 567.9148936170212,136.010067600076 581.7021276595744,134.0664765902496 595.4893617021277,137.6930877594152 609.2765957446809,139.22289758894559 623.063829787234,142.09639360771922 636.8510638297872,158.85863984196482 650.6382978723404,163.45204199984562 664.4255319148937,164.33694259074957 678.2127659574468,174.219024201716 692,174.219024201716" fill="none" stroke="#aceda0" stroke-width="2.5"></polyline><polyline points="44,120.352 57.787234042553195,117.44800000000001 71.57446808510639,113.576 85.36170212765958,118.416 99.14893617021276,119.38399999999999 112.93617021276596,117.44800000000001 126.72340425531915,113.576 140.51063829787233,98.088 154.29787234042553,93.24799999999999 168.08510638297872,86.47200000000001 181.87234042553192,74.856 195.6595744680851,76.792 209.4468085106383,78.72800000000001 223.2340425531915,84.536 237.0212765957447,92.28 250.80851063829786,99.05600000000001 264.59574468085106,102.928 278.3829787234042,114.54400000000001 292.17021276595744,122.28800000000001 305.9574468085106,129.064 319.74468085106383,137.776 333.531914893617,136.808 347.3191489361702,142.61599999999999 361.1063829787234,145.51999999999998 374.8936170212766,149.392 388.6808510638298,147.45600000000002 402.468085106383,140.68 416.25531914893617,131 430.0425531914894,116.47999999999999 443.82978723404256,102.928 457.6170212765957,87.44 471.40425531914894,71.952 485.1914893617021,61.304 498.97872340425533,55.49600000000001 512.7659574468084,45.816 526.5531914893618,44.84800000000001 540.3404255319149,42.912000000000006 554.1276595744681,49.68799999999999 567.9148936170212,50.656000000000006 581.7021276595744,55.49600000000001 595.4893617021277,56.464 609.2765957446809,56.464 623.063829787234,63.24000000000001 636.8510638297872,61.304 650.6382978723404,63.24000000000001 664.4255319148937,61.304 678.2127659574468,62.27199999999999 692,63.24000000000001" fill="none" stroke="#65cabe" stroke-width="1.8" stroke-dasharray="4 3"></polyline><text x="44" y="275" fill="#98aeb7" font-size="10" text-anchor="middle">01:00</text><text x="209.4468085106383" y="275" fill="#98aeb7" font-size="10" text-anchor="middle">07:00</text><text x="374.8936170212766" y="275" fill="#98aeb7" font-size="10" text-anchor="middle">13:00</text><text x="540.3404255319149" y="275" fill="#98aeb7" font-size="10" text-anchor="middle">19:00</text><text x="692" y="275" fill="#98aeb7" font-size="10" text-anchor="end">00:30</text><circle cx="44" cy="162.9841626367296" r="5" fill="transparent"><title>01:00 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="57.787234042553195" cy="162.9841626367296" r="5" fill="transparent"><title>01:30 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="71.57446808510639" cy="162.9841626367296" r="5" fill="transparent"><title>02:00 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="85.36170212765958" cy="162.9841626367296" r="5" fill="transparent"><title>02:30 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="99.14893617021276" cy="162.9841626367296" r="5" fill="transparent"><title>03:00 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="112.93617021276596" cy="162.9841626367296" r="5" fill="transparent"><title>03:30 · 92.0 gCO₂/kWh (14.2–169.7)</title></circle><circle cx="126.72340425531915" cy="162.21351271199921" r="5" fill="transparent"><title>04:00 · 92.8 gCO₂/kWh (15.0–170.5)</title></circle><circle cx="140.51063829787233" cy="163.7600498803512" r="5" fill="transparent"><title>04:30 · 91.2 gCO₂/kWh (13.4–168.9)</title></circle><circle cx="154.29787234042553" cy="161.81919901126" r="5" fill="transparent"><title>05:00 · 93.2 gCO₂/kWh (15.4–170.9)</title></circle><circle cx="168.08510638297872" cy="157.94701079905118" r="5" fill="transparent"><title>05:30 · 97.2 gCO₂/kWh (19.4–174.9)</title></circle><circle cx="181.87234042553192" cy="155.97117804471839" r="5" fill="transparent"><title>06:00 · 99.2 gCO₂/kWh (21.5–176.9)</title></circle><circle cx="195.6595744680851" cy="155.8155291570912" r="5" fill="transparent"><title>06:30 · 99.4 gCO₂/kWh (21.7–177.1)</title></circle><circle cx="209.4468085106383" cy="156.37075564659682" r="5" fill="transparent"><title>07:00 · 98.8 gCO₂/kWh (21.1–176.5)</title></circle><circle cx="223.2340425531915" cy="159.9576506013696" r="5" fill="transparent"><title>07:30 · 95.1 gCO₂/kWh (17.4–172.8)</title></circle><circle cx="237.0212765957447" cy="160.8163385067328" r="5" fill="transparent"><title>08:00 · 94.2 gCO₂/kWh (16.5–171.9)</title></circle><circle cx="250.80851063829786" cy="172.43826221438638" r="5" fill="transparent"><title>08:30 · 82.2 gCO₂/kWh (4.5–159.9)</title></circle><circle cx="264.59574468085106" cy="174.25577785443198" r="5" fill="transparent"><title>09:00 · 80.3 gCO₂/kWh (2.6–158.0)</title></circle><circle cx="278.3829787234042" cy="181.2420828519104" r="5" fill="transparent"><title>09:30 · 73.1 gCO₂/kWh (0.0–150.8)</title></circle><circle cx="292.17021276595744" cy="182.63766407272" r="5" fill="transparent"><title>10:00 · 71.7 gCO₂/kWh (0.0–149.4)</title></circle><circle cx="305.9574468085106" cy="186.4546133360824" r="5" fill="transparent"><title>10:30 · 67.7 gCO₂/kWh (0.0–145.4)</title></circle><circle cx="319.74468085106383" cy="189.5310889735176" r="5" fill="transparent"><title>11:00 · 64.5 gCO₂/kWh (0.0–142.2)</title></circle><circle cx="333.531914893617" cy="190.0691283247824" r="5" fill="transparent"><title>11:30 · 64.0 gCO₂/kWh (0.0–141.7)</title></circle><circle cx="347.3191489361702" cy="190.0691283247824" r="5" fill="transparent"><title>12:00 · 64.0 gCO₂/kWh (0.0–141.7)</title></circle><circle cx="361.1063829787234" cy="190.0691283247824" r="5" fill="transparent"><title>12:30 · 64.0 gCO₂/kWh (0.0–141.7)</title></circle><circle cx="374.8936170212766" cy="189.40863315408" r="5" fill="transparent"><title>13:00 · 64.7 gCO₂/kWh (0.0–142.4)</title></circle><circle cx="388.6808510638298" cy="188.75100227882479" r="5" fill="transparent"><title>13:30 · 65.3 gCO₂/kWh (0.0–143.1)</title></circle><circle cx="402.468085106383" cy="187.5010515041896" r="5" fill="transparent"><title>14:00 · 66.6 gCO₂/kWh (0.0–144.3)</title></circle><circle cx="416.25531914893617" cy="186.4650552938944" r="5" fill="transparent"><title>14:30 · 67.7 gCO₂/kWh (0.0–145.4)</title></circle><circle cx="430.0425531914894" cy="186.4650552938944" r="5" fill="transparent"><title>15:00 · 67.7 gCO₂/kWh (0.0–145.4)</title></circle><circle cx="443.82978723404256" cy="176.5878714770776" r="5" fill="transparent"><title>15:30 · 77.9 gCO₂/kWh (0.2–155.6)</title></circle><circle cx="457.6170212765957" cy="174.76968153374958" r="5" fill="transparent"><title>16:00 · 79.8 gCO₂/kWh (2.1–157.5)</title></circle><circle cx="471.40425531914894" cy="162.518796498596" r="5" fill="transparent"><title>16:30 · 92.4 gCO₂/kWh (14.7–170.2)</title></circle><circle cx="485.1914893617021" cy="151.7997117701736" r="5" fill="transparent"><title>17:00 · 103.5 gCO₂/kWh (25.8–181.2)</title></circle><circle cx="498.97872340425533" cy="142.12211311691038" r="5" fill="transparent"><title>17:30 · 113.5 gCO₂/kWh (35.8–191.2)</title></circle><circle cx="512.7659574468084" cy="136.9977108913744" r="5" fill="transparent"><title>18:00 · 118.8 gCO₂/kWh (41.1–196.5)</title></circle><circle cx="526.5531914893618" cy="133.2892042877968" r="5" fill="transparent"><title>18:30 · 122.6 gCO₂/kWh (44.9–200.3)</title></circle><circle cx="540.3404255319149" cy="133.8737167470704" r="5" fill="transparent"><title>19:00 · 122.0 gCO₂/kWh (44.3–199.7)</title></circle><circle cx="554.1276595744681" cy="134.510956916544" r="5" fill="transparent"><title>19:30 · 121.4 gCO₂/kWh (43.7–199.1)</title></circle><circle cx="567.9148936170212" cy="136.010067600076" r="5" fill="transparent"><title>20:00 · 119.8 gCO₂/kWh (42.1–197.5)</title></circle><circle cx="581.7021276595744" cy="134.0664765902496" r="5" fill="transparent"><title>20:30 · 121.8 gCO₂/kWh (44.1–199.5)</title></circle><circle cx="595.4893617021277" cy="137.6930877594152" r="5" fill="transparent"><title>21:00 · 118.1 gCO₂/kWh (40.4–195.8)</title></circle><circle cx="609.2765957446809" cy="139.22289758894559" r="5" fill="transparent"><title>21:30 · 116.5 gCO₂/kWh (38.8–194.2)</title></circle><circle cx="623.063829787234" cy="142.09639360771922" r="5" fill="transparent"><title>22:00 · 113.5 gCO₂/kWh (35.8–191.2)</title></circle><circle cx="636.8510638297872" cy="158.85863984196482" r="5" fill="transparent"><title>22:30 · 96.2 gCO₂/kWh (18.5–173.9)</title></circle><circle cx="650.6382978723404" cy="163.45204199984562" r="5" fill="transparent"><title>23:00 · 91.5 gCO₂/kWh (13.8–169.2)</title></circle><circle cx="664.4255319148937" cy="164.33694259074957" r="5" fill="transparent"><title>23:30 · 90.6 gCO₂/kWh (12.8–168.3)</title></circle><circle cx="678.2127659574468" cy="174.219024201716" r="5" fill="transparent"><title>00:00 · 80.4 gCO₂/kWh (2.6–158.1)</title></circle><circle cx="692" cy="174.219024201716" r="5" fill="transparent"><title>00:30 · 80.4 gCO₂/kWh (2.6–158.1)</title></circle></svg></div>
+          <div class="chart-caption">
+            <span id="forecast-date">21 Sept 2026 · horizon starts 01:00 UK time</span><span>Time shown in Europe/London</span>
+          </div>
+          <p id="forecast-note" class="subtle">Historical simulation from a model fitted before this date; reconstructed later, not issued at that time. Actuals shown for comparison.</p>
+          <details>
+            <summary>View forecast as a table</summary>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Forecast</th>
+                    <th>Lower</th>
+                    <th>Upper</th>
+                    <th>Actual</th>
+                  </tr>
+                </thead>
+                <tbody id="forecast-table"><tr><td>21 Sept 2026 01:00</td><td>92.0</td><td>14.2</td><td>169.7</td><td>136.0</td></tr><tr><td>21 Sept 2026 01:30</td><td>92.0</td><td>14.2</td><td>169.7</td><td>139.0</td></tr><tr><td>21 Sept 2026 02:00</td><td>92.0</td><td>14.2</td><td>169.7</td><td>143.0</td></tr><tr><td>21 Sept 2026 02:30</td><td>92.0</td><td>14.2</td><td>169.7</td><td>138.0</td></tr><tr><td>21 Sept 2026 03:00</td><td>92.0</td><td>14.2</td><td>169.7</td><td>137.0</td></tr><tr><td>21 Sept 2026 03:30</td><td>92.0</td><td>14.2</td><td>169.7</td><td>139.0</td></tr><tr><td>21 Sept 2026 04:00</td><td>92.8</td><td>15.0</td><td>170.5</td><td>143.0</td></tr><tr><td>21 Sept 2026 04:30</td><td>91.2</td><td>13.4</td><td>168.9</td><td>159.0</td></tr><tr><td>21 Sept 2026 05:00</td><td>93.2</td><td>15.4</td><td>170.9</td><td>164.0</td></tr><tr><td>21 Sept 2026 05:30</td><td>97.2</td><td>19.4</td><td>174.9</td><td>171.0</td></tr><tr><td>21 Sept 2026 06:00</td><td>99.2</td><td>21.5</td><td>176.9</td><td>183.0</td></tr><tr><td>21 Sept 2026 06:30</td><td>99.4</td><td>21.7</td><td>177.1</td><td>181.0</td></tr><tr><td>21 Sept 2026 07:00</td><td>98.8</td><td>21.1</td><td>176.5</td><td>179.0</td></tr><tr><td>21 Sept 2026 07:30</td><td>95.1</td><td>17.4</td><td>172.8</td><td>173.0</td></tr><tr><td>21 Sept 2026 08:00</td><td>94.2</td><td>16.5</td><td>171.9</td><td>165.0</td></tr><tr><td>21 Sept 2026 08:30</td><td>82.2</td><td>4.5</td><td>159.9</td><td>158.0</td></tr><tr><td>21 Sept 2026 09:00</td><td>80.3</td><td>2.6</td><td>158.0</td><td>154.0</td></tr><tr><td>21 Sept 2026 09:30</td><td>73.1</td><td>0.0</td><td>150.8</td><td>142.0</td></tr><tr><td>21 Sept 2026 10:00</td><td>71.7</td><td>0.0</td><td>149.4</td><td>134.0</td></tr><tr><td>21 Sept 2026 10:30</td><td>67.7</td><td>0.0</td><td>145.4</td><td>127.0</td></tr><tr><td>21 Sept 2026 11:00</td><td>64.5</td><td>0.0</td><td>142.2</td><td>118.0</td></tr><tr><td>21 Sept 2026 11:30</td><td>64.0</td><td>0.0</td><td>141.7</td><td>119.0</td></tr><tr><td>21 Sept 2026 12:00</td><td>64.0</td><td>0.0</td><td>141.7</td><td>113.0</td></tr><tr><td>21 Sept 2026 12:30</td><td>64.0</td><td>0.0</td><td>141.7</td><td>110.0</td></tr><tr><td>21 Sept 2026 13:00</td><td>64.7</td><td>0.0</td><td>142.4</td><td>106.0</td></tr><tr><td>21 Sept 2026 13:30</td><td>65.3</td><td>0.0</td><td>143.1</td><td>108.0</td></tr><tr><td>21 Sept 2026 14:00</td><td>66.6</td><td>0.0</td><td>144.3</td><td>115.0</td></tr><tr><td>21 Sept 2026 14:30</td><td>67.7</td><td>0.0</td><td>145.4</td><td>125.0</td></tr><tr><td>21 Sept 2026 15:00</td><td>67.7</td><td>0.0</td><td>145.4</td><td>140.0</td></tr><tr><td>21 Sept 2026 15:30</td><td>77.9</td><td>0.2</td><td>155.6</td><td>154.0</td></tr><tr><td>21 Sept 2026 16:00</td><td>79.8</td><td>2.1</td><td>157.5</td><td>170.0</td></tr><tr><td>21 Sept 2026 16:30</td><td>92.4</td><td>14.7</td><td>170.2</td><td>186.0</td></tr><tr><td>21 Sept 2026 17:00</td><td>103.5</td><td>25.8</td><td>181.2</td><td>197.0</td></tr><tr><td>21 Sept 2026 17:30</td><td>113.5</td><td>35.8</td><td>191.2</td><td>203.0</td></tr><tr><td>21 Sept 2026 18:00</td><td>118.8</td><td>41.1</td><td>196.5</td><td>213.0</td></tr><tr><td>21 Sept 2026 18:30</td><td>122.6</td><td>44.9</td><td>200.3</td><td>214.0</td></tr><tr><td>21 Sept 2026 19:00</td><td>122.0</td><td>44.3</td><td>199.7</td><td>216.0</td></tr><tr><td>21 Sept 2026 19:30</td><td>121.4</td><td>43.7</td><td>199.1</td><td>209.0</td></tr><tr><td>21 Sept 2026 20:00</td><td>119.8</td><td>42.1</td><td>197.5</td><td>208.0</td></tr><tr><td>21 Sept 2026 20:30</td><td>121.8</td><td>44.1</td><td>199.5</td><td>203.0</td></tr><tr><td>21 Sept 2026 21:00</td><td>118.1</td><td>40.4</td><td>195.8</td><td>202.0</td></tr><tr><td>21 Sept 2026 21:30</td><td>116.5</td><td>38.8</td><td>194.2</td><td>202.0</td></tr><tr><td>21 Sept 2026 22:00</td><td>113.5</td><td>35.8</td><td>191.2</td><td>195.0</td></tr><tr><td>21 Sept 2026 22:30</td><td>96.2</td><td>18.5</td><td>173.9</td><td>197.0</td></tr><tr><td>21 Sept 2026 23:00</td><td>91.5</td><td>13.8</td><td>169.2</td><td>195.0</td></tr><tr><td>21 Sept 2026 23:30</td><td>90.6</td><td>12.8</td><td>168.3</td><td>197.0</td></tr><tr><td>22 Sept 2026 00:00</td><td>80.4</td><td>2.6</td><td>158.1</td><td>196.0</td></tr><tr><td>22 Sept 2026 00:30</td><td>80.4</td><td>2.6</td><td>158.1</td><td>195.0</td></tr></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+        <section id="planner" class="panel planner-panel">
+          <p class="eyebrow">FLEXIBLE CHARGING</p>
+          <h2>Plan your charge</h2>
+          <form id="charging-form">
+            <div class="fields">
+              <label>Battery capacity <span>kWh</span><input name="capacity" type="number" value="60" min="1" max="500" step="1" required="" disabled=""></label><label>Charging power <span>kW</span><input name="power" type="number" value="7" min="0.1" max="350" step="0.1" required="" disabled=""></label><label>Starting charge <span>%</span><input name="initial" type="number" value="30" min="0" max="99" required="" disabled=""></label><label>Target charge <span>%</span><input name="target" type="number" value="80" min="1" max="100" required="" disabled=""></label><label>Time available <span>hours</span><input name="hours" type="number" value="24" min="0.5" max="24" step="0.5" required="" disabled=""></label><label>Charging efficiency <span>%</span><input name="efficiency" type="number" value="90" min="50" max="100" required="" disabled=""></label>
+            </div>
+            <label class="full-label">Optimise for<select name="objective" id="objective" disabled="">
+                <option value="carbon">Lower carbon intensity</option>
+                <option value="cost">Lower tariff cost</option>
+                <option value="balanced">Carbon and cost equally</option>
+              </select></label><label id="prices-label" class="full-label" hidden="">Your half-hour prices (p/kWh)<textarea name="prices" rows="3" placeholder="e.g. 7, 7, 7, 24, 24…" disabled=""></textarea><small>Enter one comma-separated price per half hour. No tariff is
+                assumed.</small></label><button id="schedule-button" type="submit" class="primary" disabled="">
+              Calculate charging plan <span>↗</span>
+            </button>
+          </form>
+          <p class="subtle">
+            A charge-only planning estimate. Your charger stays under your
+            control.
+          </p>
+        </section>
+      </div>
+      <section id="result-panel" class="panel result-panel" aria-live="polite">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">YOUR CHARGING PLAN</p>
+            <h2 id="savings-title">29.1% lower estimated carbon</h2>
+          </div>
+          <span class="pill">Compared with immediate charging</span>
+        </div>
+        <div class="result-grid">
+          <div>
+            <p class="label">Scheduled grid energy</p>
+            <strong id="energy">33.3 kWh</strong>
+          </div>
+          <div>
+            <p class="label">Estimated carbon</p>
+            <strong id="carbon">2.18 kgCO₂</strong>
+          </div>
+          <div>
+            <p class="label">Immediate charging</p>
+            <strong id="baseline">3.08 kgCO₂</strong>
+          </div>
+          <div>
+            <p class="label">Tariff cost</p>
+            <strong id="cost">Not supplied</strong>
+          </div>
+        </div>
+        <div id="schedule-chart" role="img" aria-label="Half-hour scheduled charging power" class="schedule-chart"><svg viewBox="0 0 1100 110"><rect x="5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>01:00: 0.0 kW</title></rect><text x="5" y="103" fill="#98aeb7" font-size="11">01:00</text><rect x="27.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>01:30: 0.0 kW</title></rect><rect x="50" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>02:00: 0.0 kW</title></rect><rect x="72.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>02:30: 0.0 kW</title></rect><rect x="95" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>03:00: 0.0 kW</title></rect><rect x="117.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>03:30: 0.0 kW</title></rect><rect x="140" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>04:00: 0.0 kW</title></rect><text x="140" y="103" fill="#98aeb7" font-size="11">04:00</text><rect x="162.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>04:30: 0.0 kW</title></rect><rect x="185" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>05:00: 0.0 kW</title></rect><rect x="207.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>05:30: 0.0 kW</title></rect><rect x="230" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>06:00: 0.0 kW</title></rect><rect x="252.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>06:30: 0.0 kW</title></rect><rect x="275" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>07:00: 0.0 kW</title></rect><text x="275" y="103" fill="#98aeb7" font-size="11">07:00</text><rect x="297.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>07:30: 0.0 kW</title></rect><rect x="320" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>08:00: 0.0 kW</title></rect><rect x="342.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>08:30: 0.0 kW</title></rect><rect x="365" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>09:00: 0.0 kW</title></rect><rect x="387.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>09:30: 0.0 kW</title></rect><rect x="410" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>10:00: 0.0 kW</title></rect><text x="410" y="103" fill="#98aeb7" font-size="11">10:00</text><rect x="432.5" y="42.14285342857143" width="18.5" height="40.85714657142857" rx="2" fill="#aceda0"><title>10:30: 3.7 kW</title></rect><rect x="455" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>11:00: 7.0 kW</title></rect><rect x="477.5" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>11:30: 7.0 kW</title></rect><rect x="500" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>12:00: 7.0 kW</title></rect><rect x="522.5" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>12:30: 7.0 kW</title></rect><rect x="545" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>13:00: 7.0 kW</title></rect><text x="545" y="103" fill="#98aeb7" font-size="11">13:00</text><rect x="567.5" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>13:30: 7.0 kW</title></rect><rect x="590" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>14:00: 7.0 kW</title></rect><rect x="612.5" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>14:30: 7.0 kW</title></rect><rect x="635" y="5" width="18.5" height="78" rx="2" fill="#aceda0"><title>15:00: 7.0 kW</title></rect><rect x="657.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>15:30: 0.0 kW</title></rect><rect x="680" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>16:00: 0.0 kW</title></rect><text x="680" y="103" fill="#98aeb7" font-size="11">16:00</text><rect x="702.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>16:30: 0.0 kW</title></rect><rect x="725" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>17:00: 0.0 kW</title></rect><rect x="747.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>17:30: 0.0 kW</title></rect><rect x="770" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>18:00: 0.0 kW</title></rect><rect x="792.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>18:30: 0.0 kW</title></rect><rect x="815" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>19:00: 0.0 kW</title></rect><text x="815" y="103" fill="#98aeb7" font-size="11">19:00</text><rect x="837.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>19:30: 0.0 kW</title></rect><rect x="860" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>20:00: 0.0 kW</title></rect><rect x="882.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>20:30: 0.0 kW</title></rect><rect x="905" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>21:00: 0.0 kW</title></rect><rect x="927.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>21:30: 0.0 kW</title></rect><rect x="950" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>22:00: 0.0 kW</title></rect><text x="950" y="103" fill="#98aeb7" font-size="11">22:00</text><rect x="972.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>22:30: 0.0 kW</title></rect><rect x="995" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>23:00: 0.0 kW</title></rect><rect x="1017.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>23:30: 0.0 kW</title></rect><rect x="1040" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>00:00: 0.0 kW</title></rect><rect x="1062.5" y="83" width="18.5" height="2" rx="2" fill="#2b3d46"><title>00:30: 0.0 kW</title></rect></svg></div>
+        <p class="subtle">
+          Green bars show charging power. Estimated carbon uses average grid
+          intensity; it does not measure marginal emissions avoided.
+        </p>
+        <details>
+          <summary>Schedule and state of charge</summary>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Power (kW)</th>
+                  <th>Grid energy (kWh)</th>
+                  <th>Charge after slot</th>
+                </tr>
+              </thead>
+              <tbody id="schedule-table"><tr><td>21 Sept 2026 10:30</td><td>3.67</td><td>1.833</td><td>32.8%</td></tr><tr><td>21 Sept 2026 11:00</td><td>7.00</td><td>3.500</td><td>38.0%</td></tr><tr><td>21 Sept 2026 11:30</td><td>7.00</td><td>3.500</td><td>43.3%</td></tr><tr><td>21 Sept 2026 12:00</td><td>7.00</td><td>3.500</td><td>48.5%</td></tr><tr><td>21 Sept 2026 12:30</td><td>7.00</td><td>3.500</td><td>53.8%</td></tr><tr><td>21 Sept 2026 13:00</td><td>7.00</td><td>3.500</td><td>59.0%</td></tr><tr><td>21 Sept 2026 13:30</td><td>7.00</td><td>3.500</td><td>64.3%</td></tr><tr><td>21 Sept 2026 14:00</td><td>7.00</td><td>3.500</td><td>69.5%</td></tr><tr><td>21 Sept 2026 14:30</td><td>7.00</td><td>3.500</td><td>74.8%</td></tr><tr><td>21 Sept 2026 15:00</td><td>7.00</td><td>3.500</td><td>80.0%</td></tr></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+      <section id="evidence" class="evidence">
+        <div>
+          <p class="eyebrow">OPEN EVIDENCE</p>
+          <h2>Results you can inspect.</h2>
+          <p>
+            Features use eligible historical intervals. Retrospective source
+            values may contain later revisions; live issues are saved before
+            scoring. Training, interval calibration and evaluation are separated
+            in time.
+          </p>
+          <ul class="checks">
+            <li>Two-hour observation delay</li>
+            <li>Three walk-forward test periods</li>
+            <li>Persistence and seasonal baselines</li>
+            <li>No future weather or target-period actuals</li>
+          </ul>
+          <p id="data-range" class="subtle">9,792 real NESO observations · 1 Mar 2026–21 Sept 2026</p>
+        </div>
+        <div class="panel evidence-table">
+          <table>
+            <caption>
+              Out-of-sample errors · gCO₂/kWh
+            </caption>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>MAE ↓</th>
+                <th>RMSE ↓</th>
+              </tr>
+            </thead>
+            <tbody id="model-table"><tr><td>LightGBM</td><td>36.61</td><td>45.49</td></tr><tr><td>Persistence</td><td>42.48</td><td>54.03</td></tr><tr><td>Weekly seasonal</td><td>47.51</td><td>58.87</td></tr><tr><td>Daily seasonal</td><td>41.14</td><td>51.92</td></tr><tr><td>Seven-day clock-time mean</td><td>35.46</td><td>43.28</td></tr></tbody>
+          </table>
+          <p id="gate-status" class="subtle">Candidate has not passed all retrospective checks. It remains a research comparison.</p>
+          <a href="/api/v1/model" class="small-link">Read full model card ↗</a>
+          <p class="subtle">
+            Retrospective results are not a promise of live performance.
+            Coverage can change as grid conditions shift.
+          </p>
+        </div>
+      </section>
+      <section class="panel context">
+        <div>
+          <p class="eyebrow">WEATHER CONTEXT</p>
+          <h2>Across three GB locations</h2>
+          <p class="subtle">
+            Operational weather forecasts provide context. They are not features
+            in the current carbon model.
+          </p>
+        </div>
+        <div id="weather">
+          <button id="weather-button" class="ghost" disabled="">
+            Load current weather
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="brand"><span class="mark">↯</span> GridFlex GB</div>
+      <p>Built by Nouman Sameer · Electrical engineering × data science</p>
+      <p>
+        Carbon:
+        <a href="https://carbonintensity.org.uk/">NESO Carbon Intensity API</a>
+        · Weather: <a href="https://open-meteo.com/">Open-Meteo</a> ·
+        <a href="/api/v1/monitoring">Monitoring</a>
+      </p>
+    </footer>
+
+
+</body></html>

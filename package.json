@@ -1,0 +1,6 @@
+{
+  "name": "gridflex-dashboard-tests",
+  "private": true,
+  "scripts": {"test:ui": "node scripts/test-ui.mjs"},
+  "devDependencies": {"jsdom": "26.1.0"}
+}

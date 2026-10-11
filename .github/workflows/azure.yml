@@ -1,0 +1,39 @@
+name: Update Azure deployment
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "Verified public GHCR image pinned as repository@sha256:digest"
+        required: true
+        type: string
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 15
+    steps:
+      - name: Validate immutable image reference
+        env:
+          IMAGE: ${{ inputs.image }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          [[ "$IMAGE" =~ ^ghcr\.io/${REPOSITORY}@sha256:[a-f0-9]{64}$ ]] || exit 1
+      - uses: azure/login@7184910d9eb2b1c5e48f7073824a90609bb9b6d6 # v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Update app and scheduled job
+        env:
+          IMAGE: ${{ inputs.image }}
+          RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+          APP_NAME: ${{ vars.AZURE_APP_NAME }}
+          JOB_NAME: ${{ vars.AZURE_JOB_NAME }}
+        run: |
+          az containerapp update --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" --image "$IMAGE"
+          az containerapp job update --name "$JOB_NAME" --resource-group "$RESOURCE_GROUP" --image "$IMAGE"
+          FQDN=$(az containerapp show --name "$APP_NAME" --resource-group "$RESOURCE_GROUP" --query properties.configuration.ingress.fqdn -o tsv)
+          curl --retry 8 --retry-all-errors --retry-delay 10 --fail "https://$FQDN/ready"

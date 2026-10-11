@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-09-30T05:02:35.440294+00:00",
+  "python_tests": 47,
+  "statement_coverage_pct": 84.46700507614213,
+  "raw_payloads_verified": 37,
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "cloud_deployed": false,
+  "docker_executed_locally": false,
+  "terraform_provider_validation": "pending external CI; earlier local provider socket unavailable"
+}

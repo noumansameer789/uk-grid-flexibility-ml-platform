@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-30T05:01:55.246341+00:00",
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "drift_reference_sha256": "6a1b2f91cbaf6454c140e1d889f0a6211a82cca540c0d6668b9169dd1b033502",
+  "drift": {
+    "status": "ok",
+    "samples": 83,
+    "features": {
+      "latest": 0.09648,
+      "mean_24h": 0.08201,
+      "std_24h": 0.16539
+    },
+    "threshold": 0.25,
+    "note": "PSI is a heuristic alert, not proof of model failure."
+  },
+  "performance": {
+    "status": "insufficient_data",
+    "scored_forecasts": 48,
+    "distinct_origins": 1,
+    "distinct_targets": 48,
+    "target_days": 2,
+    "mae": 15.615430920339582,
+    "coverage": 1.0,
+    "mae_alert_threshold": 54.91219603464532,
+    "coverage_alert_threshold": 0.9,
+    "minimum_origins": 28,
+    "minimum_target_days": 7,
+    "as_issued_baselines": {
+      "neso_forecast": {
+        "mae": 18.604166666666668,
+        "scored_forecasts": 48
+      }
+    },
+    "note": "Early metrics are descriptive; overlapping horizons are correlated and do not multiply independent evidence."
+  },
+  "data_freshness": {
+    "status": "alert",
+    "latest_actual_end": "2026-09-29T19:00:00+00:00",
+    "age_hours": 10.03,
+    "maximum_age_hours": 2.5
+  },
+  "data_quality": {
+    "rows": 10233,
+    "start": "2026-03-01T00:00:00+00:00",
+    "end": "2026-09-30T04:30:00+00:00",
+    "missing_intervals": 0,
+    "missing_actuals": 19,
+    "coverage": 1.0
+  },
+  "feature_quality": {
+    "origins": 84,
+    "skipped_origins": 1,
+    "observation_delay_hours": 2
+  },
+  "status": "alert",
+  "forecast_issuance": {
+    "status": "degraded",
+    "error": {
+      "error_type": "DataQualityError",
+      "detail": "Insufficient recent history for an as-of forecast"
+    }
+  },
+  "weather_ingestion": {
+    "status": "ok",
+    "error_type": null
+  },
+  "last_maintenance_attempt_at": "2026-09-30T04:54:08.378147+00:00"
+}

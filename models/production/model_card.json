@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-09-25T13:52:10.360070+00:00",
+  "data_kind": "real",
+  "algorithm": "LightGBM direct 48-horizon regression",
+  "features": [
+    "latest",
+    "day_lag",
+    "week_lag",
+    "mean_24h",
+    "std_24h",
+    "trend_2h",
+    "target_week_lag",
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "year_sin",
+    "year_cos",
+    "horizon"
+  ],
+  "training_data_start": "2026-03-01 00:00:00+00:00",
+  "training_data_end": "2026-09-20 23:30:00+00:00",
+  "source_rows": 9792,
+  "data_sha256": "620b5055511a4e898b23f3d301f7de401b66f048b4eb92624f5c9cae5f93de14",
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "parameters": {
+    "n_estimators": 220,
+    "learning_rate": 0.045,
+    "num_leaves": 15,
+    "max_depth": 6,
+    "min_child_samples": 100,
+    "reg_lambda": 2.0,
+    "random_state": 42,
+    "n_jobs": 2,
+    "verbosity": -1
+  },
+  "observation_delay_hours": 2,
+  "forecast_horizon_hours": 24,
+  "conformal_radius": 77.71313698679931,
+  "nominal_coverage": 0.9,
+  "feature_report": {
+    "origins": 780,
+    "skipped_origins": 0,
+    "observation_delay_hours": 2
+  },
+  "summary": {
+    "lightgbm": {
+      "mae": 36.60813068976355,
+      "rmse": 45.493371375601036,
+      "coverage": 0.8627232142857143,
+      "interval_width": 141.6547510530233
+    },
+    "persistence": {
+      "mae": 42.47718253968254,
+      "rmse": 54.02960222569352
+    },
+    "weekly_seasonal": {
+      "mae": 47.505580357142854,
+      "rmse": 58.87172357175832
+    },
+    "daily_seasonal": {
+      "mae": 41.13603670634921,
+      "rmse": 51.91931674616769
+    },
+    "seven_day_mean": {
+      "mae": 35.46355938208617,
+      "rmse": 43.2776442767955
+    }
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "train_end": "2026-07-24T17:30:00+00:00",
+      "calibration_start": "2026-07-25T00:00:00+00:00",
+      "calibration_end": "2026-08-08T17:30:00+00:00",
+      "test_start": "2026-08-09T00:00:00+00:00",
+      "test_end": "2026-08-23T17:30:00+00:00",
+      "train_rows": 26304,
+      "test_rows": 2688,
+      "radius": 49.105822429758405,
+      "lightgbm": {
+        "mae": 30.640633997591728,
+        "rmse": 38.82578480301789,
+        "coverage": 0.7805059523809523,
+        "interval_width": 98.21164485951682
+      },
+      "persistence": {
+        "mae": 49.302455357142854,
+        "rmse": 59.5996033813505
+      },
+      "weekly_seasonal": {
+        "mae": 45.369419642857146,
+        "rmse": 56.76555731272097
+      },
+      "daily_seasonal": {
+        "mae": 38.265625,
+        "rmse": 46.02115196919161
+      },
+      "seven_day_mean": {
+        "mae": 34.72534013605442,
+        "rmse": 44.533491037415786
+      }
+    },
+    {
+      "fold": 2,
+      "train_end": "2026-08-07T17:30:00+00:00",
+      "calibration_start": "2026-08-08T00:00:00+00:00",
+      "calibration_end": "2026-08-22T17:30:00+00:00",
+      "test_start": "2026-08-23T00:00:00+00:00",
+      "test_end": "2026-09-06T17:30:00+00:00",
+      "train_rows": 28992,
+      "test_rows": 2688,
+      "radius": 91.22238958742325,
+      "lightgbm": {
+        "mae": 28.103462995875,
+        "rmse": 35.55390571321957,
+        "coverage": 0.9962797619047619,
+        "interval_width": 172.10520314925327
+      },
+      "persistence": {
+        "mae": 37.81175595238095,
+        "rmse": 48.71396714740132
+      },
+      "weekly_seasonal": {
+        "mae": 45.887276785714285,
+        "rmse": 56.34954485492445
+      },
+      "daily_seasonal": {
+        "mae": 39.70982142857143,
+        "rmse": 50.49784147909314
+      },
+      "seven_day_mean": {
+        "mae": 32.31382865646258,
+        "rmse": 37.80559590288076
+      }
+    },
+    {
+      "fold": 3,
+      "train_end": "2026-08-21T17:30:00+00:00",
+      "calibration_start": "2026-08-22T00:00:00+00:00",
+      "calibration_end": "2026-09-05T17:30:00+00:00",
+      "test_start": "2026-09-06T00:00:00+00:00",
+      "test_end": "2026-09-20T17:30:00+00:00",
+      "train_rows": 31680,
+      "test_rows": 2688,
+      "radius": 77.37696532091994,
+      "lightgbm": {
+        "mae": 51.08029507582391,
+        "rmse": 58.629504008820554,
+        "coverage": 0.8113839285714286,
+        "interval_width": 154.64740515029973
+      },
+      "persistence": {
+        "mae": 40.31733630952381,
+        "rmse": 53.22058278098446
+      },
+      "weekly_seasonal": {
+        "mae": 51.260044642857146,
+        "rmse": 63.24586790097531
+      },
+      "daily_seasonal": {
+        "mae": 45.43266369047619,
+        "rmse": 58.47108628670772
+      },
+      "seven_day_mean": {
+        "mae": 39.35150935374149,
+        "rmse": 46.97199779544238
+      }
+    }
+  ],
+  "candidate_gate_passed": false,
+  "status": "research_candidate",
+  "live_validation": "One prospective origin scored; insufficient for performance conclusions",
+  "limitations": [
+    "No guarantee of conformal coverage under temporal distribution shift.",
+    "Overlapping forecast horizons create correlated errors.",
+    "Historic NESO actuals may be revised; this is a retrospective backtest.",
+    "Weather is contextual only; no unavailable future weather is used.",
+    "Average grid intensity is not marginal avoided emissions.",
+    "Charging recommendations do not control physical equipment."
+  ],
+  "candidate_gate_policy": "MAE below every baseline and coverage at least nominal 90%; no deployment approval implied",
+  "audit_protocol": "Post-build diagnostics; fitted weights, features and calibration untouched. No model selection on these added comparisons.",
+  "drift_reference_note": "Audit uses one sample per fit origin; fitted model weights are unchanged"
+}

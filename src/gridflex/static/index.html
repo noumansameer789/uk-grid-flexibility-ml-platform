@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore GB electricity carbon forecasts and plan lower-impact EV or battery charging."
+    />
+    <title>GridFlex GB — Charge with the forecast</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="GridFlex home"
+        ><span class="mark">↯</span> GridFlex <span class="gb">GB</span></a
+      >
+      <nav aria-label="Main">
+        <a href="#forecast">Forecast</a><a href="#planner">Charging planner</a
+        ><a href="#evidence">Model evidence</a><a href="/docs">API ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">
+            <span class="dot"></span> ELECTRICITY · CARBON · FLEXIBILITY
+          </p>
+          <h1>Same charge.<br /><span>Better timing.</span></h1>
+          <p class="intro">
+            Find lower-carbon windows for your EV or battery. Explore the
+            forecast, set your charging needs, and compare a flexible schedule
+            with charging immediately.
+          </p>
+        </div>
+        <div class="hero-note">
+          <span class="label">GREAT BRITAIN</span
+          ><strong>24<span>h</span></strong>
+          <p>Half-hour forecasts.<br />Uncertainty included.</p>
+          <span class="research">RESEARCH PROJECT</span>
+        </div>
+      </section>
+      <div class="modebar">
+        <div class="tabs" role="group" aria-label="Data mode">
+          <button id="replay-mode" class="active" aria-pressed="true">
+            Historical replay</button
+          ><button id="live-mode" aria-pressed="false">Live forecast</button>
+        </div>
+        <p id="mode-note" role="status">Loading recorded evidence…</p>
+        <button id="refresh" class="ghost" aria-label="Refresh forecast">
+          ↻ Refresh
+        </button>
+      </div>
+      <div id="error" class="error" role="alert" hidden></div>
+      <section class="stats" aria-label="Forecast summary">
+        <article>
+          <p>Average carbon intensity</p>
+          <strong id="average">—</strong><span>gCO₂/kWh over 24 hours</span>
+        </article>
+        <article>
+          <p>Lowest forecast window</p>
+          <strong id="lowest">—</strong><span id="lowest-time">—</span>
+        </article>
+        <article>
+          <p>Measured backtest MAE</p>
+          <strong id="mae">—</strong><span>gCO₂/kWh · three test periods</span>
+        </article>
+        <article>
+          <p>Observed interval coverage</p>
+          <strong id="coverage">—</strong
+          ><span>90% nominal prediction intervals</span>
+        </article>
+      </section>
+      <div class="workspace">
+        <section id="forecast" class="panel forecast-panel">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">THE NEXT 48 INTERVALS</p>
+              <h2>Carbon outlook</h2>
+            </div>
+            <a
+              id="download"
+              href="/api/v1/forecast.csv?mode=replay"
+              class="small-link"
+              >Download CSV ↓</a
+            >
+          </div>
+          <div class="legend">
+            <span><i class="line-key"></i>LightGBM forecast</span
+            ><span><i class="band-key"></i>90% nominal interval</span
+            ><span><i class="actual-key"></i>Actuals, when available</span>
+          </div>
+          <div
+            id="chart"
+            class="chart"
+            role="img"
+            aria-label="24-hour carbon intensity forecast with uncertainty"
+          ></div>
+          <div class="chart-caption">
+            <span id="forecast-date">—</span
+            ><span>Time shown in Europe/London</span>
+          </div>
+          <p id="forecast-note" class="subtle"></p>
+          <details>
+            <summary>View forecast as a table</summary>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Forecast</th>
+                    <th>Lower</th>
+                    <th>Upper</th>
+                    <th>Actual</th>
+                  </tr>
+                </thead>
+                <tbody id="forecast-table"></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+        <section id="planner" class="panel planner-panel">
+          <p class="eyebrow">FLEXIBLE CHARGING</p>
+          <h2>Plan your charge</h2>
+          <form id="charging-form">
+            <div class="fields">
+              <label
+                >Battery capacity <span>kWh</span
+                ><input
+                  name="capacity"
+                  type="number"
+                  value="60"
+                  min="1"
+                  max="500"
+                  step="1"
+                  required /></label
+              ><label
+                >Charging power <span>kW</span
+                ><input
+                  name="power"
+                  type="number"
+                  value="7"
+                  min="0.1"
+                  max="350"
+                  step="0.1"
+                  required /></label
+              ><label
+                >Starting charge <span>%</span
+                ><input
+                  name="initial"
+                  type="number"
+                  value="30"
+                  min="0"
+                  max="99"
+                  required /></label
+              ><label
+                >Target charge <span>%</span
+                ><input
+                  name="target"
+                  type="number"
+                  value="80"
+                  min="1"
+                  max="100"
+                  required /></label
+              ><label
+                >Time available <span>hours</span
+                ><input
+                  name="hours"
+                  type="number"
+                  value="24"
+                  min="0.5"
+                  max="24"
+                  step="0.5"
+                  required /></label
+              ><label
+                >Charging efficiency <span>%</span
+                ><input
+                  name="efficiency"
+                  type="number"
+                  value="90"
+                  min="50"
+                  max="100"
+                  required
+              /></label>
+            </div>
+            <label class="full-label"
+              >Optimise for<select name="objective" id="objective">
+                <option value="carbon">Lower carbon intensity</option>
+                <option value="cost">Lower tariff cost</option>
+                <option value="balanced">Carbon and cost equally</option>
+              </select></label
+            ><label id="prices-label" class="full-label" hidden
+              >Your half-hour prices (p/kWh)<textarea
+                name="prices"
+                rows="3"
+                placeholder="e.g. 7, 7, 7, 24, 24…"
+              ></textarea
+              ><small
+                >Enter one comma-separated price per half hour. No tariff is
+                assumed.</small
+              ></label
+            ><button id="schedule-button" type="submit" class="primary">
+              Calculate charging plan <span>↗</span>
+            </button>
+          </form>
+          <p class="subtle">
+            A charge-only planning estimate. Your charger stays under your
+            control.
+          </p>
+        </section>
+      </div>
+      <section
+        id="result-panel"
+        class="panel result-panel"
+        hidden
+        aria-live="polite"
+      >
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">YOUR CHARGING PLAN</p>
+            <h2 id="savings-title">—</h2>
+          </div>
+          <span class="pill">Compared with immediate charging</span>
+        </div>
+        <div class="result-grid">
+          <div>
+            <p class="label">Scheduled grid energy</p>
+            <strong id="energy">—</strong>
+          </div>
+          <div>
+            <p class="label">Estimated carbon</p>
+            <strong id="carbon">—</strong>
+          </div>
+          <div>
+            <p class="label">Immediate charging</p>
+            <strong id="baseline">—</strong>
+          </div>
+          <div>
+            <p class="label">Tariff cost</p>
+            <strong id="cost">Not supplied</strong>
+          </div>
+        </div>
+        <div
+          id="schedule-chart"
+          role="img"
+          aria-label="Half-hour scheduled charging power"
+          class="schedule-chart"
+        ></div>
+        <p class="subtle">
+          Green bars show charging power. Estimated carbon uses average grid
+          intensity; it does not measure marginal emissions avoided.
+        </p>
+        <details>
+          <summary>Schedule and state of charge</summary>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Power (kW)</th>
+                  <th>Grid energy (kWh)</th>
+                  <th>Charge after slot</th>
+                </tr>
+              </thead>
+              <tbody id="schedule-table"></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+      <section id="evidence" class="evidence">
+        <div>
+          <p class="eyebrow">OPEN EVIDENCE</p>
+          <h2>Results you can inspect.</h2>
+          <p>
+            Features use eligible historical intervals. Retrospective source
+            values may contain later revisions; live issues are saved before
+            scoring. Training, interval calibration and evaluation are separated
+            in time.
+          </p>
+          <ul class="checks">
+            <li>Two-hour observation delay</li>
+            <li>Three walk-forward test periods</li>
+            <li>Persistence and seasonal baselines</li>
+            <li>No future weather or target-period actuals</li>
+          </ul>
+          <p id="data-range" class="subtle">Loading data coverage…</p>
+        </div>
+        <div class="panel evidence-table">
+          <table>
+            <caption>
+              Out-of-sample errors · gCO₂/kWh
+            </caption>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>MAE ↓</th>
+                <th>RMSE ↓</th>
+              </tr>
+            </thead>
+            <tbody id="model-table"></tbody>
+          </table>
+          <p id="gate-status" class="subtle"></p>
+          <a href="/api/v1/model" class="small-link">Read full model card ↗</a>
+          <p class="subtle">
+            Retrospective results are not a promise of live performance.
+            Coverage can change as grid conditions shift.
+          </p>
+        </div>
+      </section>
+      <section class="panel context">
+        <div>
+          <p class="eyebrow">WEATHER CONTEXT</p>
+          <h2>Across three GB locations</h2>
+          <p class="subtle">
+            Operational weather forecasts provide context. They are not features
+            in the current carbon model.
+          </p>
+        </div>
+        <div id="weather">
+          <button id="weather-button" class="ghost">
+            Load current weather
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="brand"><span class="mark">↯</span> GridFlex GB</div>
+      <p>Built by Nouman Sameer · Electrical engineering × data science</p>
+      <p>
+        Carbon:
+        <a href="https://carbonintensity.org.uk/">NESO Carbon Intensity API</a>
+        · Weather: <a href="https://open-meteo.com/">Open-Meteo</a> ·
+        <a href="/api/v1/monitoring">Monitoring</a>
+      </p>
+    </footer>
+  </body>
+</html>

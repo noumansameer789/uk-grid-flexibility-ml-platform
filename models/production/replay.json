@@ -1,0 +1,495 @@
+{
+  "mode": "replay",
+  "origin": "2026-09-21T00:00:00+00:00",
+  "units": "gCO2/kWh",
+  "source": "LightGBM research candidate",
+  "nominal_coverage": 0.9,
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "candidate_gate_passed": false,
+  "training_data_end": "2026-09-20 23:30:00+00:00",
+  "notice": "Historical replay, not a current forecast.",
+  "slots": [
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T00:00:00.000Z",
+      "horizon": 1,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 136.0,
+      "neso_forecast": 138.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T00:30:00.000Z",
+      "horizon": 2,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 139.0,
+      "neso_forecast": 136.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T01:00:00.000Z",
+      "horizon": 3,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 143.0,
+      "neso_forecast": 136.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T01:30:00.000Z",
+      "horizon": 4,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 138.0,
+      "neso_forecast": 135.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T02:00:00.000Z",
+      "horizon": 5,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 137.0,
+      "neso_forecast": 147.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T02:30:00.000Z",
+      "horizon": 6,
+      "prediction": 91.9585096728,
+      "lower": 14.245372686,
+      "upper": 169.6716466596,
+      "actual": 139.0,
+      "neso_forecast": 144.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T03:00:00.000Z",
+      "horizon": 7,
+      "prediction": 92.7546356281,
+      "lower": 15.0414986413,
+      "upper": 170.4677726149,
+      "actual": 143.0,
+      "neso_forecast": 141.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T03:30:00.000Z",
+      "horizon": 8,
+      "prediction": 91.1569732641,
+      "lower": 13.4438362773,
+      "upper": 168.8701102509,
+      "actual": 159.0,
+      "neso_forecast": 135.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T04:00:00.000Z",
+      "horizon": 9,
+      "prediction": 93.1619844925,
+      "lower": 15.4488475057,
+      "upper": 170.8751214793,
+      "actual": 164.0,
+      "neso_forecast": 154.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T04:30:00.000Z",
+      "horizon": 10,
+      "prediction": 97.1621789266,
+      "lower": 19.4490419398,
+      "upper": 174.8753159134,
+      "actual": 171.0,
+      "neso_forecast": 162.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T05:00:00.000Z",
+      "horizon": 11,
+      "prediction": 99.2033284662,
+      "lower": 21.4901914794,
+      "upper": 176.916465453,
+      "actual": 183.0,
+      "neso_forecast": 130.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T05:30:00.000Z",
+      "horizon": 12,
+      "prediction": 99.3641227716,
+      "lower": 21.6509857848,
+      "upper": 177.0772597584,
+      "actual": 181.0,
+      "neso_forecast": 176.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T06:00:00.000Z",
+      "horizon": 13,
+      "prediction": 98.7905416874,
+      "lower": 21.0774047006,
+      "upper": 176.5036786742,
+      "actual": 179.0,
+      "neso_forecast": 178.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T06:30:00.000Z",
+      "horizon": 14,
+      "prediction": 95.0850716928,
+      "lower": 17.3719347061,
+      "upper": 172.7982086796,
+      "actual": 173.0,
+      "neso_forecast": 186.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T07:00:00.000Z",
+      "horizon": 15,
+      "prediction": 94.1979974104,
+      "lower": 16.4848604236,
+      "upper": 171.9111343972,
+      "actual": 165.0,
+      "neso_forecast": 176.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T07:30:00.000Z",
+      "horizon": 16,
+      "prediction": 82.1918778777,
+      "lower": 4.4787408909,
+      "upper": 159.9050148645,
+      "actual": 158.0,
+      "neso_forecast": 168.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T08:00:00.000Z",
+      "horizon": 17,
+      "prediction": 80.314279076,
+      "lower": 2.6011420892,
+      "upper": 158.0274160628,
+      "actual": 154.0,
+      "neso_forecast": 158.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T08:30:00.000Z",
+      "horizon": 18,
+      "prediction": 73.0970218472,
+      "lower": 0.0,
+      "upper": 150.810158834,
+      "actual": 142.0,
+      "neso_forecast": 155.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T09:00:00.000Z",
+      "horizon": 19,
+      "prediction": 71.65530571,
+      "lower": 0.0,
+      "upper": 149.3684426968,
+      "actual": 134.0,
+      "neso_forecast": 150.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T09:30:00.000Z",
+      "horizon": 20,
+      "prediction": 67.7121763057,
+      "lower": 0.0,
+      "upper": 145.4253132925,
+      "actual": 127.0,
+      "neso_forecast": 141.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T10:00:00.000Z",
+      "horizon": 21,
+      "prediction": 64.5339989943,
+      "lower": 0.0,
+      "upper": 142.2471359811,
+      "actual": 118.0,
+      "neso_forecast": 132.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T10:30:00.000Z",
+      "horizon": 22,
+      "prediction": 63.9781732182,
+      "lower": 0.0,
+      "upper": 141.691310205,
+      "actual": 119.0,
+      "neso_forecast": 128.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T11:00:00.000Z",
+      "horizon": 23,
+      "prediction": 63.9781732182,
+      "lower": 0.0,
+      "upper": 141.691310205,
+      "actual": 113.0,
+      "neso_forecast": 117.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T11:30:00.000Z",
+      "horizon": 24,
+      "prediction": 63.9781732182,
+      "lower": 0.0,
+      "upper": 141.691310205,
+      "actual": 110.0,
+      "neso_forecast": 115.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T12:00:00.000Z",
+      "horizon": 25,
+      "prediction": 64.66050294,
+      "lower": 0.0,
+      "upper": 142.3736399268,
+      "actual": 106.0,
+      "neso_forecast": 116.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T12:30:00.000Z",
+      "horizon": 26,
+      "prediction": 65.3398736789,
+      "lower": 0.0,
+      "upper": 143.0530106657,
+      "actual": 108.0,
+      "neso_forecast": 110.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T13:00:00.000Z",
+      "horizon": 27,
+      "prediction": 66.6311451403,
+      "lower": 0.0,
+      "upper": 144.3442821271,
+      "actual": 115.0,
+      "neso_forecast": 105.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T13:30:00.000Z",
+      "horizon": 28,
+      "prediction": 67.7013891592,
+      "lower": 0.0,
+      "upper": 145.414526146,
+      "actual": 125.0,
+      "neso_forecast": 111.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T14:00:00.000Z",
+      "horizon": 29,
+      "prediction": 67.7013891592,
+      "lower": 0.0,
+      "upper": 145.414526146,
+      "actual": 140.0,
+      "neso_forecast": 121.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T14:30:00.000Z",
+      "horizon": 30,
+      "prediction": 77.9050914493,
+      "lower": 0.1919544625,
+      "upper": 155.6182284361,
+      "actual": 154.0,
+      "neso_forecast": 128.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T15:00:00.000Z",
+      "horizon": 31,
+      "prediction": 79.7833868453,
+      "lower": 2.0702498585,
+      "upper": 157.4965238321,
+      "actual": 170.0,
+      "neso_forecast": 142.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T15:30:00.000Z",
+      "horizon": 32,
+      "prediction": 92.4392598155,
+      "lower": 14.7261228287,
+      "upper": 170.1523968023,
+      "actual": 186.0,
+      "neso_forecast": 169.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T16:00:00.000Z",
+      "horizon": 33,
+      "prediction": 103.5126944523,
+      "lower": 25.7995574655,
+      "upper": 181.2258314391,
+      "actual": 197.0,
+      "neso_forecast": 180.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T16:30:00.000Z",
+      "horizon": 34,
+      "prediction": 113.5102137222,
+      "lower": 35.7970767354,
+      "upper": 191.223350709,
+      "actual": 203.0,
+      "neso_forecast": 200.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T17:00:00.000Z",
+      "horizon": 35,
+      "prediction": 118.8040176742,
+      "lower": 41.0908806874,
+      "upper": 196.517154661,
+      "actual": 213.0,
+      "neso_forecast": 211.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T17:30:00.000Z",
+      "horizon": 36,
+      "prediction": 122.6351195374,
+      "lower": 44.9219825506,
+      "upper": 200.3482565242,
+      "actual": 214.0,
+      "neso_forecast": 215.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T18:00:00.000Z",
+      "horizon": 37,
+      "prediction": 122.0312843522,
+      "lower": 44.3181473654,
+      "upper": 199.744421339,
+      "actual": 216.0,
+      "neso_forecast": 217.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T18:30:00.000Z",
+      "horizon": 38,
+      "prediction": 121.372978392,
+      "lower": 43.6598414052,
+      "upper": 199.0861153788,
+      "actual": 209.0,
+      "neso_forecast": 213.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T19:00:00.000Z",
+      "horizon": 39,
+      "prediction": 119.8243103305,
+      "lower": 42.1111733437,
+      "upper": 197.5374473173,
+      "actual": 208.0,
+      "neso_forecast": 210.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T19:30:00.000Z",
+      "horizon": 40,
+      "prediction": 121.8321522828,
+      "lower": 44.119015296,
+      "upper": 199.5452892696,
+      "actual": 203.0,
+      "neso_forecast": 38.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T20:00:00.000Z",
+      "horizon": 41,
+      "prediction": 118.0856531411,
+      "lower": 40.3725161543,
+      "upper": 195.7987901279,
+      "actual": 202.0,
+      "neso_forecast": 204.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T20:30:00.000Z",
+      "horizon": 42,
+      "prediction": 116.5052710858,
+      "lower": 38.792134099,
+      "upper": 194.2184080726,
+      "actual": 202.0,
+      "neso_forecast": 204.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T21:00:00.000Z",
+      "horizon": 43,
+      "prediction": 113.5367834631,
+      "lower": 35.8236464763,
+      "upper": 191.2499204499,
+      "actual": 195.0,
+      "neso_forecast": 201.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T21:30:00.000Z",
+      "horizon": 44,
+      "prediction": 96.2204133864,
+      "lower": 18.5072763996,
+      "upper": 173.9335503732,
+      "actual": 197.0,
+      "neso_forecast": 204.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T22:00:00.000Z",
+      "horizon": 45,
+      "prediction": 91.4751632233,
+      "lower": 13.7620262365,
+      "upper": 169.1883002101,
+      "actual": 195.0,
+      "neso_forecast": 197.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T22:30:00.000Z",
+      "horizon": 46,
+      "prediction": 90.5610097203,
+      "lower": 12.8478727335,
+      "upper": 168.2741467071,
+      "actual": 197.0,
+      "neso_forecast": 199.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T23:00:00.000Z",
+      "horizon": 47,
+      "prediction": 80.3522477255,
+      "lower": 2.6391107387,
+      "upper": 158.0653847123,
+      "actual": 196.0,
+      "neso_forecast": 198.0
+    },
+    {
+      "origin": "2026-09-21T00:00:00.000Z",
+      "timestamp": "2026-09-21T23:30:00.000Z",
+      "horizon": 48,
+      "prediction": 80.3522477255,
+      "lower": 2.6391107387,
+      "upper": 158.0653847123,
+      "actual": 195.0,
+      "neso_forecast": 198.0
+    }
+  ],
+  "neso_forecast_note": "Historical provider values may have been revised; not a fair as-issued benchmark.",
+  "audit_note": "Gate metadata corrected; historical prediction values unchanged"
+}
