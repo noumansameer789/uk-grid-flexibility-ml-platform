@@ -1,5 +1,13 @@
 # Verification record
 
+## 12 October 2026 update
+
+The public Cloudflare demo is deployed at https://nouman-gridflex-gb.nimblepeony1.chatgpt.site. Native publication status is successful and access is public; the recorded HTTP probe verified process health and 48 real future baseline forecasts. The charging probe checks feasibility and rejected requests. See `../reports/public-deployment.json` and `../reports/public-probe/`. Azure remains undeployed.
+
+A later 960-observation holdout and frozen residual candidate are published in `../reports/temporal_holdout/`. The candidate failed its promotion gate. The original checks below are historical records; their old pending-publication checklist does not describe current GitHub or Cloudflare status. Current GitHub workflow runs are the authority for CI completion.
+
+## Historical local record
+
 Original build: **25 September 2026**. Strict audit and re-verification: **30 September 2026**. These are actual local executions, not assertions that GitHub Actions or Azure have run. See [the full assessment](AUDIT.md) and `evidence/audit-verification.json`.
 
 | Check | Result | Evidence |
@@ -33,7 +41,7 @@ The live JSON is an archived observation of a successful request on its stated d
 
 Advisory scans are time-specific and do not prove freedom from vulnerabilities. Python scanning used the supplied fully pinned dependency closures with dependency resolution disabled; package versions are pinned but installation hashes are not yet enforced. The original MLflow training record remains intact; a separate audit diagnostics run records the stronger comparisons.
 
-## Publication and deployment gates
+## Historical Azure deployment checklist
 
 1. Create the public repository `noumansameer789/uk-grid-flexibility-ml-platform` and push the project files.
 2. Require the Tests and container workflow to pass, including the real Docker build and Terraform validation. Resolve any failure before deployment.

@@ -4,7 +4,7 @@
 
 An independent portfolio project by **Nouman Sameer**, connecting electrical engineering, data science and energy operations. It retrieves real NESO and Open-Meteo data, evaluates a 24-hour LightGBM forecast, and serves a charging planner through FastAPI and a responsive dashboard.
 
-**Status:** implemented and tested locally on real data. Azure deployment configuration is supplied; a public cloud URL is not yet activated. This is a research system, with prospective performance still to be established.
+**Public demo:** [GridFlex GB](https://nouman-gridflex-gb.nimblepeony1.chatgpt.site) serves live baseline forecasts and charging plans on Cloudflare Workers. The Python FastAPI/Azure path remains separate; Azure is not deployed. Long-term prospective performance is still to be established. See [deployment and API notes](docs/PUBLIC_DEMO.md).
 
 **Audit decision:** keep LightGBM as a research candidate. The seven-day clock-time average has lower error, and intervals miss their nominal coverage. See the [strict review and resolved findings](docs/AUDIT.md). This is an AI-assisted independent portfolio build, not commercial delivery or an assessed university result.
 
@@ -29,6 +29,10 @@ Errors are in **gCO₂/kWh**. LightGBM beats persistence but loses to the strong
 Across 168 historical charging simulations with the fixed default battery, the forecast-based schedule's observed average-intensity proxy was **30.75% below immediate charging in aggregate**. It improved on immediate charging in **88.10%** of overlapping scenarios. These are simulated outcomes, not measured physical charging or avoided emissions. [Full diagnostics and baseline schedules](docs/evidence/scientific-audit.json).
 
 Read the [fold results](docs/evidence/RESULTS.md), [machine-readable model card](models/production/model_card.json), [source manifest](docs/evidence/data_manifest.json), [MLflow run export](docs/evidence/mlflow_runs.json), and [individual scored forecasts](docs/evidence/backtest_predictions.csv.gz). No generated test data is used in those measurements.
+
+## Later holdout and release decision
+
+A frozen residual LightGBM candidate was tested on **960 additional observations** from 21 September–10 October 2026. Development MAE improved from 35.46 to 33.59, but later MAE was **46.73**, against **46.22** for the strongest later baseline (persistence); nominal 90% interval coverage was **82.4%**. The promotion gate failed. The original LightGBM achieved 45.95 MAE with only 78.6% coverage. These are retrospective results, not live operating performance. [Protocol, models, raw snapshots and every prediction](reports/temporal_holdout).
 
 ## Run it
 

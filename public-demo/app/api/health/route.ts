@@ -1,0 +1,1 @@
+export async function GET(){return Response.json({status:'ok',service:'gridflex-public-demo',version:'1.0.0',model:'seven_day_mean',hosting:'Cloudflare Workers via Sites',azure_deployed:false,readiness_endpoint:'/api/forecast'});}

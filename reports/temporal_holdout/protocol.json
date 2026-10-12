@@ -1,0 +1,95 @@
+{
+  "frozen_at": "2026-10-12T03:42:35.210624+00:00",
+  "development_end_exclusive": "2026-09-21T00:00:00+00:00",
+  "holdout_start": "2026-09-21T00:00:00+00:00",
+  "holdout_end_exclusive": "2026-10-11T00:00:00+00:00",
+  "development_data_sha256": "c6940fe20f05cbe9763385eb186e92a354b68dbf7b580f47759f9ef030a5b9cf",
+  "candidate_sha256": "54ffef8b28582e97c08f566ed57b801493bf950ee587a9b7706e2f976c75d0aa",
+  "candidate": "LightGBM correction to seven-day same-clock mean",
+  "features": [
+    "latest",
+    "day_lag",
+    "week_lag",
+    "mean_24h",
+    "std_24h",
+    "trend_2h",
+    "target_week_lag",
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "year_sin",
+    "year_cos",
+    "horizon",
+    "seven_day_mean",
+    "daily_seasonal",
+    "latest_minus_daily",
+    "latest_minus_week"
+  ],
+  "parameters": {
+    "n_estimators": 220,
+    "learning_rate": 0.045,
+    "num_leaves": 15,
+    "max_depth": 6,
+    "min_child_samples": 100,
+    "reg_lambda": 2.0,
+    "random_state": 42,
+    "n_jobs": 2,
+    "verbosity": -1
+  },
+  "candidate_radius": 86.23006859715008,
+  "baseline_radius": 73.28571428571428,
+  "training_target_end": "2026-09-05T11:30:00+00:00",
+  "calibration_target_end": "2026-09-20T17:30:00+00:00",
+  "development_results": [
+    {
+      "fold": 1,
+      "candidate": {
+        "mae": 31.486982717158547,
+        "rmse": 39.904611259109664
+      },
+      "seven_day_mean": {
+        "mae": 34.72534013605442,
+        "rmse": 44.533491037415786
+      }
+    },
+    {
+      "fold": 2,
+      "candidate": {
+        "mae": 28.53498945900183,
+        "rmse": 35.418181016596755
+      },
+      "seven_day_mean": {
+        "mae": 32.31382865646258,
+        "rmse": 37.80559590288076
+      }
+    },
+    {
+      "fold": 3,
+      "candidate": {
+        "mae": 40.74553190884957,
+        "rmse": 47.62621147712519
+      },
+      "seven_day_mean": {
+        "mae": 39.35150935374149,
+        "rmse": 46.97199779544238
+      }
+    }
+  ],
+  "development_aggregate": {
+    "candidate": {
+      "mae": 33.58916802833665,
+      "rmse": 41.2919748697368
+    },
+    "seven_day_mean": {
+      "mae": 35.46355938208617,
+      "rmse": 43.2776442767955
+    }
+  },
+  "policy": "One fixed candidate; no holdout tuning. Promotion requires lower MAE than every baseline, paired 7-day bootstrap upper difference below zero, and coverage >= 90%.",
+  "limitations": [
+    "Retrospective later-period test, not prospective operation.",
+    "Historical actuals may be revised; first-published vintages unavailable.",
+    "Overlapping horizons; short seasonal span; block interval exploratory."
+  ]
+}

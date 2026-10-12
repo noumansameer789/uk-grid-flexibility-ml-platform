@@ -55,3 +55,20 @@ jobs:
           terraform_version: "1.13.3"
       - working-directory: infra/terraform
         run: terraform init -backend=false && terraform fmt -check && terraform validate
+
+  public-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: public-demo
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm install --global pnpm@11.25.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsc --noEmit
+      - run: node --experimental-strip-types --test tests/grid.test.ts
+      - run: pnpm build

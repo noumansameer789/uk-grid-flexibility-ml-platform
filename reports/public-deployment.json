@@ -1,0 +1,24 @@
+{
+  "verified_at": "2026-10-12T04:09:45+00:00",
+  "public_url": "https://nouman-gridflex-gb.nimblepeony1.chatgpt.site",
+  "deployment_status": "succeeded",
+  "audience": "public",
+  "source_commit": "ab0f55f2dd7572dbc461d4309bb37d0b88c5ad6b",
+  "hosting": "Cloudflare Workers via Sites",
+  "python_fastapi_hosted": false,
+  "azure_deployed": false,
+  "local_checks": [
+    "TypeScript compilation",
+    "production build",
+    "5 domain tests"
+  ],
+  "http_checks": "See reports/public-probe for timestamped real public responses",
+  "browser_visual_qa": "unavailable",
+  "forecast_model": "seven_day_mean",
+  "research_candidate_promotion": false,
+  "limitations": [
+    "Public research demo; no long-term availability or performance claim",
+    "Costs use supplied or explicitly illustrative tariffs",
+    "AI-assisted implementation"
+  ]
+}
