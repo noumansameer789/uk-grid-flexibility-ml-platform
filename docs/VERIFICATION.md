@@ -6,6 +6,12 @@ The public Cloudflare demo is deployed at https://nouman-gridflex-gb.nimblepeony
 
 A later 960-observation holdout and frozen residual candidate are published in `../reports/temporal_holdout/`. The candidate failed its promotion gate. The original checks below are historical records; their old pending-publication checklist does not describe current GitHub or Cloudflare status. Current GitHub workflow runs are the authority for CI completion.
 
+## 26 October 2026 dependency refresh
+
+New advisories affected six pinned development packages (aiohttp, certifi, GitPython, MLflow, OpenTelemetry and Pillow), so the CI dependency scan would fail. Both lock files now pin the patched versions and were regenerated with `scripts/lock_requirements.py`. The supplied fix pack was reconciled with current dependencies and independently rerun locally. With the new pins, the 47 Python tests and the Ruff checks pass, and pip-audit reports no known vulnerabilities in either closure (`evidence/dependency-audit.json`, `evidence/dev-dependency-audit.json`).
+
+One upstream deprecation warning remains in the test client: Starlette recommends migrating from httpx to httpx2. The 47 tests pass; this is recorded as a future test-tool migration, not a runtime failure.
+
 ## Historical local record
 
 Original build: **25 September 2026**. Strict audit and re-verification: **30 September 2026**. These are actual local executions, not assertions that GitHub Actions or Azure have run. See [the full assessment](AUDIT.md) and `evidence/audit-verification.json`.

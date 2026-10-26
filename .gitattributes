@@ -1,0 +1,5 @@
+# Third-party UI components, build plugins and stylesheets (shadcn/ui and hosting tooling).
+# Excluded from GitHub's language statistics so the repository's own code is what is counted.
+public-demo/components/ui/** linguist-vendored
+public-demo/build/** linguist-vendored
+public-demo/vendor/** linguist-vendored

@@ -1,10 +1,10 @@
 # Strict project assessment — 30 September 2026
 
-This is an evidence-based self-audit performed with AI assistance, using academic, ML engineering, software engineering, energy-domain and hiring-review criteria. It is not an independent professor's grade or an employer endorsement.
+This is an evidence-based self-audit carried out with AI assistance against statistical, ML engineering, software engineering and energy-domain criteria. It is not an independent review.
 
 ## Verdict
 
-**A defensible research portfolio with a working local service; not a production-approved forecasting product.** Its strongest evidence is reproducible data handling, controlled time-series evaluation, constrained optimisation, explicit failure states and honest negative findings. Publication, container execution and cloud operation remain separate unverified release gates.
+**A defensible research portfolio with a working local service; not a production-approved forecasting product.** Its strongest evidence is reproducible data handling, controlled time-series evaluation, constrained optimisation, explicit failure states and honest negative findings. Publication and container execution are now verified in GitHub Actions; cloud operation remains an unverified release gate.
 
 The most important correction is scientific: LightGBM's MAE is 36.61 gCO₂/kWh, while a seven-day UTC clock-time mean achieves 35.46. Nominal 90% intervals cover 86.27%. The candidate therefore fails both promotion conditions. The previous permissive coverage rule and limited baseline set concealed that conclusion; they have been replaced throughout the code, dashboard and documentation. The fitted weights and calibration radius were not changed to improve the released test scores.
 
@@ -27,9 +27,9 @@ The most important correction is scientific: LightGBM's MAE is 36.61 gCO₂/kWh,
 | Frontend reviewer: edited/failed requests left an old plan visible | Form edits invalidate plans; delayed responses cannot restore them | Edited-request and infeasible-plan regressions |
 | API reviewer: plan/download could use a different forecast | Optional expected fingerprint returns 409 on mismatch; dashboard always supplies it | API binding regression |
 | Security reviewer: request size/time/rate unbounded | Body, receive-time and per-process API limits; liveness exempt | Limits regression; gateway still needed for multi-tenant deployment |
-| Platform reviewer: mutable actions/images and ungated publication | Commit-pinned actions, Dependabot, CI prerequisite, digest-only Azure configuration | Workflow/config review; GitHub execution still required |
+| Platform reviewer: mutable actions/images and ungated publication | Commit-pinned actions, Dependabot, CI prerequisite, digest-only Azure configuration | Workflow/config review; GitHub Actions now runs on every push |
 | Platform reviewer: non-root shared-volume access unspecified | Azure mount UID/GID and owner-only modes supplied | Official provider schema checked; cloud mount/locking test still required |
-| Recruiter/HR: impressive claims exceeded demonstrated delivery | Added honest model failure, simulation labels, AI assistance and explicit deployment status | README, model card, this assessment; no invented client, employment or savings claims |
+| Reader: claims must match what is demonstrated | Documented the model failure, simulation labels, AI assistance and deployment status | README, model card, this assessment; no invented client, employment or savings claims |
 
 ## Scientific and business evidence
 
@@ -39,30 +39,20 @@ For the fixed default battery (60 kWh, 30→80% SOC, 7 kW, 90% efficiency), mean
 
 The saved 25 September live origin now has 48 realised labels: MAE 15.62 versus 18.60 for the stored NESO forecast, with 100% interval coverage. This is **one origin**, not an established out-of-sample track record. On 30 September, missing recent source actuals prevented a new issue. The pipeline reported an alert and preserved historical scoring. It did not change the lag policy or fabricate missing measurements.
 
-## What a recruiter can reasonably credit
+## What the project demonstrates
 
 - Python/FastAPI, SQL/DuckDB data handling, real public-source ingestion and validation.
 - Time-series evaluation, leakage controls, baseline selection, uncertainty diagnostics and measured judgement about when not to promote ML.
 - Constrained EV/battery scheduling linked to the author's electrical-engineering background.
 - Tests, observability and deployment configuration, with cloud execution clearly pending.
 
-This does not establish commercial experience, production ownership, independent authorship of every line, certified cloud expertise or a top-three student ranking. The author should run the project, explain the design and independently modify it before using it as interview evidence.
+Scope: this is an AI-assisted independent portfolio build. It has no commercial deployment, client or realised savings. The Azure/Terraform files are deployment configuration; no Azure deployment has been run. The 30.75% reduction is a simulation result, not a realised emissions saving.
 
-Suggested factual CV wording after personal review:
+## Remaining release gates
 
-> Developed and audited an AI-assisted GB grid-carbon forecasting and charging-planning portfolio using 9,792 real half-hour observations; compared LightGBM with four baselines through purged walk-forward validation and retained it as a research candidate after identifying baseline underperformance and interval undercoverage.
-
-Keep the cloud work described as **Azure/Terraform deployment configuration** until a deployment is verified. Do not describe the simulated 30.75% as realised emissions savings.
-
-## Oral defence checklist
-
-Be able to explain why random splits leak future information; why interval ends and publication delay matter; why a simple baseline can beat ML; why calibration is not training; why overlapping horizons are correlated; why average intensity is not marginal emissions; why efficiency changes grid energy; how infeasible deadlines are rejected; why a forecast fingerprint matters; and what an alert does without automatically retraining. Demonstrate an input change and failing test, then repair it yourself.
-
-## Remaining release gates, without fabricated completion
-
-1. Publish the repository and execute its real GitHub CI, Docker smoke/UI tests and Terraform provider validation.
+1. Done: the repository is public, and GitHub Actions runs the Python tests, the Docker build with HTTP and dashboard smoke tests, and Terraform validation on every push to `main`.
 2. Use an authorised Azure subscription to test shared-volume writes, restart persistence, scheduler execution, real alert delivery and the public URL. No cloud spend has been incurred here.
 3. Collect enough as-issued forecasts across seasons. The minimum monitoring count is an operational threshold, not statistical proof. Preserve an untouched future evaluation period for any improved candidate.
-4. If pursuing commercial value, agree a real stakeholder objective and evaluate actual operational outcomes. This cannot be supplied by rewriting a README.
+4. If pursuing commercial value, agree a real stakeholder objective and evaluate actual operational outcomes.
 
 Run verification details are in `VERIFICATION.md`. Reproduce the added science with `python scripts/audit_evidence.py`; this reuses the committed out-of-fold predictions and reference observations, without refitting the model.
