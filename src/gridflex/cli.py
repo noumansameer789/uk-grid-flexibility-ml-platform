@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import os
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -19,7 +20,7 @@ from gridflex.data import (
 )
 from gridflex.features import forecast_features, series_from_frame, training_features
 from gridflex.model import load_bundle, predict_bundle, train
-from gridflex.monitoring import drift_report, performance_report
+from gridflex.monitoring import drift_report, maintenance_exit_code, maintenance_summary, performance_report
 from gridflex.service import ForecastService, forecast_payload
 from gridflex.storage import StorageUnavailable, atomic_text, read_json
 
@@ -108,7 +109,12 @@ def main():
     replay.add_argument("--origin", required=True)
     replay.add_argument("--input", type=Path, required=True)
     sub.add_parser("forecast")
-    sub.add_parser("maintenance")
+    maintenance = sub.add_parser("maintenance")
+    maintenance.add_argument(
+        "--advisory-model-alerts",
+        action="store_true",
+        help="Report drift/performance warnings without failing a completed collection run; operational failures still fail",
+    )
     check = sub.add_parser("monitor")
     check.add_argument("--fail-on-alert", action="store_true")
     server = sub.add_parser("serve")
@@ -196,10 +202,26 @@ def main():
         }
         if weather_error or forecast_error:
             result["status"] = "alert"
+        exit_code = maintenance_exit_code(result, advisory_model_alerts=args.advisory_model_alerts)
+        result["execution_status"] = (
+            "failed"
+            if exit_code
+            else "completed_with_model_alerts"
+            if result["status"] == "alert"
+            else "completed"
+        )
         atomic_text(settings.data_dir / "processed" / "monitoring.json", json.dumps(result, indent=2))
         print(json.dumps(result, indent=2))
-        if result["status"] == "alert":
-            raise SystemExit(2)
+        if summary_path := os.getenv("GITHUB_STEP_SUMMARY"):
+            with Path(summary_path).open("a", encoding="utf-8") as summary:
+                summary.write(maintenance_summary(result))
+        if result["execution_status"] == "completed_with_model_alerts":
+            notice = "Collection completed; model drift/performance alerts remain active. Review the monitoring report."
+            if os.getenv("GITHUB_ACTIONS") == "true":
+                notice = "::warning title=Model monitoring requires review::" + notice
+            print(notice, file=sys.stderr)
+        if exit_code:
+            raise SystemExit(exit_code)
     elif args.command == "serve":
         import uvicorn
 

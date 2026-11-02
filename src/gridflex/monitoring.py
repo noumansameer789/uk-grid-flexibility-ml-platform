@@ -4,6 +4,63 @@ import numpy as np
 import pandas as pd
 
 
+def maintenance_exit_code(report: dict, *, advisory_model_alerts: bool = False) -> int:
+    """Separate a completed collection run from a model-quality warning.
+
+    The CLI remains strict by default. The scheduled portfolio collector opts
+    into advisory model alerts, while source, schema, storage and freshness
+    failures remain fatal. Unknown statuses fail closed.
+    """
+    operational = ("data_freshness", "forecast_issuance", "weather_ingestion")
+    if any(report[name]["status"] != "ok" for name in operational):
+        return 2
+    model_states = [report[name]["status"] for name in ("drift", "performance")]
+    allowed = {"ok", "alert", "insufficient_data"}
+    if report["status"] not in allowed or any(state not in allowed for state in model_states):
+        return 2
+    if "alert" in model_states:
+        return 0 if advisory_model_alerts else 2
+    # Never suppress an aggregate alert that has no recognised model cause.
+    return 2 if report["status"] == "alert" else 0
+
+
+def maintenance_summary(report: dict) -> str:
+    """Keep monitoring warnings visible even when the collection job succeeds."""
+    lines = [
+        "## GridFlex ingestion and monitoring",
+        "",
+        f"**Execution:** {report['execution_status']}",
+        f"**Monitoring:** {report['status']}",
+        "",
+        "| Check | Status |",
+        "| --- | --- |",
+    ]
+    for name in ("data_freshness", "forecast_issuance", "weather_ingestion", "drift", "performance"):
+        lines.append(f"| {name.replace('_', ' ')} | {report[name]['status']} |")
+    performance = report["performance"]
+    if "coverage" in performance:
+        lines.extend(
+            [
+                "",
+                f"Interval coverage: **{performance['coverage']:.1%}**; "
+                f"target: **{performance['coverage_alert_threshold']:.1%}**.",
+                f"MAE: **{performance['mae']:.2f} gCO2/kWh** across "
+                f"{performance['distinct_origins']} origins and {performance['target_days']} target days.",
+            ]
+        )
+    lines.extend(
+        [
+            "",
+            "A successful collection run is not evidence that the model passed its quality thresholds. "
+            "Model alerts, thresholds and metrics remain unchanged in processed/monitoring.json "
+            "inside the run artifact. Overlapping forecast horizons are correlated.",
+            "No model was retrained or promoted by this job.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
 def reference_profile(frame: pd.DataFrame, columns: list[str]) -> dict:
     output = {}
     for col in columns:

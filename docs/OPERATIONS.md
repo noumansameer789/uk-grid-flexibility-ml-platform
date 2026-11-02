@@ -1,6 +1,10 @@
 # Operating the platform
 
-Run `gridflex maintenance` to ingest the latest 30 days of carbon data and current three-location weather context, issue a forecast, then compute drift and delayed-label performance. It exits nonzero on an alert or a source/schema failure, so a scheduled runner can surface a failed execution. It does not retrain or promote a model automatically.
+Run `gridflex maintenance` to ingest the latest 30 days of carbon data and current three-location weather context, issue a forecast, then compute drift and delayed-label performance. This default command remains strict: it exits nonzero on any monitoring alert or a source/schema failure. It does not retrain or promote a model automatically.
+
+The GitHub collector runs `gridflex maintenance --advisory-model-alerts` four times daily. Persistent PSI or performance warnings do not mean collection failed, so these warnings appear in the job summary, a warning annotation and the saved JSON without creating a failed-run email on every execution. The report retains `status: alert` and records `execution_status: completed_with_model_alerts`. This does **not** mean the model is healthy or its thresholds passed. Freshness, weather/forecast issuance, source, schema and storage failures still fail the run. Unknown report statuses also fail closed. Neither model thresholds nor promotion criteria are relaxed. The Azure command and strict `gridflex monitor --fail-on-alert` behaviour are unchanged.
+
+Changes to the collection workflow, CLI, monitoring/data code or runtime lock trigger the real collector on `main`, in addition to unit/container CI, so the scheduled path is verified before waiting for the next cron run.
 
 The Azure scheduled job uses persistent Azure Files. The GitHub workflow runs independently and preserves issued forecasts in a best-effort cache plus 30-day downloadable artifacts. GitHub caches can be evicted and schedules can be delayed/disabled; they are not a durable production database. Enable Actions email notifications if you want workflow-failure emails. The Azure deployment has a separate log alert; supplying an operator email enables that notification route.
 

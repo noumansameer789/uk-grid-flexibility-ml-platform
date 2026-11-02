@@ -3,6 +3,14 @@ on:
   schedule:
     - cron: "23 1,7,13,19 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/data.yml'
+      - 'src/gridflex/cli.py'
+      - 'src/gridflex/monitoring.py'
+      - 'src/gridflex/data.py'
+      - 'requirements-runtime.lock'
 permissions:
   contents: read
 concurrency:
@@ -25,7 +33,8 @@ jobs:
           path: data/issued
           key: gridflex-issued-${{ github.run_id }}
           restore-keys: gridflex-issued-
-      - run: gridflex maintenance
+      - name: Collect data and report model warnings
+        run: gridflex maintenance --advisory-model-alerts
       - name: Preserve issued forecasts for delayed-label scoring
         if: always()
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
