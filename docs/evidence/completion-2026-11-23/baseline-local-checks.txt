@@ -1,0 +1,203 @@
+Local checks in an isolated Windows workspace. UTC timestamps; personal working and tool paths redacted. Commands are shown in their respective project directories.
+
+2026-11-23T22:19:35Z  clean Python 3.12 environment
+Python 3.12.16
+Exit: 0
+
+2026-11-23T22:19:35Z  python -m pip install -r requirements-dev.lock
+ERROR: Could not find a version that satisfies the requirement aiohappyeyeballs==2.7.1 (from versions: none)
+ERROR: No matching distribution found for aiohappyeyeballs==2.7.1
+Exit: 1
+
+2026-11-23T22:19:36Z  ruff --version
+ruff 0.12.0
+Exit: 0
+
+2026-11-23T22:19:36Z  ruff check src tests scripts
+All checks passed!
+Exit: 0
+
+2026-11-23T22:19:36Z  ruff format --check src tests scripts
+27 files already formatted
+Exit: 0
+
+2026-11-23T22:19:36Z  pytest --cov=gridflex --cov-report=term-missing --cov-report=xml (local scientific environment)
+ERROR: usage: python -m pytest [options] [file_or_dir] [file_or_dir] [...]
+python -m pytest: error: unrecognized arguments: --cov=gridflex --cov-report=term-missing --cov-report=xml
+  inifile: <scratch>\pyproject.toml
+  rootdir: <scratch>
+Exit: 4
+
+2026-11-23T22:19:38Z  pytest --continue-on-collection-errors (supplementary, available packages; all test modules requested)
+...................................F..........                           [100%]
+=================================== ERRORS ====================================
+________________ ERROR collecting tests/test_api_monitoring.py ________________
+ImportError while importing test module '<scratch>\tests\test_api_monitoring.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+<python-base>\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_api_monitoring.py:5: in <module>
+    from fastapi.testclient import TestClient
+E   ModuleNotFoundError: No module named 'fastapi'
+______________ ERROR collecting tests/test_audit_regressions.py _______________
+ImportError while importing test module '<scratch>\tests\test_audit_regressions.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+<python-base>\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_audit_regressions.py:11: in <module>
+    from fastapi.testclient import TestClient
+E   ModuleNotFoundError: No module named 'fastapi'
+================================== FAILURES ===================================
+_____________ test_training_and_mlflow_are_reproducible_contracts _____________
+
+carbon =                      timestamp  ...    forecast
+0    2025-01-01 00:00:00+00:00  ...  153.000000
+1    2025-01-01 00:30:...198 2025-05-30 23:00:00+00:00  ...  110.027256
+7199 2025-05-30 23:30:00+00:00  ...  114.363016
+
+[7200 rows x 4 columns]
+tmp_path = WindowsPath('<work>/gridflex-check-tmp/pytest-of-<user>/pytest-0/test_training_and_mlflow_are_r0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001ECC8E53AD0>
+
+    def test_training_and_mlflow_are_reproducible_contracts(carbon, tmp_path, monkeypatch):
+>       import mlflow
+E       ModuleNotFoundError: No module named 'mlflow'
+
+tests\test_model.py:67: ModuleNotFoundError
+============================== warnings summary ===============================
+tests/test_data.py: 10 warnings
+tests/test_maintenance_notifications.py: 8 warnings
+  <scratch>\src\gridflex\data.py:266: Pandas4Warning: The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8).
+  See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+    merged = con.execute("SELECT * FROM silver_grid ORDER BY timestamp").df()
+
+tests/test_data.py: 10 warnings
+tests/test_maintenance_notifications.py: 8 warnings
+  <scratch>\src\gridflex\data.py:267: Pandas4Warning: The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8).
+  See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+    context = con.execute("SELECT * FROM silver_context ORDER BY timestamp").df()
+
+tests/test_model.py: 568 warnings
+  <scratch>\src\gridflex\features.py:80: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+    "weekday_sin": np.sin(2 * np.pi * local.dayofweek / 7),
+
+tests/test_model.py: 568 warnings
+  <scratch>\src\gridflex\features.py:81: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+    "weekday_cos": np.cos(2 * np.pi * local.dayofweek / 7),
+
+tests/test_model.py: 568 warnings
+  <scratch>\src\gridflex\features.py:82: Pandas4Warning: DatetimeIndex.dayofyear is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_year instead.
+    "year_sin": np.sin(2 * np.pi * local.dayofyear / 365.25),
+
+tests/test_model.py: 568 warnings
+  <scratch>\src\gridflex\features.py:83: Pandas4Warning: DatetimeIndex.dayofyear is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_year instead.
+    "year_cos": np.cos(2 * np.pi * local.dayofyear / 365.25),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_model.py::test_training_and_mlflow_are_reproducible_contracts - ModuleNotFoundError: No module named 'mlflow'
+ERROR tests/test_api_monitoring.py
+ERROR tests/test_audit_regressions.py
+1 failed, 45 passed, 2308 warnings, 2 errors in 5.51s
+Exit: 1
+
+2026-11-23T22:19:46Z  python -m pip install pip-audit==2.10.1 (clean environment)
+ERROR: Could not find a version that satisfies the requirement pip-audit==2.10.1 (from versions: none)
+ERROR: No matching distribution found for pip-audit==2.10.1
+Exit: 1
+
+2026-11-23T22:19:47Z  pip-audit -r requirements-dev.lock --no-deps --disable-pip
+<work>\gridflex-checkenv\Scripts\python.exe: No module named pip_audit
+Exit: 1
+
+2026-11-23T22:19:47Z  node --version
+v24.22.3
+Exit: 0
+
+2026-11-23T22:19:47Z  npm ci --ignore-scripts
+[WinError 2] The system cannot find the file specified
+Exit: not completed
+
+2026-11-23T22:19:47Z  npm audit --audit-level=high
+[WinError 2] The system cannot find the file specified
+Exit: not completed
+
+2026-11-23T22:19:47Z  docker build -t gridflex:test .
+[WinError 2] The system cannot find the file specified
+Exit: not completed
+
+2026-11-23T22:19:47Z  npm run test:ui
+[WinError 2] The system cannot find the file specified
+Exit: not completed
+
+2026-11-23T22:19:47Z  pnpm --version
+11.25.0
+Exit: 0
+
+2026-11-23T22:19:48Z  pnpm install --frozen-lockfile
+[EPERM] EPERM: operation not permitted, symlink '<scratch>\public-demo' -> '<work>\gridflex-check-tmp\pnpm\v11\projects\896433751de323116e35b10d27c223e2'
+
+pnpm: EPERM: operation not permitted, symlink '<scratch>\public-demo' -> '<work>\gridflex-check-tmp\pnpm\v11\projects\896433751de323116e35b10d27c223e2'
+    at async Object.symlink (node:internal/fs/promises:1714:10)
+    at async createSymlinkAsync (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:51013:13)
+    at async forceSymlink (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:50933:7)
+    at async registerProject (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:184446:3)
+    at async getContext (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:185166:5)
+    at async mutateModules (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:217116:13)
+    at async recursive (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:223878:151)
+    at async recursiveInstallThenUpdateWorkspaceState (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:225103:27)
+    at async Object.handler5 (file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:225946:3)
+    at async file:///C:/Program%20Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1119-907-0_26.1119.907.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules/pnpm/dist/pnpm.mjs:328619:19
+Exit: 4294963248
+
+2026-11-23T22:19:48Z  pnpm exec tsc --noEmit
+undefined
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command "tsc" not found
+'tsc' is not recognized as an internal or external command,
+operable program or batch file.
+Exit: 1
+
+2026-11-23T22:19:49Z  node --experimental-strip-types --test tests/grid.test.ts
+✔ 48 ordered forecasts, excluding ineligible observations (2.6685ms)
+✔ source gaps and duplicates fail closed (0.565ms)
+✔ energy and power constraints and objective hold (15.6535ms)
+✔ feasibility and exact numeric inputs are enforced (0.2298ms)
+✔ cost-first plan cannot cost more than immediate plan (3.0517ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 140.2577
+Exit: 0
+
+2026-11-23T22:19:49Z  pnpm build
+[ELIFECYCLE] Command failed with exit code 1.
+$ node scripts/run-framework.mjs build
+node:internal/modules/esm/resolve:272
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '<scratch>\public-demo\node_modules\vinext\dist\cli.js' imported from <scratch>\public-demo\scripts\run-framework.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:272:11)
+    at moduleResolve (node:internal/modules/esm/resolve:879:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at node:internal/modules/esm/loader:636:32
+    at TracingChannel.tracePromise (node:diagnostics_channel:370:14) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///<scratch>/public-demo/node_modules/vinext/dist/cli.js'
+}
+
+Node.js v24.22.3
+Exit: 1

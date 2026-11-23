@@ -1,0 +1,30 @@
+2026-11-23T22:16:23Z  PowerShell: (Get-Command az -ErrorAction Stop).Name
+The term 'az' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+2026-11-23T22:16:26Z  PowerShell: (Get-Command terraform -ErrorAction Stop).Name
+The term 'terraform' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+2026-11-23T22:16:26Z  az account show --query name --output tsv
+The term 'az' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+2026-11-23T22:16:26Z  terraform version
+The term 'terraform' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+2026-11-23T22:16:26Z  az group exists --name gridflex-rg
+The term 'az' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+2026-11-23T22:16:26Z  PowerShell: Test-Path (Join-Path $env:USERPROFILE ".azure")
+False
+
+2026-11-23T22:16:26Z  PowerShell: Test-Path by executable install location (labels are installation roots)
+Program Files/Azure CLI = False
+Program Files (x86)/Azure CLI = False
+WinGet/Terraform link = False
+Scoop/Terraform shim = False
+Chocolatey/Terraform shim = False
+C:/Terraform/terraform.exe = False

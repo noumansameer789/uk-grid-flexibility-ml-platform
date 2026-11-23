@@ -1,0 +1,9 @@
+Power BI Desktop availability, 2026-11-23T22:53:02Z
+PowerShell checks on the Windows workstation. False indicates absence from the specified location.
+Get-Command PBIDesktop = False
+Standard 64-bit install: bin/PBIDesktop.exe = False
+Standard 32-bit install: bin/PBIDesktop.exe = False
+Per-user package directory matching PowerBIDesktop = False
+Running PBIDesktop process = False
+The Windows app inventory returned no Power BI Desktop entry. The Microsoft Store listing opened. Installation is an owner action.
+No PBIX was opened, no DAX query executed in Desktop and no Desktop PDF or page captures were obtained in this check.

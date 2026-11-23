@@ -1,0 +1,100 @@
+// GridFlex GB Power BI report: calculated table and measures
+//
+// How to use
+//   1. In the Data pane, click the table named in the heading (for example Carbon).
+//   2. Home > New measure (for DimDate: Modeling > New table).
+//   3. Paste ONE block, press Enter. Repeat for the next block.
+//
+// The value after "expect" is what the measure shows with no slicer selected.
+
+
+// ---------- Calculated table (Modeling > New table) ----------
+
+DimDate =
+ADDCOLUMNS (
+    CALENDAR ( MIN ( Carbon[date] ), MAX ( Carbon[date] ) ),
+    "Month", FORMAT ( [Date], "MMM yyyy" ),
+    "Month no", MONTH ( [Date] ),
+    "Weekday", FORMAT ( [Date], "ddd" ),
+    "Weekday no", WEEKDAY ( [Date], 2 )
+)
+
+
+// ---------- Table: Carbon ----------
+
+// expect 116.3
+Average intensity = AVERAGE ( Carbon[actual_gco2_kwh] )
+
+// expect 115.3
+Average NESO forecast = AVERAGE ( Carbon[neso_forecast_gco2_kwh] )
+
+// expect 9,792
+Readings = COUNTROWS ( Carbon )
+
+// expect 10.4
+NESO forecast MAE =
+AVERAGEX ( Carbon, ABS ( Carbon[neso_forecast_gco2_kwh] - Carbon[actual_gco2_kwh] ) )
+
+// expect 12
+Cleanest hour (UTC) =
+MINX (
+    TOPN ( 1, VALUES ( Carbon[hour] ), [Average intensity], ASC ),
+    Carbon[hour]
+)
+
+
+// ---------- Table: Backtest ----------
+
+// expect 35.46 to 47.51 depending on the model
+MAE = AVERAGE ( Backtest[abs_error] )
+
+// expect 43.28 to 58.87 depending on the model
+RMSE = SQRT ( AVERAGE ( Backtest[squared_error] ) )
+
+// expect 86.3%
+Interval coverage =
+DIVIDE ( SUM ( Backtest[inside_interval] ), COUNT ( Backtest[inside_interval] ) )
+
+// expect +1.15 for LightGBM, 0.00 for the seven-day mean
+MAE vs live model =
+[MAE] - CALCULATE ( [MAE], Backtest[model] = "Seven-day mean (live)" )
+
+// expect 8,064
+Forecasts per model =
+CALCULATE ( COUNTROWS ( Backtest ), Backtest[model] = "LightGBM (candidate)" )
+
+
+// ---------- Table: Charging ----------
+
+// expect 168
+Scenarios = COUNTROWS ( Charging )
+
+// expect 30.75%
+Carbon saving % =
+DIVIDE (
+    SUM ( Charging[immediate_kg] ) - SUM ( Charging[scheduled_kg] ),
+    SUM ( Charging[immediate_kg] )
+)
+
+// expect 88.1%
+Win rate =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( Charging ), Charging[result] = "Scheduled better" ),
+    COUNTROWS ( Charging )
+)
+
+// expect 80.1%
+Share of best possible saving =
+DIVIDE (
+    SUM ( Charging[immediate_kg] ) - SUM ( Charging[scheduled_kg] ),
+    SUM ( Charging[immediate_kg] ) - SUM ( Charging[perfect_information_kg] )
+)
+
+// expect 3.78
+Avg immediate kg = AVERAGE ( Charging[immediate_kg] )
+
+// expect 2.62
+Avg scheduled kg = AVERAGE ( Charging[scheduled_kg] )
+
+// expect 195.41
+Total saving kg = SUM ( Charging[saving_kg] )

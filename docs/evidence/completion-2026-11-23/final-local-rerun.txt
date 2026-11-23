@@ -1,0 +1,54 @@
+Final Windows rerun, previously recorded commands and failure details in baseline-local-checks.txt.
+The isolated test copy used the repaired development lock.
+Development lock SHA-256 20ebed1abda7ceb439afc32f85c242fc535808ab326ed77e3a1fa3f4888008cf
+
+2026-11-23T23:03:34Z  clean Python 3.12 environment
+Exit: 0
+2026-11-23T23:03:34Z  python -m pip install -r requirements-dev.lock
+Exit: 1
+2026-11-23T23:03:35Z  ruff --version
+Exit: 0
+2026-11-23T23:03:35Z  ruff check src tests scripts
+All checks passed!
+Exit: 0
+2026-11-23T23:03:35Z  ruff format --check src tests scripts
+27 files already formatted
+Exit: 0
+2026-11-23T23:03:35Z  pytest --cov=gridflex --cov-report=term-missing --cov-report=xml (local scientific environment)
+Exit: 4
+2026-11-23T23:03:37Z  pytest --continue-on-collection-errors (supplementary, available packages; all test modules requested)
+1 failed, 45 passed, 2308 warnings, 2 errors in 5.57s
+Exit: 1
+2026-11-23T23:03:45Z  python -m pip install pip-audit==2.10.1 (clean environment)
+Exit: 1
+2026-11-23T23:03:46Z  pip-audit -r requirements-dev.lock --no-deps --disable-pip
+Exit: 1
+2026-11-23T23:03:46Z  node --version
+Exit: 0
+2026-11-23T23:03:46Z  npm ci --ignore-scripts
+Exit: not completed
+2026-11-23T23:03:46Z  npm audit --audit-level=high
+Exit: not completed
+2026-11-23T23:03:46Z  docker build -t gridflex:test .
+Exit: not completed
+2026-11-23T23:03:46Z  npm run test:ui
+Exit: not completed
+2026-11-23T23:03:46Z  pnpm --version
+Exit: 0
+2026-11-23T23:03:47Z  pnpm install --frozen-lockfile
+Exit: 4294963248
+2026-11-23T23:03:47Z  pnpm exec tsc --noEmit
+Exit: 1
+2026-11-23T23:03:48Z  node --experimental-strip-types --test tests/grid.test.ts
+Exit: 0
+2026-11-23T23:03:48Z  pnpm build
+Exit: 1
+
+Scientific audit rerun in the isolated copy:
+Exit: 0
+2026-11-23T23:03:49Z  python scripts/audit_evidence.py
+Exit: 0
+  byte equality: False, compared scalar cells: 78, differences outside tolerance: 0, largest absolute numeric difference: 2.84217094304e-14
+  byte equality: False, compared scalar cells: 126, differences outside tolerance: 0, largest absolute numeric difference: 0
+  byte equality: False, compared scalar cells: 1521, differences outside tolerance: 0, largest absolute numeric difference: 8.881784197e-16
+  byte equality: False, compared scalar cells: 96780, differences outside tolerance: 0, largest absolute numeric difference: 5.68434188608e-14

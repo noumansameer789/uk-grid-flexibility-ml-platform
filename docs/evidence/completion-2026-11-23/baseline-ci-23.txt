@@ -1,0 +1,46 @@
+GitHub Actions, Tests and container #23
+Run: https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/41477334006
+Branch: main
+Source commit: 36368206a77fca08d868138372e2baadcac58d84
+Retrieved (UTC): 2026-11-23T22:15:28.882Z
+Selected lines from the completed job logs. ANSI colour escapes removed. Log timestamps are UTC.
+
+test — https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/41477334006/job/125386252168
+2026-11-02T16:02:13.2434261Z ##[group]Run ruff check src tests scripts && ruff format --check src tests scripts
+2026-11-02T16:02:13.2585440Z All checks passed!
+2026-11-02T16:02:13.2716175Z 27 files already formatted
+2026-11-02T16:02:13.2756765Z ##[group]Run pytest --cov=gridflex --cov-report=term-missing --cov-report=xml
+2026-11-02T16:02:33.9318971Z TOTAL                         1017    150    85%
+2026-11-02T16:02:33.9319676Z 62 passed, 1 warning in 18.87s
+2026-11-02T16:02:34.7442909Z ##[group]Run pip install pip-audit==2.10.1 && pip-audit -r requirements-dev.lock --no-deps --disable-pip
+2026-11-02T16:02:38.6754050Z No known vulnerabilities found
+2026-11-02T16:02:40.8309153Z ##[group]Run npm ci --ignore-scripts
+2026-11-02T16:02:42.0355363Z found 0 vulnerabilities
+2026-11-02T16:02:42.0619579Z ##[group]Run npm audit --audit-level=high
+2026-11-02T16:02:42.4185924Z found 0 vulnerabilities
+2026-11-02T16:02:42.4279028Z ##[group]Run docker build -t gridflex:test .
+2026-11-02T16:03:17.8505215Z #16 naming to docker.io/library/gridflex:test done
+2026-11-02T16:03:23.6144631Z UI integration passed: chart, five benchmarks, feasible schedule, invalid input, forecast binding, mode-response race and edited-request invalidation.
+
+infrastructure — https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/41477334006/job/125386251792
+2026-11-02T16:01:27.6199337Z ##[group]Run terraform init -backend=false && terraform fmt -check && terraform validate
+2026-11-02T16:01:30.9573746Z - Installed hashicorp/azurerm v4.81.0 (signed by HashiCorp)
+2026-11-02T16:01:31.4575350Z - Installed hashicorp/random v3.9.1 (signed by HashiCorp)
+2026-11-02T16:01:31.4576502Z Terraform has been successfully initialized!
+2026-11-02T16:01:32.6309144Z Success! The configuration is valid.
+
+public-demo — https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/41477334006/job/125386251182
+2026-11-02T16:01:25.3773548Z ##[group]Run npm install --global pnpm@11.25.0
+2026-11-02T16:01:26.9505707Z ##[group]Run pnpm install --frozen-lockfile
+2026-11-02T16:01:39.3792016Z Done in 12.3s using pnpm v11.25.0
+2026-11-02T16:01:39.6943900Z ##[group]Run pnpm exec tsc --noEmit
+2026-11-02T16:01:45.9929286Z ##[group]Run node --experimental-strip-types --test tests/grid.test.ts
+2026-11-02T16:01:46.1644741Z # tests 5
+2026-11-02T16:01:46.1646675Z # pass 5
+2026-11-02T16:01:46.1647064Z # fail 0
+2026-11-02T16:01:46.1758132Z ##[group]Run pnpm build
+2026-11-02T16:01:49.7582388Z ✓ built in 892ms
+2026-11-02T16:01:49.8962363Z ✓ built in 132ms
+2026-11-02T16:01:50.5680750Z ✓ built in 666ms
+2026-11-02T16:01:51.2445506Z ✓ built in 671ms
+2026-11-02T16:01:51.7079998Z ✓ built in 455ms

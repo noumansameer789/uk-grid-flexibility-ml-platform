@@ -1,5 +1,13 @@
 # Verification record
 
+## 23 November 2026 update
+
+The [completion record](COMPLETION_RECORD.md) updates the deployment and CI status in the earlier dated entries and [September audit](AUDIT.md). The Azure Terraform registry correction passed provider validation. The first PR run found an OpenTelemetry advisory. Regenerating the two locks in a clean Python 3.12 environment changed three development pins, and all three unmodified CI jobs passed. [Dependency repair](evidence/completion-2026-11-23/dependency-repair.txt) · [CI run](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45283850543)
+
+Scheduled run 122 recorded a weather source failure. Carbon freshness and forecast issuance passed. The drift warning was advisory and performance remained below the minimum origin count. The [raw report](evidence/completion-2026-11-23/baseline-monitoring-122.txt) records both the operational failure and the model alert. Multi-season prospective performance and commercial evaluation remain open.
+
+The [scientific audit](evidence/completion-2026-11-23/baseline-scientific-audit.txt) reproduced the published results to numerical tolerance. All Power BI acceptance figures also reproduced from the [three CSVs](../powerbi/README.md). Desktop report validation remains pending. The [Azure gate record](evidence/azure-deployment-2026-11-23/README.md) records the preflight and every untested gate. The public service remains the [Cloudflare demo](PUBLIC_DEMO.md).
+
 ## 12 October 2026 update
 
 The public Cloudflare demo is deployed at https://nouman-gridflex-gb.nimblepeony1.chatgpt.site. Native publication status is successful and access is public; the recorded HTTP probe verified process health and 48 real future baseline forecasts. The charging probe checks feasibility and rejected requests. See `../reports/public-deployment.json` and `../reports/public-probe/`. Azure remains undeployed.
