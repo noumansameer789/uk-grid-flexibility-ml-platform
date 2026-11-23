@@ -1,0 +1,39 @@
+name: Reproduce the November dependency repair
+on:
+  push:
+    branches: [gridflex/verify-locks-20261123]
+    paths: [.github/workflows/reproduce-november-locks.yml]
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - name: Regenerate and audit both installed closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/gridflex-locks"
+          source "$RUNNER_TEMP/gridflex-locks/bin/activate"
+          python --version
+          sed -e 's/^opentelemetry-api==1.45.1$/opentelemetry-api==1.45.2/' \
+              -e 's/^opentelemetry-sdk==1.45.1$/opentelemetry-sdk==1.45.2/' \
+              -e 's/^opentelemetry-semantic-conventions==0.66b1$/opentelemetry-semantic-conventions==0.66b2/' \
+              requirements-dev.lock > "$RUNNER_TEMP/inputs.txt"
+          python -m pip install -q -r "$RUNNER_TEMP/inputs.txt"
+          python -m pip check
+          python scripts/lock_requirements.py
+          git diff -- requirements-dev.lock requirements-runtime.lock
+          sha256sum requirements-dev.lock requirements-runtime.lock
+          echo "DEV_LOCK_B64=$(base64 -w0 requirements-dev.lock)"
+          echo "RUNTIME_LOCK_B64=$(base64 -w0 requirements-runtime.lock)"
+          python -m pip install -q pip-audit==2.10.1
+          pip-audit -r requirements-dev.lock --no-deps --disable-pip
+          pip-audit -r requirements-runtime.lock --no-deps --disable-pip
