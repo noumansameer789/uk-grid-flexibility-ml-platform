@@ -49,7 +49,6 @@ resource "azurerm_container_app" "app" {
   container_app_environment_id = azurerm_container_app_environment.app.id
   resource_group_name          = azurerm_resource_group.app.name
   revision_mode                = "Single"
-  registry { server = "ghcr.io" }
   ingress {
     external_enabled           = true
     target_port                = 8000
@@ -107,7 +106,6 @@ resource "azurerm_container_app_job" "maintenance" {
   container_app_environment_id = azurerm_container_app_environment.app.id
   replica_timeout_in_seconds   = 900
   replica_retry_limit          = 1
-  registry { server = "ghcr.io" }
   schedule_trigger_config {
     cron_expression          = "23 1,7,13,19 * * *"
     parallelism              = 1
