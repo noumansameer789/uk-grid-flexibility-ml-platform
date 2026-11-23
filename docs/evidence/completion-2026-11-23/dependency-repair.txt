@@ -1,0 +1,30 @@
+GitHub Actions log excerpts in UTC. ANSI colour escapes stripped.
+
+Tests and container #27, commit 1b240241c6bb37b2f6adcb60b079627cadc55401
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45278416821/job/138056155022
+2026-11-23T22:19:50.1589464Z TOTAL                         1017    150    85%
+2026-11-23T22:19:50.1590136Z 62 passed, 1 warning in 18.89s
+2026-11-23T22:19:55.5670706Z Found 1 known vulnerability in 1 package
+2026-11-23T22:19:55.5672696Z opentelemetry-api 1.45.1  CVE-2026-126360 1.45.2
+2026-11-23T22:19:55.6062462Z ##[error]Process completed with exit code 1.
+
+Clean Python 3.12 Linux regeneration, fresh virtual environment
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45279495061/job/138059886878
+2026-11-23T22:25:20.5246487Z Python 3.12.16
+2026-11-23T22:26:01.3442715Z No broken requirements found.
+2026-11-23T22:26:01.5561927Z runtime 30 pinned dependencies
+2026-11-23T22:26:01.5562773Z dev 101 pinned dependencies
+2026-11-23T22:26:01.5715344Z -opentelemetry-api==1.45.1
+2026-11-23T22:26:01.5715624Z +opentelemetry-api==1.45.2
+2026-11-23T22:26:01.5716220Z -opentelemetry-sdk==1.45.1
+2026-11-23T22:26:01.5716726Z -opentelemetry-semantic-conventions==0.66b1
+2026-11-23T22:26:01.5717097Z +opentelemetry-sdk==1.45.2
+2026-11-23T22:26:01.5717407Z +opentelemetry-semantic-conventions==0.66b2
+2026-11-23T22:26:01.5868426Z 20ebed1abda7ceb439afc32f85c242fc535808ab326ed77e3a1fa3f4888008cf  requirements-dev.lock
+2026-11-23T22:26:01.5869922Z 6e10610e878d9f7d4a2e5907afeb1eae8f355730f8b02c60f163e57135df48a0  requirements-runtime.lock
+2026-11-23T22:26:05.5606882Z No known vulnerabilities found
+2026-11-23T22:26:05.9611805Z No known vulnerabilities found
+
+The job ran scripts/lock_requirements.py against the installed packages and audited each output. Only the three lines shown changed. The runtime lock was reproduced without a diff.
+The lock regeneration workflow was confined to a verification branch. Its commands are preserved at:
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/blob/4af916f70318551358f7b306c60fbf2618ce1d1f/.github/workflows/reproduce-november-locks.yml

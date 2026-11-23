@@ -5,6 +5,7 @@ data
 tests
 docs
 infra
+powerbi
 mlruns
 mlflow.db*
 artifacts

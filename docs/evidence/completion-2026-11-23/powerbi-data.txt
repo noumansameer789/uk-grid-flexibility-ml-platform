@@ -1,0 +1,168 @@
+GridFlex | Power BI source-data verification
+UTC 2026-11-23T22:18:45+00:00
+Source revision: 36368206a77fca08d868138372e2baadcac58d84
+Environment: Windows, Python 3.13.9
+Method: CSV fields read with Python's csv module; Decimal arithmetic on exported decimal strings.
+These are CSV calculations. This output does not attest to Desktop, DAX execution, rendering or slicer wiring.
+
+Upstream files checked against Git blob IDs at the source revision
+PASS  data/reference/carbon.csv = 6828e76072a59d9a77f6930311997f20b757d32b
+PASS  docs/evidence/extended-backtest.csv.gz = 0caa0af7121ccd97b738ab9ff5949376ec8910f9
+PASS  docs/evidence/charging-evaluation.csv = 1433121b994fc1bf4e52c0d27bf4ec780a33d537
+Supplied kit ZIP SHA-256: 0b4369c6985a2b68cfdd28b602fd8b1e043b63076f520df16c3a18ede0a7c313
+
+Initial regeneration (UTC 2026-11-23T22:16:10.658179+00:00; pandas 2.3.3)
+$ python powerbi/make_powerbi_data.py . powerbi/data
+Carbon.csv      9792 rows
+Backtest.csv    40320 rows
+Charging.csv     168 rows
+Exit 0. pandas used Windows CRLF for the header and each data row.
+Backtest.csv: original LF SHA-256 c04a985f8cab0a3e60a7bed4a35bab351a65906ab252e20195227a9ec794dd4c; first Windows SHA-256 be431d29e0763a26d1a55918ccacaa56886df3e317b7c314d8237ca6f77c1e13
+  40321 CRLF lines; after converting only CRLF to LF: c04a985f8cab0a3e60a7bed4a35bab351a65906ab252e20195227a9ec794dd4c
+PASS  Backtest.csv first run equals kit after newline normalisation = True
+Carbon.csv: original LF SHA-256 a2ff3ea245e57ea89ed4db3256b538b627f2e152692060327d4b5167ec7bd2d8; first Windows SHA-256 e019130dc781ecaa8820e44e55e303d14e54aedf21e5fdbc2eb0b30b1cd9b121
+  9793 CRLF lines; after converting only CRLF to LF: a2ff3ea245e57ea89ed4db3256b538b627f2e152692060327d4b5167ec7bd2d8
+PASS  Carbon.csv first run equals kit after newline normalisation = True
+Charging.csv: original LF SHA-256 3fc79563955be4ec49db6c6b28bb920d0f102f25d552ef7351faf34072f9977f; first Windows SHA-256 dae9271fd2032b728b2e6f20585809fce6a3f220a96857b932bcf93ad1556d39
+  169 CRLF lines; after converting only CRLF to LF: 3fc79563955be4ec49db6c6b28bb920d0f102f25d552ef7351faf34072f9977f
+PASS  Charging.csv first run equals kit after newline normalisation = True
+
+Second run on Windows with an explicit LF process default (UTC 2026-11-23T22:18:06.474242+00:00; pandas 2.3.3)
+Unmodified kit generator, launched via Python -c. Driver source:
+import os, runpy, sys; os.linesep = "\n"; sys.argv = ["powerbi/make_powerbi_data.py", ".", "powerbi/data"]; runpy.run_path(sys.argv[0], run_name="__main__")
+Carbon.csv      9792 rows
+Backtest.csv    40320 rows
+Charging.csv     168 rows
+PASS  regeneration exit = 0
+PASS  Backtest.csv regenerated SHA-256 equals supplied kit = c04a985f8cab0a3e60a7bed4a35bab351a65906ab252e20195227a9ec794dd4c
+PASS  Carbon.csv regenerated SHA-256 equals supplied kit = a2ff3ea245e57ea89ed4db3256b538b627f2e152692060327d4b5167ec7bd2d8
+PASS  Charging.csv regenerated SHA-256 equals supplied kit = 3fc79563955be4ec49db6c6b28bb920d0f102f25d552ef7351faf34072f9977f
+
+Delivered CSVs
+PASS  make_powerbi_data.py byte-identical to supplied kit = True
+PASS  measures.dax byte-identical to supplied kit = True
+PASS  gridflex-theme.json byte-identical to supplied kit = True
+PASS  number of measure definitions (apart from DimDate) = 17
+PASS  Backtest.csv SHA-256 = c04a985f8cab0a3e60a7bed4a35bab351a65906ab252e20195227a9ec794dd4c
+PASS  Carbon.csv SHA-256 = a2ff3ea245e57ea89ed4db3256b538b627f2e152692060327d4b5167ec7bd2d8
+PASS  Charging.csv SHA-256 = 3fc79563955be4ec49db6c6b28bb920d0f102f25d552ef7351faf34072f9977f
+
+Grid carbon intensity | gCO2/kWh | UTC
+PASS  Readings = 9792
+PASS  first and last UTC half-hour = ('2026-03-01 00:00:00', '2026-09-20 23:30:00')
+PASS  adjacent timestamps other than +30 minutes = 0
+PASS  DimDate days between Carbon date endpoints (inclusive) = 204
+PASS  Average intensity = 116.3
+PASS  Average NESO forecast = 115.3
+PASS  NESO forecast MAE = 10.4
+PASS  Cleanest hour (UTC), lowest hourly average = (12, '78.6')
+PASS  highest hour and average = (19, '153.5')
+PASS  minimum weekday/hour cell = ('Sat', 12, '65.9')
+PASS  maximum weekday/hour cell = ('Mon', 19, '164.8')
+PASS  April 2026 Average intensity = 93.4
+
+Forecast accuracy | gCO2/kWh | overlapping targets
+PASS  total model-target rows = 40320
+PASS  distinct forecast origins = 168
+PASS  folds = [1, 2, 3]
+PASS  row count Daily seasonal = 8064
+PASS  nonblank inside_interval Daily seasonal = 0
+PASS  row count LightGBM (candidate) = 8064
+PASS  nonblank inside_interval LightGBM (candidate) = 8064
+PASS  row count Persistence = 8064
+PASS  nonblank inside_interval Persistence = 0
+PASS  row count Seven-day mean (live) = 8064
+PASS  nonblank inside_interval Seven-day mean (live) = 0
+PASS  row count Weekly seasonal = 8064
+PASS  nonblank inside_interval Weekly seasonal = 0
+model -> MAE, RMSE (sqrt of mean squared_error), MAE minus live (from unrounded means)
+PASS  Seven-day mean (live) = ('35.46', '43.28', '0.00')
+PASS  LightGBM (candidate) = ('36.61', '45.49', '1.14')
+PASS  Daily seasonal = ('41.14', '51.92', '5.67')
+PASS  Persistence = ('42.48', '54.03', '7.01')
+PASS  Weekly seasonal = ('47.51', '58.87', '12.04')
+Candidate mean abs_error = 36.6081150794; live mean abs_error = 35.4635863095; difference = 1.1445287698
+The supplied measures.dax comment gives +1.15 for the candidate; the supplied expression returns 1.14 at two decimals on these rows.
+Original extended-backtest.csv.gz (before kit rounding): candidate MAE 36.6081306898, live MAE 35.4635593821, difference 1.1445713077.
+PASS  source difference rounded to two decimal places = 1.14
+PASS  Interval coverage (6957/8064) = 86.3%
+PASS  Forecasts per model = 8064
+PASS  fold 1 LightGBM MAE = 30.64
+PASS  fold 2 LightGBM MAE = 28.10
+PASS  fold 3 LightGBM MAE = 51.08
+PASS  fold 3 Interval coverage (2181/2688) = 81.1%
+PASS  LightGBM MAE at 0.5 h = 26.58
+PASS  LightGBM MAE at 24 h = 39.52
+PASS  all 48 half-hour horizons present = True
+PASS  0.5 to 6.5 h, LightGBM MAE < seven-day mean at every horizon = True
+PASS  7 h, LightGBM and seven-day mean MAE = ('34.15', '34.16')
+PASS  7.5 to 24 h, LightGBM MAE > seven-day mean at every horizon = True
+PASS  0.5 to 4 h, persistence MAE < LightGBM at every horizon = True
+horizon_hours | LightGBM | seven-day mean | persistence (MAE)
+ 0.5 | 26.5792 | 34.6231 | 20.5476
+ 1.0 | 27.6464 | 34.3717 | 20.8750
+ 1.5 | 28.5371 | 34.4226 | 21.6845
+ 2.0 | 28.4397 | 34.6408 | 22.9345
+ 2.5 | 29.7987 | 35.1455 | 23.8512
+ 3.0 | 30.2594 | 35.9574 | 25.9821
+ 3.5 | 31.8113 | 36.3896 | 28.9881
+ 4.0 | 32.8141 | 36.4109 | 32.3571
+ 4.5 | 33.2823 | 36.3903 | 35.1905
+ 5.0 | 33.0993 | 35.3745 | 38.7262
+ 5.5 | 33.1888 | 34.5883 | 41.7143
+ 6.0 | 33.5588 | 34.7410 | 43.6726
+ 6.5 | 33.0907 | 34.4190 | 45.5714
+ 7.0 | 34.1481 | 34.1574 | 46.5774
+ 7.5 | 34.8396 | 34.2126 | 47.3810
+ 8.0 | 34.7983 | 34.4418 | 48.8452
+ 8.5 | 35.8231 | 34.9762 | 48.6726
+ 9.0 | 36.6436 | 35.8070 | 48.4821
+ 9.5 | 37.6329 | 36.2527 | 48.0357
+10.0 | 38.9975 | 36.3139 | 46.5238
+10.5 | 39.2789 | 36.3036 | 46.4583
+11.0 | 37.8266 | 35.3812 | 47.1250
+11.5 | 37.5589 | 34.6309 | 48.3631
+12.0 | 37.6271 | 34.8482 | 48.2976
+12.5 | 36.8860 | 34.5755 | 48.7560
+13.0 | 37.5829 | 34.2858 | 48.0238
+13.5 | 38.4293 | 34.3376 | 47.9286
+14.0 | 37.7967 | 34.6630 | 48.9524
+14.5 | 38.7800 | 35.2407 | 48.4762
+15.0 | 38.9139 | 36.0485 | 48.6250
+15.5 | 39.2641 | 36.4798 | 47.8631
+16.0 | 40.5410 | 36.5401 | 46.5833
+16.5 | 40.6023 | 36.5162 | 47.2798
+17.0 | 39.7661 | 35.6100 | 48.1190
+17.5 | 39.1634 | 34.8732 | 49.0298
+18.0 | 39.1254 | 35.0497 | 48.4048
+18.5 | 38.5561 | 34.7702 | 48.6845
+19.0 | 39.5603 | 34.4992 | 47.4286
+19.5 | 40.2616 | 34.5238 | 46.6012
+20.0 | 39.6948 | 34.8483 | 45.5119
+20.5 | 40.1002 | 35.4083 | 44.1488
+21.0 | 40.7502 | 36.2415 | 42.7143
+21.5 | 40.8039 | 36.6005 | 42.1905
+22.0 | 41.7183 | 36.6175 | 42.2262
+22.5 | 41.7383 | 38.5259 | 42.6071
+23.0 | 40.5932 | 37.6055 | 43.2619
+23.5 | 39.7616 | 36.8707 | 43.9167
+24.0 | 39.5193 | 36.7201 | 44.7143
+
+Smart charging back-test | simulated average-intensity proxy in kg CO2
+PASS  Scenarios = 168
+Sums from Charging.csv: immediate_kg=635.3881, scheduled_kg=439.9793, perfect_information_kg=391.4492, saving_kg=195.4088, seven_day_mean_schedule_kg=447.6675
+PASS  Carbon saving % (ratio of sums) = 30.75%
+PASS  Scenarios by result = {'Immediate better': 20, 'Scheduled better': 148}
+PASS  Win rate = 88.1%
+PASS  Share of best possible saving = 80.1%
+PASS  Total saving kg = 195.41
+PASS  sum of row savings equals difference of sums = 195.4088
+PASS  Avg immediate kg = 3.78
+PASS  Avg scheduled kg = 2.62
+PASS  18 UTC Avg immediate kg = 4.77
+PASS  18 UTC Avg scheduled kg = 2.63
+PASS  all scenarios, mean scheduled_kg = 2.619
+PASS  all scenarios, mean seven_day_mean_schedule_kg = 2.665
+PASS  all scenarios, mean immediate_kg = 3.782
+
+0 failed checks.

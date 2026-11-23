@@ -1,0 +1,45 @@
+Final review of the proposed changes
+2026-11-23T23:09:42+00:00
+PASS  185 existing release, science, workflow, code, test and demo paths match baseline
+PASS  Every previous byte in the dated verification sections is preserved
+PASS  All new and modified files use LF line endings
+PASS  No forbidden Terraform input, state, plan, environment file or provider cache in change set
+PASS  No ignored file selected
+PASS  Changed contents scan found no credential patterns, personal email, UUID or user home path
+PASS  No new image, PDF, PBIX or PBIP is represented as a Desktop export
+PASS  Untracked screenshot placeholder is absent
+PASS  Docker build context excludes powerbi
+PASS  lightgbm published MAE 36.61 and RMSE 45.49
+PASS  persistence published MAE 42.48 and RMSE 54.03
+PASS  weekly_seasonal published MAE 47.51 and RMSE 58.87
+PASS  daily_seasonal published MAE 41.14 and RMSE 51.92
+PASS  seven_day_mean published MAE 35.46 and RMSE 43.28
+PASS  Interval coverage 86.27% and width 141.65
+PASS  960 later observations, failed promotion and seven-day mean serving
+PASS  Later residual 46.73 MAE and 82.4% coverage, persistence 46.22 MAE, original 45.95 MAE and 78.6% coverage
+PASS  Power BI input verification reported zero failed checks
+PASS  105 relative Markdown link occurrences resolve in the proposed repository tree
+
+External Markdown targets inspected separately by repository API, first-party documentation lookup, or browser:
+https://azure.microsoft.com/pricing/details/container-apps/
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/internal/resourceproviders/required.go
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/internal/services/containerapps/helpers/container_apps.go
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/website/docs/r/container_app.html.markdown
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/website/docs/r/container_app_job.html.markdown
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45283850543
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45283850543/job/138074935114
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45284928303
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/workflows/ci.yml?query=branch%3Amain
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/workflows/publish.yml
+https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/pull/16
+https://learn.microsoft.com/en-us/azure/cloud-shell/faq-troubleshooting
+https://learn.microsoft.com/en-us/azure/container-apps/github-actions
+https://learn.microsoft.com/en-us/azure/education-hub/navigate-costs
+https://learn.microsoft.com/en-us/cli/azure/policy/assignment
+https://nouman-gridflex-gb.nimblepeony1.chatgpt.site
+https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
+
+Public demo URL opened read-only and displayed the heading 'Find a lower-carbon time to charge.'
+The GitHub publisher displayed zero runs at its preflight. See image-publication.txt.
+Endpoint, job, restart, share and alert results from Azure: not tested. No Azure apply in this session.
+Power BI Desktop read-back and exports: not tested. Source CSV checks are in powerbi-data.txt.

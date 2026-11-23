@@ -1,0 +1,48 @@
+2026-11-23T22:19:08Z  git rev-parse HEAD
+36368206a77fca08d868138372e2baadcac58d84
+
+git diff --numstat HEAD -- infra/terraform
+0	2	infra/terraform/main.tf
+
+git diff HEAD -- infra/terraform/main.tf
+diff --git a/infra/terraform/main.tf b/infra/terraform/main.tf
+index b770aa7..98f7ddb 100644
+--- a/infra/terraform/main.tf
++++ b/infra/terraform/main.tf
+@@ -49,7 +49,6 @@ resource "azurerm_container_app" "app" {
+   container_app_environment_id = azurerm_container_app_environment.app.id
+   resource_group_name          = azurerm_resource_group.app.name
+   revision_mode                = "Single"
+-  registry { server = "ghcr.io" }
+   ingress {
+     external_enabled           = true
+     target_port                = 8000
+@@ -107,7 +106,6 @@ resource "azurerm_container_app_job" "maintenance" {
+   container_app_environment_id = azurerm_container_app_environment.app.id
+   replica_timeout_in_seconds   = 900
+   replica_retry_limit          = 1
+-  registry { server = "ghcr.io" }
+   schedule_trigger_config {
+     cron_expression          = "23 1,7,13,19 * * *"
+     parallelism              = 1
+
+git hash-object infra/terraform/.terraform.lock.hcl
+aa817c7b52ea40c5b6e3778ef45a88b40c3d4b74
+git rev-parse HEAD:infra/terraform/.terraform.lock.hcl
+aa817c7b52ea40c5b6e3778ef45a88b40c3d4b74
+
+2026-11-23T22:19:08Z  Pinned provider source cross-check
+Registry validator at AzureRM v4.81.0
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/internal/services/containerapps/helpers/container_apps.go
+return fmt.Errorf("must supply either identity or username/password_secret_name")
+
+Default resource provider set at AzureRM v4.81.0
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/internal/provider/provider.go
+p.Schema["resource_provider_registrations"].DefaultFunc = schema.EnvDefaultFunc("ARM_RESOURCE_PROVIDER_REGISTRATIONS", resourceproviders.ProviderRegistrationsLegacy)
+
+Legacy() membership at AzureRM v4.81.0
+https://github.com/hashicorp/terraform-provider-azurerm/blob/v4.81.0/internal/resourceproviders/required.go
+Microsoft.App: false
+Microsoft.OperationalInsights: true
+Microsoft.Storage: true
+microsoft.insights: true

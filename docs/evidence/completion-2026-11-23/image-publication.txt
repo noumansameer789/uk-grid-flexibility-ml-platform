@@ -1,0 +1,23 @@
+Container image publication preflight
+UTC 2026-11-23T23:08:16+00:00
+Main commit checked: 69b37304eb46196a08d5b9b91581f45c64b42338
+
+Dockerfile project COPY instructions:
+COPY requirements-runtime.lock ./
+COPY pyproject.toml ./
+COPY src ./src
+COPY models/production/model.txt models/production/model_card.json models/production/reference.json models/production/replay.json ./models/production/
+100644 blob 4a31a2f4002a0abb4716929758befb31da6e358c	requirements-runtime.lock
+100644 blob 75b3ce3871a21e4978935e72bb7355965035352f	pyproject.toml
+040000 tree 4ee0cee2b8f1849e7d88c1240b81531686262edb	src
+100644 blob bbe51d3bdbe6b4f52f6f427796d830267bb610a2	models/production/model.txt
+100644 blob 5788578d9e5328435962e842252142ff317024bc	models/production/model_card.json
+100644 blob c8dc99e4fb68281dda0806bd7a2f15ac004e7be2	models/production/reference.json
+100644 blob a46914a86e0215b3865a34902b3730f8c2c3f8db	models/production/replay.json
+
+The project-specific inputs above are tracked in the public repository. Base operating system and installed public dependencies are also present.
+GitHub Actions listing for event workflow_dispatch on main returned:
+{"total_count":0,"workflow_runs":[]}
+The Publish container image page displayed 0 workflow runs. The browser presented GitHub sign-in.
+The existing publisher requires a manual dispatch or a version tag. No version tag was created.
+Image digest: not observed. Package visibility: unverified. Anonymous docker pull: not tested.

@@ -4,7 +4,7 @@
 
 An independent portfolio project by **Nouman Sameer**, connecting electrical engineering, data science and energy operations. It retrieves real NESO and Open-Meteo data, evaluates a 24-hour LightGBM forecast, and serves a charging planner through FastAPI and a responsive dashboard.
 
-**Public demo:** [GridFlex GB](https://nouman-gridflex-gb.nimblepeony1.chatgpt.site) serves live baseline forecasts and charging plans on Cloudflare Workers. The Python FastAPI/Azure path remains separate; Azure is not deployed. Long-term prospective performance is still to be established. See [deployment and API notes](docs/PUBLIC_DEMO.md).
+**Public demo:** [GridFlex GB](https://nouman-gridflex-gb.nimblepeony1.chatgpt.site) serves the seven-day baseline and charging planner on Cloudflare Workers. The separate Python FastAPI service has CI-validated Azure Terraform. The 23 November preflight stopped before deployment. Verification across seasons remains open. [Public API](docs/PUBLIC_DEMO.md) · [Azure gate record](docs/evidence/azure-deployment-2026-11-23/README.md)
 
 **Audit decision:** keep LightGBM as a research candidate. The seven-day clock-time average has lower error, and intervals miss their nominal coverage. See the [strict review and resolved findings](docs/AUDIT.md). This is an AI-assisted independent portfolio build, not commercial delivery or an assessed university result.
 
@@ -15,6 +15,8 @@ An independent portfolio project by **Nouman Sameer**, connecting electrical eng
 ## Measured evidence
 
 The committed reference dataset contains **9,792 half-hour observations**, from **1 March through 20 September 2026**. Source checks found **zero missing intervals and zero missing actuals** in this training snapshot.
+
+The [Power BI inputs and Desktop walkthrough](powerbi/README.md) reproduce the three planned pages' figures from the committed evidence. Desktop verification is pending.
 
 | Model | Walk-forward MAE ↓ | RMSE ↓ |
 |---|---:|---:|
@@ -27,6 +29,8 @@ The committed reference dataset contains **9,792 half-hour observations**, from 
 Errors are in **gCO₂/kWh**. LightGBM beats persistence but loses to the stronger seven-day mean (36.61 versus 35.46). Nominal 90% intervals achieved **86.3% coverage**; their mean width was **141.65 gCO₂/kWh**. The candidate fails the revised gate. Added diagnostics do not change the fitted weights, hyperparameters or calibration radius. A paired seven-day block bootstrap gives an exploratory MAE difference interval of −6.77 to +7.50, so no robust superiority claim is supported.
 
 Across 168 historical charging simulations with the fixed default battery, the forecast-based schedule's observed average-intensity proxy was **30.75% below immediate charging in aggregate**. It improved on immediate charging in **88.10%** of overlapping scenarios. These are simulated outcomes, not measured physical charging or avoided emissions. [Full diagnostics and baseline schedules](docs/evidence/scientific-audit.json).
+
+At each half-hour horizon through 6.5 hours, LightGBM had lower MAE than the seven-day mean. At seven hours their MAEs were 34.15 and 34.16 gCO2/kWh. The seven-day mean had lower MAE at every horizon from 7.5 to 24 hours. Persistence had lower MAE than LightGBM through four hours. The forecast windows overlap, so these differences are descriptive. [All 48 horizon comparisons](docs/evidence/completion-2026-11-23/powerbi-data.txt)
 
 Read the [fold results](docs/evidence/RESULTS.md), [machine-readable model card](models/production/model_card.json), [source manifest](docs/evidence/data_manifest.json), [MLflow run export](docs/evidence/mlflow_runs.json), and [individual scored forecasts](docs/evidence/backtest_predictions.csv.gz). No generated test data is used in those measurements.
 
