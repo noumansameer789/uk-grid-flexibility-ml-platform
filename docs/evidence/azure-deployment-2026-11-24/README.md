@@ -1,6 +1,6 @@
 # Azure run, 24 November 2026 UTC
 
-The Python service was deployed to Azure Container Apps with Terraform, checked against the ten gates, and removed in the same session. All ten gates passed. The run also found that the Terraform on `main` could not deploy: Azure now creates Container Apps environments in express mode by default, and express supports neither Azure Files storage nor jobs. The correction is part of this change.
+The Python service was deployed to Azure Container Apps with Terraform, checked against the ten gates, and removed in the same session. All ten gates passed. The run also found that the Terraform on `main` could not deploy in this subscription: Azure created the Container Apps environment in express mode, which supports neither Azure Files storage nor jobs, although the configuration named no mode. The correction is part of this change.
 
 Nouman Sameer owns the subscription and approved the saved plan, the budget and the GitHub connection. Claude (Anthropic) operated Azure Cloud Shell through the owner's browser, wrote [the capture script](run.sh), diagnosed the failure and wrote the Terraform change. Every command's output is in this folder with its UTC time and exit status. The subscription ID, tenant ID, account name, shell user name and one domain verification ID are redacted; see [Redaction](#redaction).
 
@@ -27,9 +27,11 @@ Nouman Sameer owns the subscription and approved the saved plan, the budget and 
 | 21:07 | Apply 3 added the mode action, storage link, app and job: 4 added, 0 changed, 0 destroyed. | [Plan 3](terraform-plan.txt) · [Apply 3](terraform-apply.txt) |
 | 21:10 | A further plan reported no changes. | [Plan after apply](terraform-plan-after-apply.txt) |
 
+Why Azure chose express is unconfirmed. Microsoft's [express FAQ](https://learn.microsoft.com/en-us/azure/container-apps/express-faq) says a template creates a standard environment unless it sets the mode to express, and it does not describe converting an express environment back. The conversion here used a preview API version.
+
 AzureRM 4.81.0 cannot request a mode. The corrected configuration adds the AzAPI provider and one `azapi_resource_action` that sends the PATCH after the environment exists. The storage link waits for it. The environment declares the `Consumption` workload profile, and the app and job name it. The environment's declaration was added after a plan at 21:02 proposed removing the profile (1 to change, in the [run summary](summary.txt)). The two profile names were added after apply 3, when a plan proposed clearing them on the app and the job (2 to change). That plan was read on screen and not saved. The plan at 21:10 was made with all three parts in place.
 
-**Not tested: a single apply of the corrected configuration from an empty subscription.** In this run the environment had already been converted by hand when Terraform's action ran, so the action completed in 3 seconds. A fresh apply must wait for the conversion, which took about 19 minutes here. Whether the action waits that long, and whether its default timeout allows it, is unverified. Apply 3 also created the app and the job before their profile names were in the configuration. The final configuration has been planned against the live resources and has destroyed them, but it has not created them.
+**Not tested: a single apply of the corrected configuration from an empty subscription.** In this run the environment had already been converted by hand when Terraform's action ran, so the action completed in 3 seconds. If Azure again creates an express environment, a fresh apply must wait for the conversion, which took about 19 minutes here. Whether the action waits that long, and whether its default timeout allows it, is unverified. Apply 3 also created the app and the job before their profile names were in the configuration. The final configuration has been planned against the live resources and has destroyed them, but it has not created them.
 
 ## Gates
 

@@ -26,9 +26,10 @@ resource "azurerm_container_app_environment" "app" {
     workload_profile_type = "Consumption"
   }
 }
-# Azure now creates an express environment unless a mode is requested. Express supports neither
-# Azure Files storage nor jobs, and AzureRM 4.81 cannot set the mode, so one PATCH requests it.
-# The Consumption profile above is what the converted environment reports; declaring it avoids drift.
+# On 24 November 2026 Azure created this environment in express mode although no mode was requested.
+# Express supports neither Azure Files storage nor jobs, and AzureRM 4.81 cannot set the mode, so one
+# PATCH requests it. The Consumption profile above is what the converted environment reports;
+# declaring it avoids drift.
 resource "azapi_resource_action" "environment_mode" {
   type        = "Microsoft.App/managedEnvironments@2025-10-02-preview"
   resource_id = azurerm_container_app_environment.app.id
