@@ -21,9 +21,14 @@ resource "azurerm_container_app_environment" "app" {
   location                   = var.location
   resource_group_name        = azurerm_resource_group.app.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.app.id
+  workload_profile {
+    name                  = "Consumption"
+    workload_profile_type = "Consumption"
+  }
 }
 # Azure now creates an express environment unless a mode is requested. Express supports neither
 # Azure Files storage nor jobs, and AzureRM 4.81 cannot set the mode, so one PATCH requests it.
+# The Consumption profile above is what the converted environment reports; declaring it avoids drift.
 resource "azapi_resource_action" "environment_mode" {
   type        = "Microsoft.App/managedEnvironments@2025-10-02-preview"
   resource_id = azurerm_container_app_environment.app.id
@@ -58,6 +63,7 @@ resource "azurerm_container_app" "app" {
   container_app_environment_id = azurerm_container_app_environment.app.id
   resource_group_name          = azurerm_resource_group.app.name
   revision_mode                = "Single"
+  workload_profile_name        = "Consumption"
   ingress {
     external_enabled           = true
     target_port                = 8000
@@ -115,6 +121,7 @@ resource "azurerm_container_app_job" "maintenance" {
   container_app_environment_id = azurerm_container_app_environment.app.id
   replica_timeout_in_seconds   = 900
   replica_retry_limit          = 1
+  workload_profile_name        = "Consumption"
   schedule_trigger_config {
     cron_expression          = "23 1,7,13,19 * * *"
     parallelism              = 1
