@@ -22,6 +22,14 @@ resource "azurerm_container_app_environment" "app" {
   resource_group_name        = azurerm_resource_group.app.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.app.id
 }
+# Azure now creates an express environment unless a mode is requested. Express supports neither
+# Azure Files storage nor jobs, and AzureRM 4.81 cannot set the mode, so one PATCH requests it.
+resource "azapi_resource_action" "environment_mode" {
+  type        = "Microsoft.App/managedEnvironments@2025-10-02-preview"
+  resource_id = azurerm_container_app_environment.app.id
+  method      = "PATCH"
+  body        = { properties = { environmentMode = "WorkloadProfiles" } }
+}
 resource "azurerm_storage_account" "data" {
   name                            = "gridflex${random_string.suffix.result}"
   resource_group_name             = azurerm_resource_group.app.name
@@ -43,6 +51,7 @@ resource "azurerm_container_app_environment_storage" "data" {
   share_name                   = azurerm_storage_share.data.name
   access_key                   = azurerm_storage_account.data.primary_access_key
   access_mode                  = "ReadWrite"
+  depends_on                   = [azapi_resource_action.environment_mode]
 }
 resource "azurerm_container_app" "app" {
   name                         = var.name
