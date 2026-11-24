@@ -1,0 +1,1383 @@
+# UTC 2026-11-24T21:17:43Z
+# $ terraform plan -destroy -input=false -no-color
+random_string.suffix: Refreshing state... [id=rl8kw40a]
+azurerm_resource_group.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_log_analytics_workspace.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_storage_account.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azurerm_container_app_environment.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azapi_resource_action.environment_mode: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_share.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+azurerm_container_app_environment_storage.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data]
+azurerm_container_app_job.maintenance: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance]
+azurerm_container_app.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azapi_resource_action.environment_mode will be destroyed
+  - resource "azapi_resource_action" "environment_mode" {
+      - body             = {
+          - properties = {
+              - environmentMode = "WorkloadProfiles"
+            }
+        } -> null
+      - exist            = true -> null
+      - id               = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - method           = "PATCH" -> null
+      - output           = {} -> null
+      - resource_id      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - sensitive_body   = (write-only attribute) -> null
+      - sensitive_output = (sensitive value) -> null
+      - type             = "Microsoft.App/managedEnvironments@2025-10-02-preview" -> null
+      - when             = "apply" -> null
+    }
+
+  # azurerm_container_app.app will be destroyed
+  - resource "azurerm_container_app" "app" {
+      - container_app_environment_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - custom_domain_verification_id = (sensitive value) -> null
+      - id                            = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex" -> null
+      - latest_revision_fqdn          = "gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+      - latest_revision_name          = "gridflex--boxw0ws" -> null
+      - location                      = "germanywestcentral" -> null
+      - max_inactive_revisions        = 0 -> null
+      - name                          = "gridflex" -> null
+      - outbound_ip_addresses         = [
+          - "20.52.210.109",
+          - "20.52.210.104",
+          - "20.52.210.67",
+          - "20.52.209.220",
+          - "4.182.130.205",
+          - "4.182.130.193",
+          - "4.182.131.47",
+          - "4.182.130.201",
+          - "4.182.130.234",
+          - "4.182.131.19",
+          - "9.141.188.221",
+          - "131.189.191.161",
+          - "9.141.57.133",
+          - "131.189.157.198",
+          - "131.189.164.72",
+          - "4.185.176.24",
+          - "9.141.132.26",
+          - "98.67.210.204",
+          - "131.189.240.172",
+          - "4.182.135.50",
+          - "98.67.208.242",
+          - "4.185.234.230",
+          - "9.141.91.168",
+          - "131.189.71.181",
+          - "72.144.79.133",
+          - "131.189.69.171",
+          - "4.185.234.182",
+          - "4.182.12.146",
+          - "131.189.39.162",
+          - "131.189.150.81",
+          - "4.185.235.52",
+          - "9.141.135.68",
+          - "131.189.149.152",
+          - "131.189.138.228",
+          - "4.182.85.99",
+          - "72.144.115.213",
+          - "131.189.167.167",
+          - "20.218.197.105",
+          - "4.185.237.219",
+          - "4.185.237.107",
+          - "9.141.139.41",
+          - "9.141.137.17",
+          - "131.189.167.160",
+          - "9.141.134.35",
+          - "131.189.167.155",
+          - "9.141.134.56",
+          - "72.144.115.225",
+          - "131.189.139.168",
+          - "4.185.193.244",
+          - "20.218.197.87",
+          - "131.189.167.158",
+          - "20.218.197.104",
+          - "131.189.149.169",
+          - "9.141.134.28",
+          - "20.218.197.57",
+          - "131.189.167.152",
+          - "131.189.149.158",
+          - "4.185.236.250",
+          - "4.182.85.68",
+          - "72.144.115.228",
+          - "20.218.197.56",
+          - "4.182.85.39",
+          - "131.189.149.170",
+          - "9.141.139.40",
+          - "20.218.197.86",
+          - "131.189.149.163",
+          - "131.189.140.26",
+          - "72.144.115.224",
+          - "131.189.149.144",
+          - "131.189.180.246",
+          - "4.182.205.146",
+          - "48.201.114.226",
+          - "4.185.236.61",
+          - "131.189.38.198",
+          - "131.189.137.143",
+          - "48.201.115.46",
+          - "131.189.149.77",
+          - "9.141.134.1",
+          - "131.189.220.71",
+          - "4.185.235.113",
+          - "20.113.47.91",
+          - "20.113.46.72",
+          - "20.113.47.144",
+          - "20.113.47.87",
+          - "4.182.177.61",
+          - "4.182.177.38",
+          - "4.182.177.150",
+          - "4.182.177.168",
+          - "4.182.177.52",
+          - "4.182.177.145",
+          - "9.141.185.140",
+          - "9.141.186.146",
+          - "9.141.186.110",
+          - "9.141.186.254",
+          - "131.189.146.20",
+          - "9.141.190.252",
+          - "131.189.171.122",
+          - "131.189.164.216",
+          - "131.189.162.35",
+          - "131.189.237.171",
+          - "131.189.77.55",
+          - "9.141.55.239",
+          - "9.141.120.7",
+          - "4.182.12.176",
+          - "9.141.80.4",
+          - "131.189.208.247",
+          - "4.185.237.124",
+          - "9.141.54.159",
+          - "72.144.94.4",
+          - "4.182.198.207",
+          - "131.189.167.188",
+          - "72.144.116.24",
+          - "72.144.116.28",
+          - "4.185.194.214",
+          - "4.182.205.179",
+          - "131.189.167.224",
+          - "4.185.194.86",
+          - "131.189.149.234",
+          - "72.144.116.25",
+          - "131.189.234.78",
+          - "131.189.167.200",
+          - "131.189.167.210",
+          - "131.189.248.198",
+          - "48.201.147.39",
+          - "4.185.239.222",
+          - "131.189.149.202",
+          - "131.189.234.41",
+          - "48.201.80.51",
+          - "4.185.238.224",
+          - "131.189.167.196",
+          - "4.182.205.178",
+          - "131.189.149.204",
+          - "48.201.80.5",
+          - "98.67.253.89",
+          - "72.144.116.29",
+          - "131.189.149.214",
+          - "48.201.147.36",
+          - "98.67.239.26",
+          - "131.189.233.150",
+          - "72.144.115.255",
+          - "131.189.149.230",
+          - "72.144.116.13",
+          - "98.67.254.169",
+          - "131.189.149.197",
+          - "131.189.233.162",
+          - "48.201.91.225",
+          - "131.189.249.1",
+          - "4.185.238.223",
+          - "98.67.233.226",
+          - "4.185.194.204",
+          - "131.189.248.124",
+          - "131.189.167.184",
+          - "98.67.233.227",
+          - "131.189.233.137",
+          - "72.144.115.241",
+          - "20.113.16.214",
+          - "98.67.253.88",
+          - "72.144.115.254",
+          - "131.189.248.94",
+          - "20.113.20.141",
+          - "131.189.136.132",
+        ] -> null
+      - resource_group_name           = "gridflex-rg" -> null
+      - revision_mode                 = "Single" -> null
+      - tags                          = {} -> null
+      - workload_profile_name         = "Consumption" -> null
+
+      - ingress {
+          - allow_insecure_connections = false -> null
+          - custom_domain              = [] -> null
+          - exposed_port               = 0 -> null
+          - external_enabled           = true -> null
+          - fqdn                       = "gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+          - target_port                = 8000 -> null
+          - transport                  = "auto" -> null
+            # (1 unchanged attribute hidden)
+
+          - traffic_weight {
+              - latest_revision = true -> null
+              - percentage      = 100 -> null
+                # (2 unchanged attributes hidden)
+            }
+        }
+
+      - template {
+          - cooldown_period_in_seconds       = 300 -> null
+          - max_replicas                     = 1 -> null
+          - min_replicas                     = 0 -> null
+          - polling_interval_in_seconds      = 30 -> null
+          - termination_grace_period_seconds = 0 -> null
+            # (1 unchanged attribute hidden)
+
+          - container {
+              - args              = [] -> null
+              - command           = [] -> null
+              - cpu               = 0.5 -> null
+              - ephemeral_storage = "2Gi" -> null
+              - image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" -> null
+              - memory            = "1Gi" -> null
+              - name              = "gridflex" -> null
+
+              - env {
+                  - name        = "GRIDFLEX_DATA_DIR" -> null
+                  - value       = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - liveness_probe {
+                  - failure_count_threshold          = 3 -> null
+                  - initial_delay                    = 1 -> null
+                  - interval_seconds                 = 10 -> null
+                  - path                             = "/health" -> null
+                  - port                             = 8000 -> null
+                  - termination_grace_period_seconds = 0 -> null
+                  - timeout                          = 1 -> null
+                  - transport                        = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - readiness_probe {
+                  - failure_count_threshold = 3 -> null
+                  - initial_delay           = 0 -> null
+                  - interval_seconds        = 10 -> null
+                  - path                    = "/ready" -> null
+                  - port                    = 8000 -> null
+                  - success_count_threshold = 3 -> null
+                  - timeout                 = 1 -> null
+                  - transport               = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - startup_probe {
+                  - failure_count_threshold          = 3 -> null
+                  - initial_delay                    = 0 -> null
+                  - interval_seconds                 = 10 -> null
+                  - path                             = "/health" -> null
+                  - port                             = 8000 -> null
+                  - termination_grace_period_seconds = 0 -> null
+                  - timeout                          = 1 -> null
+                  - transport                        = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - volume_mounts {
+                  - name     = "data" -> null
+                  - path     = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+
+          - volume {
+              - mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600" -> null
+              - name          = "data" -> null
+              - storage_name  = "gridflex-data" -> null
+              - storage_type  = "AzureFile" -> null
+            }
+        }
+    }
+
+  # azurerm_container_app_environment.app will be destroyed
+  - resource "azurerm_container_app_environment" "app" {
+      - custom_domain_verification_id               = "<redacted-domain-verification-id>" -> null
+      - default_domain                              = "greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+      - id                                          = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - internal_load_balancer_enabled              = false -> null
+      - location                                    = "germanywestcentral" -> null
+      - log_analytics_workspace_id                  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs" -> null
+      - logs_destination                            = "log-analytics" -> null
+      - mutual_tls_enabled                          = false -> null
+      - name                                        = "gridflex-environment" -> null
+      - public_network_access                       = "Enabled" -> null
+      - resource_group_name                         = "gridflex-rg" -> null
+      - static_ip_address                           = "131.189.212.100" -> null
+      - tags                                        = {} -> null
+      - zone_redundancy_enabled                     = false -> null
+        # (6 unchanged attributes hidden)
+
+      - workload_profile {
+          - maximum_count         = 0 -> null
+          - minimum_count         = 0 -> null
+          - name                  = "Consumption" -> null
+          - workload_profile_type = "Consumption" -> null
+        }
+    }
+
+  # azurerm_container_app_environment_storage.data will be destroyed
+  - resource "azurerm_container_app_environment_storage" "data" {
+      - access_key                   = (sensitive value) -> null
+      - access_mode                  = "ReadWrite" -> null
+      - account_name                 = "gridflexrl8kw40a" -> null
+      - container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - id                           = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data" -> null
+      - name                         = "gridflex-data" -> null
+      - share_name                   = "gridflex-data" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_container_app_job.maintenance will be destroyed
+  - resource "azurerm_container_app_job" "maintenance" {
+      - container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - id                           = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance" -> null
+      - location                     = "germanywestcentral" -> null
+      - name                         = "gridflex-maintenance" -> null
+      - outbound_ip_addresses        = [] -> null
+      - replica_retry_limit          = 1 -> null
+      - replica_timeout_in_seconds   = 900 -> null
+      - resource_group_name          = "gridflex-rg" -> null
+      - tags                         = {} -> null
+      - workload_profile_name        = "Consumption" -> null
+        # (1 unchanged attribute hidden)
+
+      - schedule_trigger_config {
+          - cron_expression          = "23 1,7,13,19 * * *" -> null
+          - parallelism              = 1 -> null
+          - replica_completion_count = 1 -> null
+        }
+
+      - template {
+          - container {
+              - args              = [] -> null
+              - command           = [
+                  - "gridflex",
+                  - "maintenance",
+                ] -> null
+              - cpu               = 0.5 -> null
+              - image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" -> null
+              - memory            = "1Gi" -> null
+              - name              = "maintenance" -> null
+                # (1 unchanged attribute hidden)
+
+              - env {
+                  - name        = "GRIDFLEX_DATA_DIR" -> null
+                  - value       = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - volume_mounts {
+                  - name     = "data" -> null
+                  - path     = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+          - volume {
+              - mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600" -> null
+              - name          = "data" -> null
+              - storage_name  = "gridflex-data" -> null
+              - storage_type  = "AzureFile" -> null
+            }
+        }
+    }
+
+  # azurerm_log_analytics_workspace.app will be destroyed
+  - resource "azurerm_log_analytics_workspace" "app" {
+      - allow_resource_only_permissions         = true -> null
+      - cmk_for_query_forced                    = false -> null
+      - daily_quota_gb                          = 0.1 -> null
+      - id                                      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs" -> null
+      - immediate_data_purge_on_30_days_enabled = false -> null
+      - internet_ingestion_enabled              = true -> null
+      - internet_query_enabled                  = true -> null
+      - local_authentication_disabled           = false -> null
+      - local_authentication_enabled            = true -> null
+      - location                                = "germanywestcentral" -> null
+      - name                                    = "gridflex-logs" -> null
+      - primary_shared_key                      = (sensitive value) -> null
+      - resource_group_name                     = "gridflex-rg" -> null
+      - retention_in_days                       = 30 -> null
+      - secondary_shared_key                    = (sensitive value) -> null
+      - sku                                     = "PerGB2018" -> null
+      - tags                                    = {} -> null
+      - workspace_id                            = "a9c6bd6d-f134-4c03-910a-dbd16d338d0a" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_monitor_scheduled_query_rules_alert_v2.failures will be destroyed
+  - resource "azurerm_monitor_scheduled_query_rules_alert_v2" "failures" {
+      - auto_mitigation_enabled                = false -> null
+      - created_with_api_version               = "2023-03-15-preview" -> null
+      - enabled                                = true -> null
+      - evaluation_frequency                   = "PT5M" -> null
+      - id                                     = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures" -> null
+      - is_a_legacy_log_analytics_rule         = false -> null
+      - is_workspace_alerts_storage_configured = false -> null
+      - location                               = "germanywestcentral" -> null
+      - name                                   = "gridflex-failures" -> null
+      - resource_group_name                    = "gridflex-rg" -> null
+      - scopes                                 = [
+          - "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs",
+        ] -> null
+      - severity                               = 2 -> null
+      - skip_query_validation                  = true -> null
+      - tags                                   = {} -> null
+      - target_resource_types                  = [] -> null
+      - window_duration                        = "PT5M" -> null
+      - workspace_alerts_storage_enabled       = false -> null
+        # (4 unchanged attributes hidden)
+
+      - criteria {
+          - metric_measure_column   = "ErrorCount" -> null
+          - operator                = "GreaterThan" -> null
+          - query                   = <<-EOT
+                ContainerAppConsoleLogs_CL
+                | where ContainerAppName_s startswith "gridflex"
+                | where Log_s has "live_forecast_failed" or Log_s contains '"status": "alert"' or Log_s has "Traceback"
+                | summarize ErrorCount = count() by bin(TimeGenerated, 5m)
+            EOT -> null
+          - threshold               = 0 -> null
+          - time_aggregation_method = "Total" -> null
+            # (1 unchanged attribute hidden)
+
+          - failing_periods {
+              - minimum_failing_periods_to_trigger_alert = 1 -> null
+              - number_of_evaluation_periods             = 1 -> null
+            }
+        }
+    }
+
+  # azurerm_resource_group.app will be destroyed
+  - resource "azurerm_resource_group" "app" {
+      - id         = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg" -> null
+      - location   = "germanywestcentral" -> null
+      - name       = "gridflex-rg" -> null
+      - tags       = {
+          - "project" = "uk-grid-flexibility"
+          - "purpose" = "portfolio"
+        } -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_storage_account.data will be destroyed
+  - resource "azurerm_storage_account" "data" {
+      - access_tier                        = "Hot" -> null
+      - account_kind                       = "StorageV2" -> null
+      - account_replication_type           = "LRS" -> null
+      - account_tier                       = "Standard" -> null
+      - allow_nested_items_to_be_public    = false -> null
+      - cross_tenant_replication_enabled   = false -> null
+      - default_to_oauth_authentication    = false -> null
+      - dns_endpoint_type                  = "Standard" -> null
+      - https_traffic_only_enabled         = true -> null
+      - id                                 = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a" -> null
+      - infrastructure_encryption_enabled  = false -> null
+      - is_hns_enabled                     = false -> null
+      - large_file_share_enabled           = false -> null
+      - local_user_enabled                 = true -> null
+      - location                           = "germanywestcentral" -> null
+      - min_tls_version                    = "TLS1_2" -> null
+      - name                               = "gridflexrl8kw40a" -> null
+      - nfsv3_enabled                      = false -> null
+      - primary_access_key                 = (sensitive value) -> null
+      - primary_blob_connection_string     = (sensitive value) -> null
+      - primary_blob_endpoint              = "https://gridflexrl8kw40a.blob.core.windows.net/" -> null
+      - primary_blob_host                  = "gridflexrl8kw40a.blob.core.windows.net" -> null
+      - primary_connection_string          = (sensitive value) -> null
+      - primary_dfs_endpoint               = "https://gridflexrl8kw40a.dfs.core.windows.net/" -> null
+      - primary_dfs_host                   = "gridflexrl8kw40a.dfs.core.windows.net" -> null
+      - primary_file_endpoint              = "https://gridflexrl8kw40a.file.core.windows.net/" -> null
+      - primary_file_host                  = "gridflexrl8kw40a.file.core.windows.net" -> null
+      - primary_location                   = "germanywestcentral" -> null
+      - primary_queue_endpoint             = "https://gridflexrl8kw40a.queue.core.windows.net/" -> null
+      - primary_queue_host                 = "gridflexrl8kw40a.queue.core.windows.net" -> null
+      - primary_table_endpoint             = "https://gridflexrl8kw40a.table.core.windows.net/" -> null
+      - primary_table_host                 = "gridflexrl8kw40a.table.core.windows.net" -> null
+      - primary_web_endpoint               = "https://gridflexrl8kw40a.z1.web.core.windows.net/" -> null
+      - primary_web_host                   = "gridflexrl8kw40a.z1.web.core.windows.net" -> null
+      - public_network_access_enabled      = true -> null
+      - queue_encryption_key_type          = "Service" -> null
+      - resource_group_name                = "gridflex-rg" -> null
+      - secondary_access_key               = (sensitive value) -> null
+      - secondary_connection_string        = (sensitive value) -> null
+      - sftp_enabled                       = false -> null
+      - shared_access_key_enabled          = true -> null
+      - table_encryption_key_type          = "Service" -> null
+      - tags                               = {} -> null
+        # (57 unchanged attributes hidden)
+
+      - blob_properties {
+          - change_feed_enabled           = false -> null
+          - change_feed_retention_in_days = 0 -> null
+          - last_access_time_enabled      = false -> null
+          - versioning_enabled            = false -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - queue_properties {
+          - hour_metrics {
+              - enabled               = false -> null
+              - include_apis          = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+            }
+          - logging {
+              - delete                = false -> null
+              - read                  = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+              - write                 = false -> null
+            }
+          - minute_metrics {
+              - enabled               = false -> null
+              - include_apis          = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+            }
+        }
+
+      - share_properties {
+          - retention_policy {
+              - days = 7 -> null
+            }
+        }
+    }
+
+  # azurerm_storage_share.data will be destroyed
+  - resource "azurerm_storage_share" "data" {
+      - access_tier          = "TransactionOptimized" -> null
+      - enabled_protocol     = "SMB" -> null
+      - id                   = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data" -> null
+      - metadata             = {} -> null
+      - name                 = "gridflex-data" -> null
+      - quota                = 5 -> null
+      - rbac_scope_id        = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/fileshares/gridflex-data" -> null
+      - resource_manager_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data" -> null
+      - storage_account_id   = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a" -> null
+      - url                  = "https://gridflexrl8kw40a.file.core.windows.net/gridflex-data" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # random_string.suffix will be destroyed
+  - resource "random_string" "suffix" {
+      - id          = "rl8kw40a" -> null
+      - length      = 8 -> null
+      - lower       = true -> null
+      - min_lower   = 0 -> null
+      - min_numeric = 0 -> null
+      - min_special = 0 -> null
+      - min_upper   = 0 -> null
+      - number      = true -> null
+      - numeric     = true -> null
+      - result      = "rl8kw40a" -> null
+      - special     = false -> null
+      - upper       = false -> null
+    }
+
+Plan: 0 to add, 0 to change, 11 to destroy.
+
+Changes to Outputs:
+  - app_name       = "gridflex" -> null
+  - dashboard_url  = "https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+  - job_name       = "gridflex-maintenance" -> null
+  - resource_group = "gridflex-rg" -> null
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
+# exit 0
+
+# UTC 2026-11-24T21:18:35Z
+# $ terraform destroy -auto-approve -input=false -no-color
+random_string.suffix: Refreshing state... [id=rl8kw40a]
+azurerm_resource_group.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_log_analytics_workspace.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_storage_account.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azurerm_container_app_environment.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azapi_resource_action.environment_mode: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_share.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+azurerm_container_app_environment_storage.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data]
+azurerm_container_app.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex]
+azurerm_container_app_job.maintenance: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azapi_resource_action.environment_mode will be destroyed
+  - resource "azapi_resource_action" "environment_mode" {
+      - body             = {
+          - properties = {
+              - environmentMode = "WorkloadProfiles"
+            }
+        } -> null
+      - exist            = true -> null
+      - id               = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - method           = "PATCH" -> null
+      - output           = {} -> null
+      - resource_id      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - sensitive_body   = (write-only attribute) -> null
+      - sensitive_output = (sensitive value) -> null
+      - type             = "Microsoft.App/managedEnvironments@2025-10-02-preview" -> null
+      - when             = "apply" -> null
+    }
+
+  # azurerm_container_app.app will be destroyed
+  - resource "azurerm_container_app" "app" {
+      - container_app_environment_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - custom_domain_verification_id = (sensitive value) -> null
+      - id                            = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex" -> null
+      - latest_revision_fqdn          = "gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+      - latest_revision_name          = "gridflex--boxw0ws" -> null
+      - location                      = "germanywestcentral" -> null
+      - max_inactive_revisions        = 0 -> null
+      - name                          = "gridflex" -> null
+      - outbound_ip_addresses         = [
+          - "20.52.210.109",
+          - "20.52.210.104",
+          - "20.52.210.67",
+          - "20.52.209.220",
+          - "4.182.130.205",
+          - "4.182.130.193",
+          - "4.182.131.47",
+          - "4.182.130.201",
+          - "4.182.130.234",
+          - "4.182.131.19",
+          - "9.141.188.221",
+          - "131.189.191.161",
+          - "9.141.57.133",
+          - "131.189.157.198",
+          - "131.189.164.72",
+          - "4.185.176.24",
+          - "9.141.132.26",
+          - "98.67.210.204",
+          - "131.189.240.172",
+          - "4.182.135.50",
+          - "98.67.208.242",
+          - "4.185.234.230",
+          - "9.141.91.168",
+          - "131.189.71.181",
+          - "72.144.79.133",
+          - "131.189.69.171",
+          - "4.185.234.182",
+          - "4.182.12.146",
+          - "131.189.39.162",
+          - "131.189.150.81",
+          - "4.185.235.52",
+          - "9.141.135.68",
+          - "131.189.149.152",
+          - "131.189.138.228",
+          - "4.182.85.99",
+          - "72.144.115.213",
+          - "131.189.167.167",
+          - "20.218.197.105",
+          - "4.185.237.219",
+          - "4.185.237.107",
+          - "9.141.139.41",
+          - "9.141.137.17",
+          - "131.189.167.160",
+          - "9.141.134.35",
+          - "131.189.167.155",
+          - "9.141.134.56",
+          - "72.144.115.225",
+          - "131.189.139.168",
+          - "4.185.193.244",
+          - "20.218.197.87",
+          - "131.189.167.158",
+          - "20.218.197.104",
+          - "131.189.149.169",
+          - "9.141.134.28",
+          - "20.218.197.57",
+          - "131.189.167.152",
+          - "131.189.149.158",
+          - "4.185.236.250",
+          - "4.182.85.68",
+          - "72.144.115.228",
+          - "20.218.197.56",
+          - "4.182.85.39",
+          - "131.189.149.170",
+          - "9.141.139.40",
+          - "20.218.197.86",
+          - "131.189.149.163",
+          - "131.189.140.26",
+          - "72.144.115.224",
+          - "131.189.149.144",
+          - "131.189.180.246",
+          - "4.182.205.146",
+          - "48.201.114.226",
+          - "4.185.236.61",
+          - "131.189.38.198",
+          - "131.189.137.143",
+          - "48.201.115.46",
+          - "131.189.149.77",
+          - "9.141.134.1",
+          - "131.189.220.71",
+          - "4.185.235.113",
+          - "20.113.47.91",
+          - "20.113.46.72",
+          - "20.113.47.144",
+          - "20.113.47.87",
+          - "4.182.177.61",
+          - "4.182.177.38",
+          - "4.182.177.150",
+          - "4.182.177.168",
+          - "4.182.177.52",
+          - "4.182.177.145",
+          - "9.141.185.140",
+          - "9.141.186.146",
+          - "9.141.186.110",
+          - "9.141.186.254",
+          - "131.189.146.20",
+          - "9.141.190.252",
+          - "131.189.171.122",
+          - "131.189.164.216",
+          - "131.189.162.35",
+          - "131.189.237.171",
+          - "131.189.77.55",
+          - "9.141.55.239",
+          - "9.141.120.7",
+          - "4.182.12.176",
+          - "9.141.80.4",
+          - "131.189.208.247",
+          - "4.185.237.124",
+          - "9.141.54.159",
+          - "72.144.94.4",
+          - "4.182.198.207",
+          - "131.189.167.188",
+          - "72.144.116.24",
+          - "72.144.116.28",
+          - "4.185.194.214",
+          - "4.182.205.179",
+          - "131.189.167.224",
+          - "4.185.194.86",
+          - "131.189.149.234",
+          - "72.144.116.25",
+          - "131.189.234.78",
+          - "131.189.167.200",
+          - "131.189.167.210",
+          - "131.189.248.198",
+          - "48.201.147.39",
+          - "4.185.239.222",
+          - "131.189.149.202",
+          - "131.189.234.41",
+          - "48.201.80.51",
+          - "4.185.238.224",
+          - "131.189.167.196",
+          - "4.182.205.178",
+          - "131.189.149.204",
+          - "48.201.80.5",
+          - "98.67.253.89",
+          - "72.144.116.29",
+          - "131.189.149.214",
+          - "48.201.147.36",
+          - "98.67.239.26",
+          - "131.189.233.150",
+          - "72.144.115.255",
+          - "131.189.149.230",
+          - "72.144.116.13",
+          - "98.67.254.169",
+          - "131.189.149.197",
+          - "131.189.233.162",
+          - "48.201.91.225",
+          - "131.189.249.1",
+          - "4.185.238.223",
+          - "98.67.233.226",
+          - "4.185.194.204",
+          - "131.189.248.124",
+          - "131.189.167.184",
+          - "98.67.233.227",
+          - "131.189.233.137",
+          - "72.144.115.241",
+          - "20.113.16.214",
+          - "98.67.253.88",
+          - "72.144.115.254",
+          - "131.189.248.94",
+          - "20.113.20.141",
+          - "131.189.136.132",
+        ] -> null
+      - resource_group_name           = "gridflex-rg" -> null
+      - revision_mode                 = "Single" -> null
+      - tags                          = {} -> null
+      - workload_profile_name         = "Consumption" -> null
+
+      - ingress {
+          - allow_insecure_connections = false -> null
+          - custom_domain              = [] -> null
+          - exposed_port               = 0 -> null
+          - external_enabled           = true -> null
+          - fqdn                       = "gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+          - target_port                = 8000 -> null
+          - transport                  = "auto" -> null
+            # (1 unchanged attribute hidden)
+
+          - traffic_weight {
+              - latest_revision = true -> null
+              - percentage      = 100 -> null
+                # (2 unchanged attributes hidden)
+            }
+        }
+
+      - template {
+          - cooldown_period_in_seconds       = 300 -> null
+          - max_replicas                     = 1 -> null
+          - min_replicas                     = 0 -> null
+          - polling_interval_in_seconds      = 30 -> null
+          - termination_grace_period_seconds = 0 -> null
+            # (1 unchanged attribute hidden)
+
+          - container {
+              - args              = [] -> null
+              - command           = [] -> null
+              - cpu               = 0.5 -> null
+              - ephemeral_storage = "2Gi" -> null
+              - image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" -> null
+              - memory            = "1Gi" -> null
+              - name              = "gridflex" -> null
+
+              - env {
+                  - name        = "GRIDFLEX_DATA_DIR" -> null
+                  - value       = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - liveness_probe {
+                  - failure_count_threshold          = 3 -> null
+                  - initial_delay                    = 1 -> null
+                  - interval_seconds                 = 10 -> null
+                  - path                             = "/health" -> null
+                  - port                             = 8000 -> null
+                  - termination_grace_period_seconds = 0 -> null
+                  - timeout                          = 1 -> null
+                  - transport                        = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - readiness_probe {
+                  - failure_count_threshold = 3 -> null
+                  - initial_delay           = 0 -> null
+                  - interval_seconds        = 10 -> null
+                  - path                    = "/ready" -> null
+                  - port                    = 8000 -> null
+                  - success_count_threshold = 3 -> null
+                  - timeout                 = 1 -> null
+                  - transport               = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - startup_probe {
+                  - failure_count_threshold          = 3 -> null
+                  - initial_delay                    = 0 -> null
+                  - interval_seconds                 = 10 -> null
+                  - path                             = "/health" -> null
+                  - port                             = 8000 -> null
+                  - termination_grace_period_seconds = 0 -> null
+                  - timeout                          = 1 -> null
+                  - transport                        = "HTTP" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - volume_mounts {
+                  - name     = "data" -> null
+                  - path     = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+
+          - volume {
+              - mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600" -> null
+              - name          = "data" -> null
+              - storage_name  = "gridflex-data" -> null
+              - storage_type  = "AzureFile" -> null
+            }
+        }
+    }
+
+  # azurerm_container_app_environment.app will be destroyed
+  - resource "azurerm_container_app_environment" "app" {
+      - custom_domain_verification_id               = "<redacted-domain-verification-id>" -> null
+      - default_domain                              = "greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+      - id                                          = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - internal_load_balancer_enabled              = false -> null
+      - location                                    = "germanywestcentral" -> null
+      - log_analytics_workspace_id                  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs" -> null
+      - logs_destination                            = "log-analytics" -> null
+      - mutual_tls_enabled                          = false -> null
+      - name                                        = "gridflex-environment" -> null
+      - public_network_access                       = "Enabled" -> null
+      - resource_group_name                         = "gridflex-rg" -> null
+      - static_ip_address                           = "131.189.212.100" -> null
+      - tags                                        = {} -> null
+      - zone_redundancy_enabled                     = false -> null
+        # (6 unchanged attributes hidden)
+
+      - workload_profile {
+          - maximum_count         = 0 -> null
+          - minimum_count         = 0 -> null
+          - name                  = "Consumption" -> null
+          - workload_profile_type = "Consumption" -> null
+        }
+    }
+
+  # azurerm_container_app_environment_storage.data will be destroyed
+  - resource "azurerm_container_app_environment_storage" "data" {
+      - access_key                   = (sensitive value) -> null
+      - access_mode                  = "ReadWrite" -> null
+      - account_name                 = "gridflexrl8kw40a" -> null
+      - container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - id                           = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data" -> null
+      - name                         = "gridflex-data" -> null
+      - share_name                   = "gridflex-data" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_container_app_job.maintenance will be destroyed
+  - resource "azurerm_container_app_job" "maintenance" {
+      - container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment" -> null
+      - id                           = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance" -> null
+      - location                     = "germanywestcentral" -> null
+      - name                         = "gridflex-maintenance" -> null
+      - outbound_ip_addresses        = [] -> null
+      - replica_retry_limit          = 1 -> null
+      - replica_timeout_in_seconds   = 900 -> null
+      - resource_group_name          = "gridflex-rg" -> null
+      - tags                         = {} -> null
+      - workload_profile_name        = "Consumption" -> null
+        # (1 unchanged attribute hidden)
+
+      - schedule_trigger_config {
+          - cron_expression          = "23 1,7,13,19 * * *" -> null
+          - parallelism              = 1 -> null
+          - replica_completion_count = 1 -> null
+        }
+
+      - template {
+          - container {
+              - args              = [] -> null
+              - command           = [
+                  - "gridflex",
+                  - "maintenance",
+                ] -> null
+              - cpu               = 0.5 -> null
+              - image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" -> null
+              - memory            = "1Gi" -> null
+              - name              = "maintenance" -> null
+                # (1 unchanged attribute hidden)
+
+              - env {
+                  - name        = "GRIDFLEX_DATA_DIR" -> null
+                  - value       = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+
+              - volume_mounts {
+                  - name     = "data" -> null
+                  - path     = "/app/data" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+          - volume {
+              - mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600" -> null
+              - name          = "data" -> null
+              - storage_name  = "gridflex-data" -> null
+              - storage_type  = "AzureFile" -> null
+            }
+        }
+    }
+
+  # azurerm_log_analytics_workspace.app will be destroyed
+  - resource "azurerm_log_analytics_workspace" "app" {
+      - allow_resource_only_permissions         = true -> null
+      - cmk_for_query_forced                    = false -> null
+      - daily_quota_gb                          = 0.1 -> null
+      - id                                      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs" -> null
+      - immediate_data_purge_on_30_days_enabled = false -> null
+      - internet_ingestion_enabled              = true -> null
+      - internet_query_enabled                  = true -> null
+      - local_authentication_disabled           = false -> null
+      - local_authentication_enabled            = true -> null
+      - location                                = "germanywestcentral" -> null
+      - name                                    = "gridflex-logs" -> null
+      - primary_shared_key                      = (sensitive value) -> null
+      - resource_group_name                     = "gridflex-rg" -> null
+      - retention_in_days                       = 30 -> null
+      - secondary_shared_key                    = (sensitive value) -> null
+      - sku                                     = "PerGB2018" -> null
+      - tags                                    = {} -> null
+      - workspace_id                            = "a9c6bd6d-f134-4c03-910a-dbd16d338d0a" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_monitor_scheduled_query_rules_alert_v2.failures will be destroyed
+  - resource "azurerm_monitor_scheduled_query_rules_alert_v2" "failures" {
+      - auto_mitigation_enabled                = false -> null
+      - created_with_api_version               = "2023-03-15-preview" -> null
+      - enabled                                = true -> null
+      - evaluation_frequency                   = "PT5M" -> null
+      - id                                     = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures" -> null
+      - is_a_legacy_log_analytics_rule         = false -> null
+      - is_workspace_alerts_storage_configured = false -> null
+      - location                               = "germanywestcentral" -> null
+      - name                                   = "gridflex-failures" -> null
+      - resource_group_name                    = "gridflex-rg" -> null
+      - scopes                                 = [
+          - "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs",
+        ] -> null
+      - severity                               = 2 -> null
+      - skip_query_validation                  = true -> null
+      - tags                                   = {} -> null
+      - target_resource_types                  = [] -> null
+      - window_duration                        = "PT5M" -> null
+      - workspace_alerts_storage_enabled       = false -> null
+        # (4 unchanged attributes hidden)
+
+      - criteria {
+          - metric_measure_column   = "ErrorCount" -> null
+          - operator                = "GreaterThan" -> null
+          - query                   = <<-EOT
+                ContainerAppConsoleLogs_CL
+                | where ContainerAppName_s startswith "gridflex"
+                | where Log_s has "live_forecast_failed" or Log_s contains '"status": "alert"' or Log_s has "Traceback"
+                | summarize ErrorCount = count() by bin(TimeGenerated, 5m)
+            EOT -> null
+          - threshold               = 0 -> null
+          - time_aggregation_method = "Total" -> null
+            # (1 unchanged attribute hidden)
+
+          - failing_periods {
+              - minimum_failing_periods_to_trigger_alert = 1 -> null
+              - number_of_evaluation_periods             = 1 -> null
+            }
+        }
+    }
+
+  # azurerm_resource_group.app will be destroyed
+  - resource "azurerm_resource_group" "app" {
+      - id         = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg" -> null
+      - location   = "germanywestcentral" -> null
+      - name       = "gridflex-rg" -> null
+      - tags       = {
+          - "project" = "uk-grid-flexibility"
+          - "purpose" = "portfolio"
+        } -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_storage_account.data will be destroyed
+  - resource "azurerm_storage_account" "data" {
+      - access_tier                        = "Hot" -> null
+      - account_kind                       = "StorageV2" -> null
+      - account_replication_type           = "LRS" -> null
+      - account_tier                       = "Standard" -> null
+      - allow_nested_items_to_be_public    = false -> null
+      - cross_tenant_replication_enabled   = false -> null
+      - default_to_oauth_authentication    = false -> null
+      - dns_endpoint_type                  = "Standard" -> null
+      - https_traffic_only_enabled         = true -> null
+      - id                                 = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a" -> null
+      - infrastructure_encryption_enabled  = false -> null
+      - is_hns_enabled                     = false -> null
+      - large_file_share_enabled           = false -> null
+      - local_user_enabled                 = true -> null
+      - location                           = "germanywestcentral" -> null
+      - min_tls_version                    = "TLS1_2" -> null
+      - name                               = "gridflexrl8kw40a" -> null
+      - nfsv3_enabled                      = false -> null
+      - primary_access_key                 = (sensitive value) -> null
+      - primary_blob_connection_string     = (sensitive value) -> null
+      - primary_blob_endpoint              = "https://gridflexrl8kw40a.blob.core.windows.net/" -> null
+      - primary_blob_host                  = "gridflexrl8kw40a.blob.core.windows.net" -> null
+      - primary_connection_string          = (sensitive value) -> null
+      - primary_dfs_endpoint               = "https://gridflexrl8kw40a.dfs.core.windows.net/" -> null
+      - primary_dfs_host                   = "gridflexrl8kw40a.dfs.core.windows.net" -> null
+      - primary_file_endpoint              = "https://gridflexrl8kw40a.file.core.windows.net/" -> null
+      - primary_file_host                  = "gridflexrl8kw40a.file.core.windows.net" -> null
+      - primary_location                   = "germanywestcentral" -> null
+      - primary_queue_endpoint             = "https://gridflexrl8kw40a.queue.core.windows.net/" -> null
+      - primary_queue_host                 = "gridflexrl8kw40a.queue.core.windows.net" -> null
+      - primary_table_endpoint             = "https://gridflexrl8kw40a.table.core.windows.net/" -> null
+      - primary_table_host                 = "gridflexrl8kw40a.table.core.windows.net" -> null
+      - primary_web_endpoint               = "https://gridflexrl8kw40a.z1.web.core.windows.net/" -> null
+      - primary_web_host                   = "gridflexrl8kw40a.z1.web.core.windows.net" -> null
+      - public_network_access_enabled      = true -> null
+      - queue_encryption_key_type          = "Service" -> null
+      - resource_group_name                = "gridflex-rg" -> null
+      - secondary_access_key               = (sensitive value) -> null
+      - secondary_connection_string        = (sensitive value) -> null
+      - sftp_enabled                       = false -> null
+      - shared_access_key_enabled          = true -> null
+      - table_encryption_key_type          = "Service" -> null
+      - tags                               = {} -> null
+        # (57 unchanged attributes hidden)
+
+      - blob_properties {
+          - change_feed_enabled           = false -> null
+          - change_feed_retention_in_days = 0 -> null
+          - last_access_time_enabled      = false -> null
+          - versioning_enabled            = false -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - queue_properties {
+          - hour_metrics {
+              - enabled               = false -> null
+              - include_apis          = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+            }
+          - logging {
+              - delete                = false -> null
+              - read                  = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+              - write                 = false -> null
+            }
+          - minute_metrics {
+              - enabled               = false -> null
+              - include_apis          = false -> null
+              - retention_policy_days = 0 -> null
+              - version               = "1.0" -> null
+            }
+        }
+
+      - share_properties {
+          - retention_policy {
+              - days = 7 -> null
+            }
+        }
+    }
+
+  # azurerm_storage_share.data will be destroyed
+  - resource "azurerm_storage_share" "data" {
+      - access_tier          = "TransactionOptimized" -> null
+      - enabled_protocol     = "SMB" -> null
+      - id                   = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data" -> null
+      - metadata             = {} -> null
+      - name                 = "gridflex-data" -> null
+      - quota                = 5 -> null
+      - rbac_scope_id        = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/fileshares/gridflex-data" -> null
+      - resource_manager_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data" -> null
+      - storage_account_id   = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a" -> null
+      - url                  = "https://gridflexrl8kw40a.file.core.windows.net/gridflex-data" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # random_string.suffix will be destroyed
+  - resource "random_string" "suffix" {
+      - id          = "rl8kw40a" -> null
+      - length      = 8 -> null
+      - lower       = true -> null
+      - min_lower   = 0 -> null
+      - min_numeric = 0 -> null
+      - min_special = 0 -> null
+      - min_upper   = 0 -> null
+      - number      = true -> null
+      - numeric     = true -> null
+      - result      = "rl8kw40a" -> null
+      - special     = false -> null
+      - upper       = false -> null
+    }
+
+Plan: 0 to add, 0 to change, 11 to destroy.
+
+Changes to Outputs:
+  - app_name       = "gridflex" -> null
+  - dashboard_url  = "https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io" -> null
+  - job_name       = "gridflex-maintenance" -> null
+  - resource_group = "gridflex-rg" -> null
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azurerm_container_app_job.maintenance: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance]
+azurerm_container_app.app: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Destruction complete after 1s
+azurerm_container_app_job.maintenance: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...icrosoft.App/jobs/gridflex-maintenance, 00m10s elapsed]
+azurerm_container_app.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...s/Microsoft.App/containerApps/gridflex, 00m10s elapsed]
+azurerm_container_app_job.maintenance: Destruction complete after 10s
+azurerm_container_app.app: Destruction complete after 11s
+azurerm_container_app_environment_storage.data: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data]
+azurerm_container_app_environment_storage.data: Destruction complete after 1s
+azurerm_storage_share.data: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+azapi_resource_action.environment_mode: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azapi_resource_action.environment_mode: Destruction complete after 0s
+azurerm_container_app_environment.app: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_share.data: Destruction complete after 0s
+azurerm_storage_account.data: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_storage_account.data: Destruction complete after 3s
+random_string.suffix: Destroying... [id=rl8kw40a]
+random_string.suffix: Destruction complete after 0s
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 00m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 00m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 00m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 00m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 00m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 01m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 02m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 03m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 04m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 05m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 06m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 07m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 08m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 09m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 10m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 11m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 12m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 13m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 14m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 15m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 16m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 17m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 18m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 19m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 20m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 21m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 22m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m10s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m20s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m30s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m40s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 23m50s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 24m00s elapsed]
+azurerm_container_app_environment.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...nagedEnvironments/gridflex-environment, 24m10s elapsed]
+azurerm_container_app_environment.app: Destruction complete after 24m15s
+azurerm_log_analytics_workspace.app: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_log_analytics_workspace.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>...ionalInsights/workspaces/gridflex-logs, 00m10s elapsed]
+azurerm_log_analytics_workspace.app: Destruction complete after 14s
+azurerm_resource_group.app: Destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_resource_group.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg, 00m10s elapsed]
+azurerm_resource_group.app: Still destroying... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg, 00m20s elapsed]
+azurerm_resource_group.app: Destruction complete after 25s
+
+Destroy complete! Resources: 11 destroyed.
+# exit 0
+

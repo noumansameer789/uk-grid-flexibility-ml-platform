@@ -27,3 +27,7 @@ G10 alert rule at 2026-11-24T21:16:07Z: "enabled":true,"name":"gridflex-failures
 inventory: 0 resources listed in gridflex-rg
 log analytics rows at 2026-11-24T21:16:30Z: console=378 system=51
 inventory correction 2026-11-24T21:17:19Z: the table printed by the script has no type column, so its count above reads 0; the typed listing in inventory.txt has 6 resources in gridflex-rg
+destroy plan 2026-11-24T21:18:23Z: Plan: 0 to add, 0 to change, 11 to destroy. 
+destroy 2026-11-24T21:44:33Z: Destroy complete! Resources: 11 destroyed. 
+teardown check 2026-11-24T21:45:19Z: az group exists --name gridflex-rg -> false | resources left in the subscription: 0
+soft-delete check 2026-11-24T21:48:21Z: Azure lists the deleted Log Analytics workspace gridflex-logs as recoverable (soft-deleted); the budget gridflex-safety-net remains by design
