@@ -1,0 +1,66 @@
+# UTC 2026-11-24T21:15:42Z
+# $ timeout 90 az containerapp logs show -n gridflex -g gridflex-rg --type console --tail 300 --format text
+2026-11-24T21:15:49.56010  Connecting to the container 'gridflex'...
+2026-11-24T21:15:49.62476  Successfully Connected to container: 'gridflex' [Revision: 'gridflex--boxw0ws', Replica: 'gridflex--boxw0ws-7ccdc4644c-bp5lb']
+2026-11-24T21:13:51.5451043Z stderr F INFO:     Started server process [1]
+2026-11-24T21:13:51.5451452Z stderr F INFO:     Waiting for application startup.
+2026-11-24T21:13:51.5776171Z stderr F INFO:     Application startup complete.
+2026-11-24T21:13:51.5779633Z stderr F INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-11-24T21:13:59.5375419Z stderr F {"timestamp": "2026-11-24T21:13:59.537314+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 2.1, "error_type": null}
+2026-11-24T21:13:59.5376573Z stdout F INFO:     127.0.0.1:50524 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:13:59.5637633Z stderr F {"timestamp": "2026-11-24T21:13:59.563597+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.99, "error_type": null}
+2026-11-24T21:13:59.5638615Z stdout F INFO:     127.0.0.1:50534 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:00.5573947Z stderr F {"timestamp": "2026-11-24T21:14:00.557140+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.75, "error_type": null}
+2026-11-24T21:14:00.5574811Z stdout F INFO:     127.0.0.1:50542 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:09.5609583Z stderr F {"timestamp": "2026-11-24T21:14:09.560755+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}
+2026-11-24T21:14:09.5610218Z stdout F INFO:     127.0.0.1:46650 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:10.5562114Z stderr F {"timestamp": "2026-11-24T21:14:10.556021+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}
+2026-11-24T21:14:10.5562928Z stdout F INFO:     127.0.0.1:46666 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:19.5644585Z stderr F {"timestamp": "2026-11-24T21:14:19.564251+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.62, "error_type": null}
+2026-11-24T21:14:19.5645268Z stdout F INFO:     127.0.0.1:33690 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:20.5591527Z stderr F {"timestamp": "2026-11-24T21:14:20.558955+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.73, "error_type": null}
+2026-11-24T21:14:20.5592134Z stdout F INFO:     127.0.0.1:33700 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:29.5666990Z stderr F {"timestamp": "2026-11-24T21:14:29.566385+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.9, "error_type": null}
+2026-11-24T21:14:29.5667338Z stdout F INFO:     127.0.0.1:58168 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:30.5618365Z stderr F {"timestamp": "2026-11-24T21:14:30.561640+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.89, "error_type": null}
+2026-11-24T21:14:30.5619476Z stdout F INFO:     127.0.0.1:58184 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:32.1464593Z stderr F {"timestamp": "2026-11-24T21:14:32.146218+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.11, "error_type": null}
+2026-11-24T21:14:32.1465096Z stdout F INFO:     100.100.0.40:40620 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:35.1733049Z stderr F {"timestamp": "2026-11-24T21:14:35.173008+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/monitoring", "status": 200, "duration_ms": 16.34, "error_type": null}
+2026-11-24T21:14:35.1733482Z stdout F INFO:     100.100.0.127:57592 - "GET /api/v1/monitoring HTTP/1.1" 200 OK
+2026-11-24T21:14:35.3453137Z stdout F INFO:     100.100.0.127:57604 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK
+2026-11-24T21:14:35.3453129Z stderr F {"timestamp": "2026-11-24T21:14:35.345017+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 53.72, "error_type": null}
+2026-11-24T21:14:39.5638509Z stderr F {"timestamp": "2026-11-24T21:14:39.563625+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.63, "error_type": null}
+2026-11-24T21:14:39.5638894Z stdout F INFO:     127.0.0.1:43034 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:40.5590536Z stderr F {"timestamp": "2026-11-24T21:14:40.558843+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.63, "error_type": null}
+2026-11-24T21:14:40.5591753Z stdout F INFO:     127.0.0.1:43040 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:49.5651174Z stderr F {"timestamp": "2026-11-24T21:14:49.564897+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.91, "error_type": null}
+2026-11-24T21:14:49.5652767Z stdout F INFO:     127.0.0.1:42568 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:14:50.5631356Z stdout F INFO:     127.0.0.1:42578 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:14:50.5631356Z stderr F {"timestamp": "2026-11-24T21:14:50.562935+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 3.05, "error_type": null}
+2026-11-24T21:14:59.5643026Z stderr F {"timestamp": "2026-11-24T21:14:59.564075+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}
+2026-11-24T21:14:59.5643366Z stdout F INFO:     127.0.0.1:51356 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:15:00.5583542Z stderr F {"timestamp": "2026-11-24T21:15:00.558151+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}
+2026-11-24T21:15:00.5584534Z stdout F INFO:     127.0.0.1:51364 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:15:09.5648540Z stdout F INFO:     127.0.0.1:59902 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:15:09.5649917Z stderr F {"timestamp": "2026-11-24T21:15:09.564577+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.89, "error_type": null}
+2026-11-24T21:15:10.5610538Z stdout F INFO:     127.0.0.1:59908 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:15:10.5619210Z stderr F {"timestamp": "2026-11-24T21:15:10.560791+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.68, "error_type": null}
+2026-11-24T21:15:19.5640489Z stderr F {"timestamp": "2026-11-24T21:15:19.563563+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.74, "error_type": null}
+2026-11-24T21:15:19.5640489Z stdout F INFO:     127.0.0.1:49892 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:15:20.5600116Z stderr F {"timestamp": "2026-11-24T21:15:20.559784+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.79, "error_type": null}
+2026-11-24T21:15:20.5601109Z stdout F INFO:     127.0.0.1:49900 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:15:29.5659175Z stderr F {"timestamp": "2026-11-24T21:15:29.565718+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.74, "error_type": null}
+2026-11-24T21:15:29.5659956Z stdout F INFO:     127.0.0.1:49100 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:15:30.5596476Z stderr F {"timestamp": "2026-11-24T21:15:30.559461+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}
+2026-11-24T21:15:30.5597194Z stdout F INFO:     127.0.0.1:49106 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:15:38.6914529Z stderr F {"timestamp": "2026-11-24T21:15:38.691205+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.41, "error_type": null}
+2026-11-24T21:15:38.6914820Z stdout F INFO:     100.100.0.127:38038 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK
+2026-11-24T21:15:39.5630818Z stderr F {"timestamp": "2026-11-24T21:15:39.562874+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}
+2026-11-24T21:15:39.5631787Z stdout F INFO:     127.0.0.1:43272 - "GET /ready HTTP/1.1" 200 OK
+2026-11-24T21:15:40.5588847Z stderr F {"timestamp": "2026-11-24T21:15:40.558613+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}
+2026-11-24T21:15:40.5589569Z stdout F INFO:     127.0.0.1:43286 - "GET /health HTTP/1.1" 200 OK
+2026-11-24T21:15:44.6736683Z stderr F {"timestamp": "2026-11-24T21:15:44.673413+00:00", "level": "INFO", "event": "http_request", "route": "/", "status": 200, "duration_ms": 4.23, "error_type": null}
+2026-11-24T21:15:44.6736683Z stdout F INFO:     100.100.0.40:48208 - "GET / HTTP/1.1" 200 OK
+# exit 0
+

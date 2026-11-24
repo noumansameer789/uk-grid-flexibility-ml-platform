@@ -1,0 +1,12 @@
+# UTC 2026-11-24T21:15:52Z
+# $ az resource show -g gridflex-rg -n gridflex-failures --resource-type Microsoft.Insights/scheduledQueryRules --query {name:name,enabled:properties.enabled,severity:properties.severity,evaluationFrequency:properties.evaluationFrequency,windowSize:properties.windowSize,actionGroups:properties.actions.actionGroups} -o json
+{
+  "actionGroups": null,
+  "enabled": true,
+  "evaluationFrequency": "PT5M",
+  "name": "gridflex-failures",
+  "severity": 2,
+  "windowSize": "PT5M"
+}
+# exit 0
+

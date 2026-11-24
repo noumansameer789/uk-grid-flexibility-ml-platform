@@ -1,0 +1,54 @@
+# UTC 2026-11-24T21:16:28Z
+# $ az monitor log-analytics query -w a9c6bd6d-f134-4c03-910a-dbd16d338d0a --analytics-query ContainerAppSystemLogs_CL | where TimeGenerated > ago(6h) | project TimeGenerated, ContainerAppName_s, JobName_s, ReplicaName_s, Reason_s, Log_s | order by TimeGenerated asc | take 1500 -o tsv
+	gridflex-maintenance	updated Job gridflex-maintenance Status to Provisioned	ContainerAppReady		PrimaryResult	2026-11-24T21:07:33.9103566Z
+	gridflex-maintenance	updated Job gridflex-maintenance Status to Provisioned	ContainerAppReady		PrimaryResult	2026-11-24T21:07:33.9103566Z
+	gridflex-maintenance	Successfully updated job running state to Running for container apps job: gridflex-maintenance	ContainerAppReady		PrimaryResult	2026-11-24T21:07:33.9103566Z
+gridflex		Rolling Transition: Successfully completed rolling over existing to latest revision for containerApp: gridflex	RollingRevisionCompleted		PrimaryResult	2026-11-24T21:07:38.8264423Z
+gridflex		Successfully updated running state to Running for containerApp: gridflex	ContainerAppReady		PrimaryResult	2026-11-24T21:07:38.8264423Z
+gridflex		Scaler external-push is built	KEDAScalersStarted		PrimaryResult	2026-11-24T21:07:38.8264423Z
+gridflex		No revision restart or provisioning was needed.	ContainerAppReady		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Replica 'gridflex--boxw0ws-6bd9fdb7df-pljkq' has been scheduled to run on a node.	AssigningReplica	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Setting traffic weight of '100%' for revision 'gridflex--boxw0ws'	RevisionUpdate		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Successfully updated containerApp: gridflex	ContainerAppReady		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Successfully updated containerApp: gridflex	ContainerAppReady		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Successfully updated containerApp: gridflex	ContainerAppReady		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		No revision restart or provisioning was needed.	ContainerAppReady		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Deactivating old revisions for ContainerApp 'gridflex'	RevisionDeactivating		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		KEDA is starting a watch for revision 'gridflex--boxw0ws' to monitor scale operations for this revision	KEDAScalersStarted		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Deactivating old revisions for ContainerApp 'gridflex'	RevisionDeactivating		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Setting traffic weight of '100%' for revision 'gridflex--boxw0ws'	RevisionUpdate		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Setting traffic weight of '100%' for revision 'gridflex--boxw0ws'	RevisionUpdate		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Setting traffic weight of '100%' for revision 'gridflex--boxw0ws'	RevisionUpdate		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Revision 'gridflex--boxw0ws' updated. No new revision was provisioned.	RevisionUpdate		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Deactivating old revisions for ContainerApp 'gridflex'	RevisionDeactivating		PrimaryResult	2026-11-24T21:07:39.7015805Z
+gridflex		Scaler external-push is built	KEDAScalersStarted		PrimaryResult	2026-11-24T21:07:49.7556095Z
+gridflex		Probe of StartUp failed with status code: 	ProbeFailed	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:54.585183Z
+gridflex		Started container 'gridflex'	ContainerStarted	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:54.585183Z
+gridflex		Created container 'gridflex'	ContainerCreated	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:54.585183Z
+gridflex		Pulling image 'ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b'	PullingImage	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:54.585183Z
+gridflex		Successfully pulled image "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" in 9.04s. Image size: 177209344 bytes.	PulledImage	gridflex--boxw0ws-6bd9fdb7df-pljkq	PrimaryResult	2026-11-24T21:07:54.585183Z
+	gridflex-maintenance	Successfully created pod for Job Execution 'gridflex-maintenance-gfheh4h'	SuccessfulCreate		PrimaryResult	2026-11-24T21:09:42.5774259Z
+	gridflex-maintenance	Replica 'gridflex-maintenance-gfheh4h-lh4l2' for Job Execution 'gridflex-maintenance-gfheh4h' has been scheduled to run on a node.	AssigningReplica	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:09:42.5774259Z
+	gridflex-maintenance	Successfully pulled image "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" in 7.75s. Image size: 177209344 bytes.	PulledImage	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:09:57.9602703Z
+	gridflex-maintenance	Started container 'maintenance'	ContainerStarted	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:10:01.5906953Z
+	gridflex-maintenance	Created container 'maintenance'	ContainerCreated	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:10:01.5906953Z
+	gridflex-maintenance	Container 'maintenance' was terminated with exit code '2' and reason 'ProcessExited'	ContainerTerminated	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:10:06.5200989Z
+	gridflex-maintenance	Replica 'gridflex-maintenance-gfheh4h-mmg5g' for Job Execution 'gridflex-maintenance-gfheh4h' has been scheduled to run on a node.	AssigningReplica	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:10:15.6479804Z
+	gridflex-maintenance	Successfully created pod for Job Execution 'gridflex-maintenance-gfheh4h'	SuccessfulCreate		PrimaryResult	2026-11-24T21:10:15.6479804Z
+	gridflex-maintenance	Successfully pulled image "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" in 10.76s. Image size: 177209344 bytes.	PulledImage	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:10:31.7183176Z
+	gridflex-maintenance	Created container 'maintenance'	ContainerCreated	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:10:36.6470757Z
+	gridflex-maintenance	Started container 'maintenance'	ContainerStarted	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:10:36.6470757Z
+	gridflex-maintenance	Container 'maintenance' was terminated with exit code '2' and reason 'ProcessExited'	ContainerTerminated	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:10:40.897186Z
+	gridflex-maintenance	Job has reached the specified backoff limit	BackoffLimitExceeded		PrimaryResult	2026-11-24T21:10:47.7721275Z
+gridflex		Replica 'gridflex--boxw0ws-7ccdc4644c-bp5lb' has been scheduled to run on a node.	AssigningReplica	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:32.5505756Z
+gridflex		Pulling image 'ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b'	PullingImage	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:42.8100799Z
+gridflex		Successfully pulled image "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b" in 8.45s. Image size: 177209344 bytes.	PulledImage	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:44.1417361Z
+	gridflex-maintenance	Pod - gridflex-maintenance-gfheh4h-lh4l2 has a failed container with name: maintenance, exit code: 2, and reason: ProcessExited	ProcessExited	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:13:44.5685149Z
+	gridflex-maintenance	JobCleanup: Pod - gridflex-maintenance-gfheh4h-lh4l2 has exited with status Failed	PodDeletion	gridflex-maintenance-gfheh4h-lh4l2	PrimaryResult	2026-11-24T21:13:44.5685149Z
+	gridflex-maintenance	JobCleanup: Pod - gridflex-maintenance-gfheh4h-mmg5g has exited with status Failed	PodDeletion	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:13:46.3153098Z
+	gridflex-maintenance	Pod - gridflex-maintenance-gfheh4h-mmg5g has a failed container with name: maintenance, exit code: 2, and reason: ProcessExited	ProcessExited	gridflex-maintenance-gfheh4h-mmg5g	PrimaryResult	2026-11-24T21:13:46.3153098Z
+gridflex		Started container 'gridflex'	ContainerStarted	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:50.7507409Z
+gridflex		Probe of StartUp failed with status code: 	ProbeFailed	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:50.7507409Z
+gridflex		Created container 'gridflex'	ContainerCreated	gridflex--boxw0ws-7ccdc4644c-bp5lb	PrimaryResult	2026-11-24T21:13:50.7507409Z
+# exit 0
+

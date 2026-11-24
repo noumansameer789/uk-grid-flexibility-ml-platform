@@ -17,3 +17,13 @@ G4 schedule on the live forecast: http=200 slots=48 reduction_pct=27.43 forecast
 G1 health on the app's own address https://gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io: http=200
 G6 job execution gridflex-maintenance-gfheh4h started, seen at 2026-11-24T21:09:53Z
 G6 job: azure_status=Failed execution_status=failed report_status=alert freshness=ok issuance=ok weather=ok drift=alert performance=insufficient_data generated_at=2026-11-24T21:10:39.962693+00:00
+share listing gate-07-share.txt at 2026-11-24T21:12:34Z: files=17 issued=1 raw=10 duckdb=1 monitoring=1
+share listing gate-08-share-before.txt at 2026-11-24T21:13:28Z: files=17 issued=1 raw=10 duckdb=1 monitoring=1
+share listing gate-08-share-after.txt at 2026-11-24T21:15:01Z: files=17 issued=1 raw=10 duckdb=1 monitoring=1
+G8 restart of gridflex--boxw0ws at 2026-11-24T21:15:01Z: health_after=http=200 attempts_after=1 monitoring_after_http=200 monitoring_status=alert generated_at=2026-11-24T21:10:39.962693+00:00
+G8 forecast before: 2026-11-24T21:30:00+00:00 b86ea64974823b66 | after: 2026-11-24T21:30:00+00:00 b86ea64974823b66 | identical=true
+G8 files before=17 after=17 missing_after=0
+G10 alert rule at 2026-11-24T21:16:07Z: "enabled":true,"name":"gridflex-failures","severity":2,
+inventory: 0 resources listed in gridflex-rg
+log analytics rows at 2026-11-24T21:16:30Z: console=378 system=51
+inventory correction 2026-11-24T21:17:19Z: the table printed by the script has no type column, so its count above reads 0; the typed listing in inventory.txt has 6 resources in gridflex-rg

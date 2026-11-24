@@ -1,0 +1,5 @@
+# UTC 2026-11-24T21:15:40Z
+# $ timeout 90 az containerapp logs show -n gridflex -g gridflex-rg --type system --tail 300 --format text
+ERROR: --type: only json logs supported for system logs
+# exit 1
+

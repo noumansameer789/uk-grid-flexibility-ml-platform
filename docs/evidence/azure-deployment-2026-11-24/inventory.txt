@@ -1,0 +1,65 @@
+# UTC 2026-11-24T21:15:54Z
+# $ az resource list -g gridflex-rg --query [].{name:name,type:type,location:location} -o table
+Name                  Location
+--------------------  ------------------
+gridflexrl8kw40a      germanywestcentral
+gridflex-logs         germanywestcentral
+gridflex-failures     germanywestcentral
+gridflex-environment  germanywestcentral
+gridflex-maintenance  germanywestcentral
+gridflex              germanywestcentral
+# exit 0
+
+# UTC 2026-11-24T21:15:56Z
+# $ az containerapp show -n gridflex -g gridflex-rg --query {fqdn:properties.configuration.ingress.fqdn,latestRevision:properties.latestRevisionName,runningStatus:properties.runningStatus,image:properties.template.containers[0].image,cpu:properties.template.containers[0].resources.cpu,memory:properties.template.containers[0].resources.memory,minReplicas:properties.template.scale.minReplicas,maxReplicas:properties.template.scale.maxReplicas,location:location} -o json
+WARNING: The behavior of this command has been altered by the following extension: containerapp
+{
+  "cpu": 0.5,
+  "fqdn": "gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io",
+  "image": "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b",
+  "latestRevision": "gridflex--boxw0ws",
+  "location": "Germany West Central",
+  "maxReplicas": 1,
+  "memory": "1Gi",
+  "minReplicas": null,
+  "runningStatus": "Running"
+}
+# exit 0
+
+# UTC 2026-11-24T21:15:59Z
+# $ az containerapp job show -n gridflex-maintenance -g gridflex-rg --query {cron:properties.configuration.scheduleTriggerConfig.cronExpression,retryLimit:properties.configuration.replicaRetryLimit,timeout:properties.configuration.replicaTimeout,image:properties.template.containers[0].image,command:properties.template.containers[0].command} -o json
+WARNING: The behavior of this command has been altered by the following extension: containerapp
+{
+  "command": [
+    "gridflex",
+    "maintenance"
+  ],
+  "cron": "23 1,7,13,19 * * *",
+  "image": "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b",
+  "retryLimit": 1,
+  "timeout": 900
+}
+# exit 0
+
+# UTC 2026-11-24T21:16:02Z
+# $ az containerapp job execution list -n gridflex-maintenance -g gridflex-rg --query [].{name:name,status:properties.status,start:properties.startTime,end:properties.endTime} -o table
+Name                          Status    Start
+----------------------------  --------  -------------------------
+gridflex-maintenance-gfheh4h  Failed    2026-11-24T21:09:41+00:00
+# exit 0
+
+# UTC 2026-11-24T21:16:05Z
+# $ az group list --query [].name -o tsv
+gridflex-rg
+# exit 0
+
+# UTC 2026-11-24T21:17:17Z
+# $ az resource list -g gridflex-rg --query [].[name,type,location] -o tsv
+gridflexrl8kw40a	Microsoft.Storage/storageAccounts	germanywestcentral
+gridflex-logs	Microsoft.OperationalInsights/workspaces	germanywestcentral
+gridflex-failures	Microsoft.Insights/scheduledqueryrules	germanywestcentral
+gridflex-environment	Microsoft.App/managedEnvironments	germanywestcentral
+gridflex-maintenance	Microsoft.App/jobs	germanywestcentral
+gridflex	Microsoft.App/containerApps	germanywestcentral
+# exit 0
+
