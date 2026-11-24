@@ -1,0 +1,67 @@
+# UTC 2026-11-24T20:40:05Z
+# $ terraform apply -input=false -no-color deployment.tfplan
+random_string.suffix: Creating...
+random_string.suffix: Creation complete after 0s [id=rl8kw40a]
+azurerm_resource_group.app: Creating...
+azurerm_resource_group.app: Still creating... [00m10s elapsed]
+azurerm_resource_group.app: Still creating... [00m20s elapsed]
+azurerm_resource_group.app: Still creating... [00m30s elapsed]
+azurerm_resource_group.app: Creation complete after 32s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_log_analytics_workspace.app: Creating...
+azurerm_storage_account.data: Creating...
+azurerm_log_analytics_workspace.app: Still creating... [00m10s elapsed]
+azurerm_storage_account.data: Still creating... [00m10s elapsed]
+azurerm_log_analytics_workspace.app: Still creating... [00m20s elapsed]
+azurerm_storage_account.data: Still creating... [00m20s elapsed]
+azurerm_log_analytics_workspace.app: Still creating... [00m30s elapsed]
+azurerm_storage_account.data: Still creating... [00m30s elapsed]
+azurerm_log_analytics_workspace.app: Still creating... [00m40s elapsed]
+azurerm_storage_account.data: Still creating... [00m40s elapsed]
+azurerm_log_analytics_workspace.app: Still creating... [00m50s elapsed]
+azurerm_storage_account.data: Still creating... [00m50s elapsed]
+azurerm_log_analytics_workspace.app: Still creating... [01m00s elapsed]
+azurerm_storage_account.data: Still creating... [01m00s elapsed]
+azurerm_log_analytics_workspace.app: Creation complete after 1m1s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Creating...
+azurerm_container_app_environment.app: Creating...
+azurerm_storage_account.data: Still creating... [01m10s elapsed]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Still creating... [00m10s elapsed]
+azurerm_container_app_environment.app: Still creating... [00m10s elapsed]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Creation complete after 16s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azurerm_storage_account.data: Still creating... [01m20s elapsed]
+azurerm_container_app_environment.app: Still creating... [00m20s elapsed]
+azurerm_storage_account.data: Still creating... [01m30s elapsed]
+azurerm_container_app_environment.app: Still creating... [00m30s elapsed]
+azurerm_container_app_environment.app: Creation complete after 38s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_account.data: Still creating... [01m40s elapsed]
+azurerm_storage_account.data: Creation complete after 1m43s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_storage_share.data: Creating...
+azurerm_storage_share.data: Still creating... [00m10s elapsed]
+azurerm_storage_share.data: Creation complete after 11s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+azurerm_container_app_environment_storage.data: Creating...
+
+Error: creating Storage (Subscription: "<subscription-ending-b7ec>"
+Resource Group Name: "gridflex-rg"
+Managed Environment Name: "gridflex-environment"
+Storage Name: "gridflex-data"): unexpected status 400 (400 Bad Request) with error: ExpressEnvironmentResourceNotSupported: 'Storage' resources are not supported on express environments. See https://aka.ms/aca/express for details.
+
+  with azurerm_container_app_environment_storage.data,
+  on main.tf line 39, in resource "azurerm_container_app_environment_storage" "data":
+  39: resource "azurerm_container_app_environment_storage" "data" {
+
+creating Storage (Subscription: "<subscription-ending-b7ec>"
+Resource Group Name: "gridflex-rg"
+Managed Environment Name: "gridflex-environment"
+Storage Name: "gridflex-data"): unexpected status 400 (400 Bad Request) with
+error: ExpressEnvironmentResourceNotSupported: 'Storage' resources are not
+supported on express environments. See https://aka.ms/aca/express for
+details.
+# exit 1
+
+# UTC 2026-11-24T20:42:52Z
+# $ terraform output -no-color
+app_name = "gridflex"
+job_name = "gridflex-maintenance"
+resource_group = "gridflex-rg"
+# exit 0
+
