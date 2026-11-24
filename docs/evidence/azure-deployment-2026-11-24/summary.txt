@@ -1,0 +1,2 @@
+preflight done 2026-11-24T20:02:11Z: subscription=Azure for Students
+plan 2026-11-24T20:06:16Z: Plan: 10 to add, 0 to change, 0 to destroy. | commands returning 0: 5 of 5 | region:  + location = (known after apply)

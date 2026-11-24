@@ -1,0 +1,844 @@
+# UTC 2026-11-24T20:02:59Z
+# $ terraform init -lockfile=readonly -input=false -no-color
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing version 4.81.0 of hashicorp/azurerm from the dependency lock file
+- Reusing version 3.9.1 of hashicorp/random from the dependency lock file
+- Installing hashicorp/azurerm v4.81.0...
+- Installed hashicorp/azurerm v4.81.0 (signed by HashiCorp)
+- Installing hashicorp/random v3.9.1...
+- Installed hashicorp/random v3.9.1 (signed by HashiCorp)
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+# exit 0
+
+# UTC 2026-11-24T20:03:03Z
+# $ terraform fmt -check
+# exit 0
+
+# UTC 2026-11-24T20:03:03Z
+# $ terraform validate -no-color
+Success! The configuration is valid.
+
+# exit 0
+
+# UTC 2026-11-24T20:03:04Z
+# $ terraform plan -input=false -no-color -out=deployment.tfplan
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_container_app.app will be created
+  + resource "azurerm_container_app" "app" {
+      + container_app_environment_id  = (known after apply)
+      + custom_domain_verification_id = (sensitive value)
+      + id                            = (known after apply)
+      + latest_revision_fqdn          = (known after apply)
+      + latest_revision_name          = (known after apply)
+      + location                      = (known after apply)
+      + name                          = "gridflex"
+      + outbound_ip_addresses         = (known after apply)
+      + resource_group_name           = "gridflex-rg"
+      + revision_mode                 = "Single"
+
+      + ingress {
+          + allow_insecure_connections = false
+          + custom_domain              = (known after apply)
+          + external_enabled           = true
+          + fqdn                       = (known after apply)
+          + target_port                = 8000
+          + transport                  = "auto"
+
+          + traffic_weight {
+              + latest_revision = true
+              + percentage      = 100
+            }
+        }
+
+      + template {
+          + cooldown_period_in_seconds       = 300
+          + max_replicas                     = 1
+          + min_replicas                     = 0
+          + polling_interval_in_seconds      = 30
+          + revision_suffix                  = (known after apply)
+          + termination_grace_period_seconds = 0
+
+          + container {
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "gridflex"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + liveness_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 1
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + readiness_probe {
+                  + failure_count_threshold = 3
+                  + initial_delay           = 0
+                  + interval_seconds        = 10
+                  + path                    = "/ready"
+                  + port                    = 8000
+                  + success_count_threshold = 3
+                  + timeout                 = 1
+                  + transport               = "HTTP"
+                }
+
+              + startup_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 0
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_container_app_environment.app will be created
+  + resource "azurerm_container_app_environment" "app" {
+      + custom_domain_verification_id    = (known after apply)
+      + default_domain                   = (known after apply)
+      + docker_bridge_cidr               = (known after apply)
+      + id                               = (known after apply)
+      + internal_load_balancer_enabled   = false
+      + location                         = "germanywestcentral"
+      + log_analytics_workspace_id       = (known after apply)
+      + logs_destination                 = (known after apply)
+      + mutual_tls_enabled               = false
+      + name                             = "gridflex-environment"
+      + platform_reserved_cidr           = (known after apply)
+      + platform_reserved_dns_ip_address = (known after apply)
+      + public_network_access            = (known after apply)
+      + resource_group_name              = "gridflex-rg"
+      + static_ip_address                = (known after apply)
+      + zone_redundancy_enabled          = false
+    }
+
+  # azurerm_container_app_environment_storage.data will be created
+  + resource "azurerm_container_app_environment_storage" "data" {
+      + access_key                   = (sensitive value)
+      + access_mode                  = "ReadWrite"
+      + account_name                 = (known after apply)
+      + container_app_environment_id = (known after apply)
+      + id                           = (known after apply)
+      + name                         = "gridflex-data"
+      + share_name                   = "gridflex-data"
+    }
+
+  # azurerm_container_app_job.maintenance will be created
+  + resource "azurerm_container_app_job" "maintenance" {
+      + container_app_environment_id = (known after apply)
+      + event_stream_endpoint        = (known after apply)
+      + id                           = (known after apply)
+      + location                     = "germanywestcentral"
+      + name                         = "gridflex-maintenance"
+      + outbound_ip_addresses        = (known after apply)
+      + replica_retry_limit          = 1
+      + replica_timeout_in_seconds   = 900
+      + resource_group_name          = "gridflex-rg"
+
+      + schedule_trigger_config {
+          + cron_expression          = "23 1,7,13,19 * * *"
+          + parallelism              = 1
+          + replica_completion_count = 1
+        }
+
+      + template {
+          + container {
+              + command           = [
+                  + "gridflex",
+                  + "maintenance",
+                ]
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "maintenance"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_log_analytics_workspace.app will be created
+  + resource "azurerm_log_analytics_workspace" "app" {
+      + allow_resource_only_permissions = true
+      + daily_quota_gb                  = 0.1
+      + id                              = (known after apply)
+      + internet_ingestion_enabled      = true
+      + internet_query_enabled          = true
+      + local_authentication_disabled   = (known after apply)
+      + local_authentication_enabled    = true
+      + location                        = "germanywestcentral"
+      + name                            = "gridflex-logs"
+      + primary_shared_key              = (sensitive value)
+      + resource_group_name             = "gridflex-rg"
+      + retention_in_days               = 30
+      + secondary_shared_key            = (sensitive value)
+      + sku                             = "PerGB2018"
+      + workspace_id                    = (known after apply)
+    }
+
+  # azurerm_monitor_scheduled_query_rules_alert_v2.failures will be created
+  + resource "azurerm_monitor_scheduled_query_rules_alert_v2" "failures" {
+      + auto_mitigation_enabled                = false
+      + created_with_api_version               = (known after apply)
+      + enabled                                = true
+      + evaluation_frequency                   = "PT5M"
+      + id                                     = (known after apply)
+      + is_a_legacy_log_analytics_rule         = (known after apply)
+      + is_workspace_alerts_storage_configured = (known after apply)
+      + location                               = "germanywestcentral"
+      + name                                   = "gridflex-failures"
+      + resource_group_name                    = "gridflex-rg"
+      + scopes                                 = (known after apply)
+      + severity                               = 2
+      + skip_query_validation                  = true
+      + window_duration                        = "PT5M"
+      + workspace_alerts_storage_enabled       = false
+
+      + criteria {
+          + metric_measure_column   = "ErrorCount"
+          + operator                = "GreaterThan"
+          + query                   = <<-EOT
+                ContainerAppConsoleLogs_CL
+                | where ContainerAppName_s startswith "gridflex"
+                | where Log_s has "live_forecast_failed" or Log_s contains '"status": "alert"' or Log_s has "Traceback"
+                | summarize ErrorCount = count() by bin(TimeGenerated, 5m)
+            EOT
+          + threshold               = 0
+          + time_aggregation_method = "Total"
+
+          + failing_periods {
+              + minimum_failing_periods_to_trigger_alert = 1
+              + number_of_evaluation_periods             = 1
+            }
+        }
+    }
+
+  # azurerm_resource_group.app will be created
+  + resource "azurerm_resource_group" "app" {
+      + id       = (known after apply)
+      + location = "germanywestcentral"
+      + name     = "gridflex-rg"
+      + tags     = {
+          + "project" = "uk-grid-flexibility"
+          + "purpose" = "portfolio"
+        }
+    }
+
+  # azurerm_storage_account.data will be created
+  + resource "azurerm_storage_account" "data" {
+      + access_tier                        = (known after apply)
+      + account_kind                       = "StorageV2"
+      + account_replication_type           = "LRS"
+      + account_tier                       = "Standard"
+      + allow_nested_items_to_be_public    = false
+      + cross_tenant_replication_enabled   = false
+      + default_to_oauth_authentication    = false
+      + dns_endpoint_type                  = "Standard"
+      + https_traffic_only_enabled         = true
+      + id                                 = (known after apply)
+      + infrastructure_encryption_enabled  = false
+      + is_hns_enabled                     = false
+      + large_file_share_enabled           = (known after apply)
+      + local_user_enabled                 = true
+      + location                           = "germanywestcentral"
+      + min_tls_version                    = "TLS1_2"
+      + name                               = (known after apply)
+      + nfsv3_enabled                      = false
+      + primary_access_key                 = (sensitive value)
+      + primary_blob_connection_string     = (sensitive value)
+      + primary_blob_endpoint              = (known after apply)
+      + primary_blob_host                  = (known after apply)
+      + primary_blob_internet_endpoint     = (known after apply)
+      + primary_blob_internet_host         = (known after apply)
+      + primary_blob_microsoft_endpoint    = (known after apply)
+      + primary_blob_microsoft_host        = (known after apply)
+      + primary_connection_string          = (sensitive value)
+      + primary_dfs_endpoint               = (known after apply)
+      + primary_dfs_host                   = (known after apply)
+      + primary_dfs_internet_endpoint      = (known after apply)
+      + primary_dfs_internet_host          = (known after apply)
+      + primary_dfs_microsoft_endpoint     = (known after apply)
+      + primary_dfs_microsoft_host         = (known after apply)
+      + primary_file_endpoint              = (known after apply)
+      + primary_file_host                  = (known after apply)
+      + primary_file_internet_endpoint     = (known after apply)
+      + primary_file_internet_host         = (known after apply)
+      + primary_file_microsoft_endpoint    = (known after apply)
+      + primary_file_microsoft_host        = (known after apply)
+      + primary_location                   = (known after apply)
+      + primary_queue_endpoint             = (known after apply)
+      + primary_queue_host                 = (known after apply)
+      + primary_queue_microsoft_endpoint   = (known after apply)
+      + primary_queue_microsoft_host       = (known after apply)
+      + primary_table_endpoint             = (known after apply)
+      + primary_table_host                 = (known after apply)
+      + primary_table_microsoft_endpoint   = (known after apply)
+      + primary_table_microsoft_host       = (known after apply)
+      + primary_web_endpoint               = (known after apply)
+      + primary_web_host                   = (known after apply)
+      + primary_web_internet_endpoint      = (known after apply)
+      + primary_web_internet_host          = (known after apply)
+      + primary_web_microsoft_endpoint     = (known after apply)
+      + primary_web_microsoft_host         = (known after apply)
+      + public_network_access_enabled      = true
+      + queue_encryption_key_type          = "Service"
+      + resource_group_name                = "gridflex-rg"
+      + secondary_access_key               = (sensitive value)
+      + secondary_blob_connection_string   = (sensitive value)
+      + secondary_blob_endpoint            = (known after apply)
+      + secondary_blob_host                = (known after apply)
+      + secondary_blob_internet_endpoint   = (known after apply)
+      + secondary_blob_internet_host       = (known after apply)
+      + secondary_blob_microsoft_endpoint  = (known after apply)
+      + secondary_blob_microsoft_host      = (known after apply)
+      + secondary_connection_string        = (sensitive value)
+      + secondary_dfs_endpoint             = (known after apply)
+      + secondary_dfs_host                 = (known after apply)
+      + secondary_dfs_internet_endpoint    = (known after apply)
+      + secondary_dfs_internet_host        = (known after apply)
+      + secondary_dfs_microsoft_endpoint   = (known after apply)
+      + secondary_dfs_microsoft_host       = (known after apply)
+      + secondary_file_endpoint            = (known after apply)
+      + secondary_file_host                = (known after apply)
+      + secondary_file_internet_endpoint   = (known after apply)
+      + secondary_file_internet_host       = (known after apply)
+      + secondary_file_microsoft_endpoint  = (known after apply)
+      + secondary_file_microsoft_host      = (known after apply)
+      + secondary_location                 = (known after apply)
+      + secondary_queue_endpoint           = (known after apply)
+      + secondary_queue_host               = (known after apply)
+      + secondary_queue_microsoft_endpoint = (known after apply)
+      + secondary_queue_microsoft_host     = (known after apply)
+      + secondary_table_endpoint           = (known after apply)
+      + secondary_table_host               = (known after apply)
+      + secondary_table_microsoft_endpoint = (known after apply)
+      + secondary_table_microsoft_host     = (known after apply)
+      + secondary_web_endpoint             = (known after apply)
+      + secondary_web_host                 = (known after apply)
+      + secondary_web_internet_endpoint    = (known after apply)
+      + secondary_web_internet_host        = (known after apply)
+      + secondary_web_microsoft_endpoint   = (known after apply)
+      + secondary_web_microsoft_host       = (known after apply)
+      + sftp_enabled                       = false
+      + shared_access_key_enabled          = true
+      + table_encryption_key_type          = "Service"
+
+      + blob_properties (known after apply)
+
+      + network_rules (known after apply)
+
+      + queue_properties (known after apply)
+
+      + routing (known after apply)
+
+      + share_properties (known after apply)
+
+      + static_website (known after apply)
+    }
+
+  # azurerm_storage_share.data will be created
+  + resource "azurerm_storage_share" "data" {
+      + access_tier         = (known after apply)
+      + enabled_protocol    = "SMB"
+      + id                  = (known after apply)
+      + metadata            = (known after apply)
+      + name                = "gridflex-data"
+      + quota               = 5
+      + rbac_scope_id       = (known after apply)
+      + resource_manager_id = (known after apply)
+      + storage_account_id  = (known after apply)
+      + url                 = (known after apply)
+    }
+
+  # random_string.suffix will be created
+  + resource "random_string" "suffix" {
+      + id          = (known after apply)
+      + length      = 8
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (known after apply)
+      + special     = false
+      + upper       = false
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + app_name       = "gridflex"
+  + dashboard_url  = (known after apply)
+  + job_name       = "gridflex-maintenance"
+  + resource_group = "gridflex-rg"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: deployment.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "deployment.tfplan"
+# exit 0
+
+# UTC 2026-11-24T20:06:15Z
+# $ terraform show -no-color deployment.tfplan
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_container_app.app will be created
+  + resource "azurerm_container_app" "app" {
+      + container_app_environment_id  = (known after apply)
+      + custom_domain_verification_id = (sensitive value)
+      + id                            = (known after apply)
+      + latest_revision_fqdn          = (known after apply)
+      + latest_revision_name          = (known after apply)
+      + location                      = (known after apply)
+      + name                          = "gridflex"
+      + outbound_ip_addresses         = (known after apply)
+      + resource_group_name           = "gridflex-rg"
+      + revision_mode                 = "Single"
+
+      + ingress {
+          + allow_insecure_connections = false
+          + custom_domain              = (known after apply)
+          + external_enabled           = true
+          + fqdn                       = (known after apply)
+          + target_port                = 8000
+          + transport                  = "auto"
+
+          + traffic_weight {
+              + latest_revision = true
+              + percentage      = 100
+            }
+        }
+
+      + template {
+          + cooldown_period_in_seconds       = 300
+          + max_replicas                     = 1
+          + min_replicas                     = 0
+          + polling_interval_in_seconds      = 30
+          + revision_suffix                  = (known after apply)
+          + termination_grace_period_seconds = 0
+
+          + container {
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "gridflex"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + liveness_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 1
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + readiness_probe {
+                  + failure_count_threshold = 3
+                  + initial_delay           = 0
+                  + interval_seconds        = 10
+                  + path                    = "/ready"
+                  + port                    = 8000
+                  + success_count_threshold = 3
+                  + timeout                 = 1
+                  + transport               = "HTTP"
+                }
+
+              + startup_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 0
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_container_app_environment.app will be created
+  + resource "azurerm_container_app_environment" "app" {
+      + custom_domain_verification_id    = (known after apply)
+      + default_domain                   = (known after apply)
+      + docker_bridge_cidr               = (known after apply)
+      + id                               = (known after apply)
+      + internal_load_balancer_enabled   = false
+      + location                         = "germanywestcentral"
+      + log_analytics_workspace_id       = (known after apply)
+      + logs_destination                 = (known after apply)
+      + mutual_tls_enabled               = false
+      + name                             = "gridflex-environment"
+      + platform_reserved_cidr           = (known after apply)
+      + platform_reserved_dns_ip_address = (known after apply)
+      + public_network_access            = (known after apply)
+      + resource_group_name              = "gridflex-rg"
+      + static_ip_address                = (known after apply)
+      + zone_redundancy_enabled          = false
+    }
+
+  # azurerm_container_app_environment_storage.data will be created
+  + resource "azurerm_container_app_environment_storage" "data" {
+      + access_key                   = (sensitive value)
+      + access_mode                  = "ReadWrite"
+      + account_name                 = (known after apply)
+      + container_app_environment_id = (known after apply)
+      + id                           = (known after apply)
+      + name                         = "gridflex-data"
+      + share_name                   = "gridflex-data"
+    }
+
+  # azurerm_container_app_job.maintenance will be created
+  + resource "azurerm_container_app_job" "maintenance" {
+      + container_app_environment_id = (known after apply)
+      + event_stream_endpoint        = (known after apply)
+      + id                           = (known after apply)
+      + location                     = "germanywestcentral"
+      + name                         = "gridflex-maintenance"
+      + outbound_ip_addresses        = (known after apply)
+      + replica_retry_limit          = 1
+      + replica_timeout_in_seconds   = 900
+      + resource_group_name          = "gridflex-rg"
+
+      + schedule_trigger_config {
+          + cron_expression          = "23 1,7,13,19 * * *"
+          + parallelism              = 1
+          + replica_completion_count = 1
+        }
+
+      + template {
+          + container {
+              + command           = [
+                  + "gridflex",
+                  + "maintenance",
+                ]
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "maintenance"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_log_analytics_workspace.app will be created
+  + resource "azurerm_log_analytics_workspace" "app" {
+      + allow_resource_only_permissions = true
+      + daily_quota_gb                  = 0.1
+      + id                              = (known after apply)
+      + internet_ingestion_enabled      = true
+      + internet_query_enabled          = true
+      + local_authentication_disabled   = (known after apply)
+      + local_authentication_enabled    = true
+      + location                        = "germanywestcentral"
+      + name                            = "gridflex-logs"
+      + primary_shared_key              = (sensitive value)
+      + resource_group_name             = "gridflex-rg"
+      + retention_in_days               = 30
+      + secondary_shared_key            = (sensitive value)
+      + sku                             = "PerGB2018"
+      + workspace_id                    = (known after apply)
+    }
+
+  # azurerm_monitor_scheduled_query_rules_alert_v2.failures will be created
+  + resource "azurerm_monitor_scheduled_query_rules_alert_v2" "failures" {
+      + auto_mitigation_enabled                = false
+      + created_with_api_version               = (known after apply)
+      + enabled                                = true
+      + evaluation_frequency                   = "PT5M"
+      + id                                     = (known after apply)
+      + is_a_legacy_log_analytics_rule         = (known after apply)
+      + is_workspace_alerts_storage_configured = (known after apply)
+      + location                               = "germanywestcentral"
+      + name                                   = "gridflex-failures"
+      + resource_group_name                    = "gridflex-rg"
+      + scopes                                 = (known after apply)
+      + severity                               = 2
+      + skip_query_validation                  = true
+      + window_duration                        = "PT5M"
+      + workspace_alerts_storage_enabled       = false
+
+      + criteria {
+          + metric_measure_column   = "ErrorCount"
+          + operator                = "GreaterThan"
+          + query                   = <<-EOT
+                ContainerAppConsoleLogs_CL
+                | where ContainerAppName_s startswith "gridflex"
+                | where Log_s has "live_forecast_failed" or Log_s contains '"status": "alert"' or Log_s has "Traceback"
+                | summarize ErrorCount = count() by bin(TimeGenerated, 5m)
+            EOT
+          + threshold               = 0
+          + time_aggregation_method = "Total"
+
+          + failing_periods {
+              + minimum_failing_periods_to_trigger_alert = 1
+              + number_of_evaluation_periods             = 1
+            }
+        }
+    }
+
+  # azurerm_resource_group.app will be created
+  + resource "azurerm_resource_group" "app" {
+      + id       = (known after apply)
+      + location = "germanywestcentral"
+      + name     = "gridflex-rg"
+      + tags     = {
+          + "project" = "uk-grid-flexibility"
+          + "purpose" = "portfolio"
+        }
+    }
+
+  # azurerm_storage_account.data will be created
+  + resource "azurerm_storage_account" "data" {
+      + access_tier                        = (known after apply)
+      + account_kind                       = "StorageV2"
+      + account_replication_type           = "LRS"
+      + account_tier                       = "Standard"
+      + allow_nested_items_to_be_public    = false
+      + cross_tenant_replication_enabled   = false
+      + default_to_oauth_authentication    = false
+      + dns_endpoint_type                  = "Standard"
+      + https_traffic_only_enabled         = true
+      + id                                 = (known after apply)
+      + infrastructure_encryption_enabled  = false
+      + is_hns_enabled                     = false
+      + large_file_share_enabled           = (known after apply)
+      + local_user_enabled                 = true
+      + location                           = "germanywestcentral"
+      + min_tls_version                    = "TLS1_2"
+      + name                               = (known after apply)
+      + nfsv3_enabled                      = false
+      + primary_access_key                 = (sensitive value)
+      + primary_blob_connection_string     = (sensitive value)
+      + primary_blob_endpoint              = (known after apply)
+      + primary_blob_host                  = (known after apply)
+      + primary_blob_internet_endpoint     = (known after apply)
+      + primary_blob_internet_host         = (known after apply)
+      + primary_blob_microsoft_endpoint    = (known after apply)
+      + primary_blob_microsoft_host        = (known after apply)
+      + primary_connection_string          = (sensitive value)
+      + primary_dfs_endpoint               = (known after apply)
+      + primary_dfs_host                   = (known after apply)
+      + primary_dfs_internet_endpoint      = (known after apply)
+      + primary_dfs_internet_host          = (known after apply)
+      + primary_dfs_microsoft_endpoint     = (known after apply)
+      + primary_dfs_microsoft_host         = (known after apply)
+      + primary_file_endpoint              = (known after apply)
+      + primary_file_host                  = (known after apply)
+      + primary_file_internet_endpoint     = (known after apply)
+      + primary_file_internet_host         = (known after apply)
+      + primary_file_microsoft_endpoint    = (known after apply)
+      + primary_file_microsoft_host        = (known after apply)
+      + primary_location                   = (known after apply)
+      + primary_queue_endpoint             = (known after apply)
+      + primary_queue_host                 = (known after apply)
+      + primary_queue_microsoft_endpoint   = (known after apply)
+      + primary_queue_microsoft_host       = (known after apply)
+      + primary_table_endpoint             = (known after apply)
+      + primary_table_host                 = (known after apply)
+      + primary_table_microsoft_endpoint   = (known after apply)
+      + primary_table_microsoft_host       = (known after apply)
+      + primary_web_endpoint               = (known after apply)
+      + primary_web_host                   = (known after apply)
+      + primary_web_internet_endpoint      = (known after apply)
+      + primary_web_internet_host          = (known after apply)
+      + primary_web_microsoft_endpoint     = (known after apply)
+      + primary_web_microsoft_host         = (known after apply)
+      + public_network_access_enabled      = true
+      + queue_encryption_key_type          = "Service"
+      + resource_group_name                = "gridflex-rg"
+      + secondary_access_key               = (sensitive value)
+      + secondary_blob_connection_string   = (sensitive value)
+      + secondary_blob_endpoint            = (known after apply)
+      + secondary_blob_host                = (known after apply)
+      + secondary_blob_internet_endpoint   = (known after apply)
+      + secondary_blob_internet_host       = (known after apply)
+      + secondary_blob_microsoft_endpoint  = (known after apply)
+      + secondary_blob_microsoft_host      = (known after apply)
+      + secondary_connection_string        = (sensitive value)
+      + secondary_dfs_endpoint             = (known after apply)
+      + secondary_dfs_host                 = (known after apply)
+      + secondary_dfs_internet_endpoint    = (known after apply)
+      + secondary_dfs_internet_host        = (known after apply)
+      + secondary_dfs_microsoft_endpoint   = (known after apply)
+      + secondary_dfs_microsoft_host       = (known after apply)
+      + secondary_file_endpoint            = (known after apply)
+      + secondary_file_host                = (known after apply)
+      + secondary_file_internet_endpoint   = (known after apply)
+      + secondary_file_internet_host       = (known after apply)
+      + secondary_file_microsoft_endpoint  = (known after apply)
+      + secondary_file_microsoft_host      = (known after apply)
+      + secondary_location                 = (known after apply)
+      + secondary_queue_endpoint           = (known after apply)
+      + secondary_queue_host               = (known after apply)
+      + secondary_queue_microsoft_endpoint = (known after apply)
+      + secondary_queue_microsoft_host     = (known after apply)
+      + secondary_table_endpoint           = (known after apply)
+      + secondary_table_host               = (known after apply)
+      + secondary_table_microsoft_endpoint = (known after apply)
+      + secondary_table_microsoft_host     = (known after apply)
+      + secondary_web_endpoint             = (known after apply)
+      + secondary_web_host                 = (known after apply)
+      + secondary_web_internet_endpoint    = (known after apply)
+      + secondary_web_internet_host        = (known after apply)
+      + secondary_web_microsoft_endpoint   = (known after apply)
+      + secondary_web_microsoft_host       = (known after apply)
+      + sftp_enabled                       = false
+      + shared_access_key_enabled          = true
+      + table_encryption_key_type          = "Service"
+
+      + blob_properties (known after apply)
+
+      + network_rules (known after apply)
+
+      + queue_properties (known after apply)
+
+      + routing (known after apply)
+
+      + share_properties (known after apply)
+
+      + static_website (known after apply)
+    }
+
+  # azurerm_storage_share.data will be created
+  + resource "azurerm_storage_share" "data" {
+      + access_tier         = (known after apply)
+      + enabled_protocol    = "SMB"
+      + id                  = (known after apply)
+      + metadata            = (known after apply)
+      + name                = "gridflex-data"
+      + quota               = 5
+      + rbac_scope_id       = (known after apply)
+      + resource_manager_id = (known after apply)
+      + storage_account_id  = (known after apply)
+      + url                 = (known after apply)
+    }
+
+  # random_string.suffix will be created
+  + resource "random_string" "suffix" {
+      + id          = (known after apply)
+      + length      = 8
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (known after apply)
+      + special     = false
+      + upper       = false
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + app_name       = "gridflex"
+  + dashboard_url  = (known after apply)
+  + job_name       = "gridflex-maintenance"
+  + resource_group = "gridflex-rg"
+# exit 0
+
