@@ -32,3 +32,33 @@
 }
 # exit 0
 
+# UTC 2026-11-24T21:01:12Z
+# $ az rest --method get --url https://management.azure.com/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment?api-version=2025-10-02-preview --query {mode:properties.environmentMode,state:properties.provisioningState,profiles:properties.workloadProfiles} -o json
+{
+  "mode": "WorkloadProfiles",
+  "profiles": [
+    {
+      "enableFips": false,
+      "name": "Consumption",
+      "workloadProfileType": "Consumption"
+    }
+  ],
+  "state": "Updating"
+}
+# exit 0
+
+# UTC 2026-11-24T21:06:22Z
+# $ az rest --method get --url https://management.azure.com/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment?api-version=2025-10-02-preview --query {mode:properties.environmentMode,state:properties.provisioningState,profiles:properties.workloadProfiles} -o json
+{
+  "mode": "WorkloadProfiles",
+  "profiles": [
+    {
+      "enableFips": false,
+      "name": "Consumption",
+      "workloadProfileType": "Consumption"
+    }
+  ],
+  "state": "Succeeded"
+}
+# exit 0
+

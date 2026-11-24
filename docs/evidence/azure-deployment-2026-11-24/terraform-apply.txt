@@ -1,0 +1,31 @@
+# UTC 2026-11-24T21:07:09Z
+# $ terraform apply -input=false -no-color deployment.tfplan
+azapi_resource_action.environment_mode: Creating...
+azapi_resource_action.environment_mode: Creation complete after 3s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_container_app_environment_storage.data: Creating...
+azurerm_container_app_environment_storage.data: Creation complete after 2s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data]
+azurerm_container_app_job.maintenance: Creating...
+azurerm_container_app.app: Creating...
+azurerm_container_app_job.maintenance: Still creating... [00m10s elapsed]
+azurerm_container_app.app: Still creating... [00m10s elapsed]
+azurerm_container_app.app: Creation complete after 19s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex]
+azurerm_container_app_job.maintenance: Creation complete after 19s [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance]
+
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+app_name = "gridflex"
+dashboard_url = "https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io"
+job_name = "gridflex-maintenance"
+resource_group = "gridflex-rg"
+# exit 0
+
+# UTC 2026-11-24T21:07:48Z
+# $ terraform output -no-color
+app_name = "gridflex"
+dashboard_url = "https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io"
+job_name = "gridflex-maintenance"
+resource_group = "gridflex-rg"
+# exit 0
+

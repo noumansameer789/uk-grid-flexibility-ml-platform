@@ -1,0 +1,20 @@
+# UTC 2026-11-24T21:10:52Z
+# $ terraform -chdir=infra/terraform plan -input=false -no-color -detailed-exitcode
+random_string.suffix: Refreshing state... [id=rl8kw40a]
+azurerm_resource_group.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_log_analytics_workspace.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_storage_account.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_container_app_environment.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azapi_resource_action.environment_mode: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_share.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+azurerm_container_app_environment_storage.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment/storages/gridflex-data]
+azurerm_container_app_job.maintenance: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/jobs/gridflex-maintenance]
+azurerm_container_app.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/containerApps/gridflex]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+# exit 0
+

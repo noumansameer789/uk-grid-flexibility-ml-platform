@@ -1,3 +1,19 @@
 preflight done 2026-11-24T20:02:11Z: subscription=Azure for Students
 plan 2026-11-24T20:06:16Z: Plan: 10 to add, 0 to change, 0 to destroy. | commands returning 0: 5 of 5 | region:  + location = (known after apply)
 apply 2026-11-24T20:42:52Z: Error: creating Storage (Subscription: "<subscription-ending-b7ec>" 
+plan 2026-11-24T21:02:26Z: Plan: 4 to add, 1 to change, 0 to destroy. | commands returning 0: 5 of 5 | region:  + location = (known after apply)
+plan 2026-11-24T21:03:53Z: Plan: 4 to add, 0 to change, 0 to destroy. | commands returning 0: 5 of 5 | region:  + location = (known after apply)
+apply 2026-11-24T21:04:32Z: Error: Failed to perform action 
+plan 2026-11-24T21:06:50Z: Plan: 4 to add, 0 to change, 0 to destroy. | commands returning 0: 5 of 5 | region:  + location = (known after apply)
+apply 2026-11-24T21:07:49Z: Apply complete! Resources: 4 added, 0 changed, 0 destroyed. 
+== HTTP gates started 2026-11-24T21:08:38Z at https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io
+G1 health: http=200 attempts=1 first_attempt_seconds=0.052870 body={"status":"ok","version":"1.0.0"}
+G2 ready: http=200 status=ready sha_matches_model_card=true
+G9 simultaneous: a=[utc_start=2026-11-24T21:08:38Z http=200] b=[utc_start=2026-11-24T21:08:38Z http=200] same_nonempty_id=true id=b86ea64974823b66
+G3 live: http=200 slots=48 mode=live origin=2026-11-24T21:30:00+00:00 issued_at=2026-11-24T21:08:41.330046+00:00 id=b86ea64974823b66
+G3 replay: http=200 slots=48 mode=replay
+G4 schedule: http=200 objective=carbon slots=48 reduction_pct=29.07 forecast_mode=replay
+G4 schedule on the live forecast: http=200 slots=48 reduction_pct=27.43 forecast_mode=live
+G1 health on the app's own address https://gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io: http=200
+G6 job execution gridflex-maintenance-gfheh4h started, seen at 2026-11-24T21:09:53Z
+G6 job: azure_status=Failed execution_status=failed report_status=alert freshness=ok issuance=ok weather=ok drift=alert performance=insufficient_data generated_at=2026-11-24T21:10:39.962693+00:00

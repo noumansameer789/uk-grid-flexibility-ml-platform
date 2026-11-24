@@ -1,0 +1,35 @@
+# UTC 2026-11-24T21:04:12Z
+# $ terraform apply -input=false -no-color deployment.tfplan
+azapi_resource_action.environment_mode: Creating...
+
+Error: Failed to perform action
+
+  with azapi_resource_action.environment_mode,
+  on main.tf line 32, in resource "azapi_resource_action" "environment_mode":
+  32: resource "azapi_resource_action" "environment_mode" {
+
+performing action  of "Resource: (ResourceId
+\"/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment\"
+/ Api Version \"2025-10-02-preview\")": PATCH
+https://management.azure.com/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment
+--------------------------------------------------------------------------------
+RESPONSE 409: 409 Conflict
+ERROR CODE: ManagedEnvironmentOperationInProgress
+--------------------------------------------------------------------------------
+{
+  "error": {
+    "code": "ManagedEnvironmentOperationInProgress",
+    "message": "Cannot modify Container Apps environment gridflex-environment because another operation is in progress."
+  }
+}
+--------------------------------------------------------------------------------
+
+# exit 1
+
+# UTC 2026-11-24T21:04:31Z
+# $ terraform output -no-color
+app_name = "gridflex"
+job_name = "gridflex-maintenance"
+resource_group = "gridflex-rg"
+# exit 0
+

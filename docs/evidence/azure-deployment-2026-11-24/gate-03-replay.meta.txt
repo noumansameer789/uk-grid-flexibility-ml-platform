@@ -1,0 +1,1 @@
+utc_start=2026-11-24T21:08:41Z method=GET url=https://gridflex--boxw0ws.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io/api/v1/forecast http=200 seconds=0.068538 bytes=10027 sha256=69a6ee2687febdb9a34af4c5533b98e509f67c88892508db35a7f68bb2035d20
