@@ -1,0 +1,423 @@
+# UTC 2026-11-24T21:06:25Z
+# $ terraform init -lockfile=readonly -input=false -no-color
+Initializing the backend...
+
+Initializing provider plugins...
+- Reusing version 3.9.1 of hashicorp/random from the dependency lock file
+- Reusing version 2.14.0 of azure/azapi from the dependency lock file
+- Reusing version 4.81.0 of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/random v3.9.1
+- Using previously-installed azure/azapi v2.14.0
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+# exit 0
+
+# UTC 2026-11-24T21:06:27Z
+# $ terraform fmt -check
+# exit 0
+
+# UTC 2026-11-24T21:06:27Z
+# $ terraform validate -no-color
+Success! The configuration is valid.
+
+# exit 0
+
+# UTC 2026-11-24T21:06:29Z
+# $ terraform plan -input=false -no-color -out=deployment.tfplan
+random_string.suffix: Refreshing state... [id=rl8kw40a]
+azurerm_resource_group.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg]
+azurerm_log_analytics_workspace.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.OperationalInsights/workspaces/gridflex-logs]
+azurerm_storage_account.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a]
+azurerm_monitor_scheduled_query_rules_alert_v2.failures: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Insights/scheduledQueryRules/gridflex-failures]
+azurerm_container_app_environment.app: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment]
+azurerm_storage_share.data: Refreshing state... [id=/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.Storage/storageAccounts/gridflexrl8kw40a/fileServices/default/shares/gridflex-data]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azapi_resource_action.environment_mode will be created
+  + resource "azapi_resource_action" "environment_mode" {
+      + body             = {
+          + properties = {
+              + environmentMode = "WorkloadProfiles"
+            }
+        }
+      + exist            = (known after apply)
+      + id               = (known after apply)
+      + method           = "PATCH"
+      + output           = (known after apply)
+      + resource_id      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + sensitive_body   = (write-only attribute)
+      + sensitive_output = (sensitive value)
+      + type             = "Microsoft.App/managedEnvironments@2025-10-02-preview"
+      + when             = "apply"
+    }
+
+  # azurerm_container_app.app will be created
+  + resource "azurerm_container_app" "app" {
+      + container_app_environment_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + custom_domain_verification_id = (sensitive value)
+      + id                            = (known after apply)
+      + latest_revision_fqdn          = (known after apply)
+      + latest_revision_name          = (known after apply)
+      + location                      = (known after apply)
+      + name                          = "gridflex"
+      + outbound_ip_addresses         = (known after apply)
+      + resource_group_name           = "gridflex-rg"
+      + revision_mode                 = "Single"
+
+      + ingress {
+          + allow_insecure_connections = false
+          + custom_domain              = (known after apply)
+          + external_enabled           = true
+          + fqdn                       = (known after apply)
+          + target_port                = 8000
+          + transport                  = "auto"
+
+          + traffic_weight {
+              + latest_revision = true
+              + percentage      = 100
+            }
+        }
+
+      + template {
+          + cooldown_period_in_seconds       = 300
+          + max_replicas                     = 1
+          + min_replicas                     = 0
+          + polling_interval_in_seconds      = 30
+          + revision_suffix                  = (known after apply)
+          + termination_grace_period_seconds = 0
+
+          + container {
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "gridflex"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + liveness_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 1
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + readiness_probe {
+                  + failure_count_threshold = 3
+                  + initial_delay           = 0
+                  + interval_seconds        = 10
+                  + path                    = "/ready"
+                  + port                    = 8000
+                  + success_count_threshold = 3
+                  + timeout                 = 1
+                  + transport               = "HTTP"
+                }
+
+              + startup_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 0
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_container_app_environment_storage.data will be created
+  + resource "azurerm_container_app_environment_storage" "data" {
+      + access_key                   = (sensitive value)
+      + access_mode                  = "ReadWrite"
+      + account_name                 = "gridflexrl8kw40a"
+      + container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + id                           = (known after apply)
+      + name                         = "gridflex-data"
+      + share_name                   = "gridflex-data"
+    }
+
+  # azurerm_container_app_job.maintenance will be created
+  + resource "azurerm_container_app_job" "maintenance" {
+      + container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + event_stream_endpoint        = (known after apply)
+      + id                           = (known after apply)
+      + location                     = "germanywestcentral"
+      + name                         = "gridflex-maintenance"
+      + outbound_ip_addresses        = (known after apply)
+      + replica_retry_limit          = 1
+      + replica_timeout_in_seconds   = 900
+      + resource_group_name          = "gridflex-rg"
+
+      + schedule_trigger_config {
+          + cron_expression          = "23 1,7,13,19 * * *"
+          + parallelism              = 1
+          + replica_completion_count = 1
+        }
+
+      + template {
+          + container {
+              + command           = [
+                  + "gridflex",
+                  + "maintenance",
+                ]
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "maintenance"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + dashboard_url  = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: deployment.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "deployment.tfplan"
+# exit 0
+
+# UTC 2026-11-24T21:06:49Z
+# $ terraform show -no-color deployment.tfplan
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azapi_resource_action.environment_mode will be created
+  + resource "azapi_resource_action" "environment_mode" {
+      + body             = {
+          + properties = {
+              + environmentMode = "WorkloadProfiles"
+            }
+        }
+      + exist            = (known after apply)
+      + id               = (known after apply)
+      + method           = "PATCH"
+      + output           = (known after apply)
+      + resource_id      = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + sensitive_body   = (write-only attribute)
+      + sensitive_output = (sensitive value)
+      + type             = "Microsoft.App/managedEnvironments@2025-10-02-preview"
+      + when             = "apply"
+    }
+
+  # azurerm_container_app.app will be created
+  + resource "azurerm_container_app" "app" {
+      + container_app_environment_id  = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + custom_domain_verification_id = (sensitive value)
+      + id                            = (known after apply)
+      + latest_revision_fqdn          = (known after apply)
+      + latest_revision_name          = (known after apply)
+      + location                      = (known after apply)
+      + name                          = "gridflex"
+      + outbound_ip_addresses         = (known after apply)
+      + resource_group_name           = "gridflex-rg"
+      + revision_mode                 = "Single"
+
+      + ingress {
+          + allow_insecure_connections = false
+          + custom_domain              = (known after apply)
+          + external_enabled           = true
+          + fqdn                       = (known after apply)
+          + target_port                = 8000
+          + transport                  = "auto"
+
+          + traffic_weight {
+              + latest_revision = true
+              + percentage      = 100
+            }
+        }
+
+      + template {
+          + cooldown_period_in_seconds       = 300
+          + max_replicas                     = 1
+          + min_replicas                     = 0
+          + polling_interval_in_seconds      = 30
+          + revision_suffix                  = (known after apply)
+          + termination_grace_period_seconds = 0
+
+          + container {
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "gridflex"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + liveness_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 1
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + readiness_probe {
+                  + failure_count_threshold = 3
+                  + initial_delay           = 0
+                  + interval_seconds        = 10
+                  + path                    = "/ready"
+                  + port                    = 8000
+                  + success_count_threshold = 3
+                  + timeout                 = 1
+                  + transport               = "HTTP"
+                }
+
+              + startup_probe {
+                  + failure_count_threshold          = 3
+                  + initial_delay                    = 0
+                  + interval_seconds                 = 10
+                  + path                             = "/health"
+                  + port                             = 8000
+                  + termination_grace_period_seconds = (known after apply)
+                  + timeout                          = 1
+                  + transport                        = "HTTP"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+  # azurerm_container_app_environment_storage.data will be created
+  + resource "azurerm_container_app_environment_storage" "data" {
+      + access_key                   = (sensitive value)
+      + access_mode                  = "ReadWrite"
+      + account_name                 = "gridflexrl8kw40a"
+      + container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + id                           = (known after apply)
+      + name                         = "gridflex-data"
+      + share_name                   = "gridflex-data"
+    }
+
+  # azurerm_container_app_job.maintenance will be created
+  + resource "azurerm_container_app_job" "maintenance" {
+      + container_app_environment_id = "/subscriptions/<subscription-ending-b7ec>/resourceGroups/gridflex-rg/providers/Microsoft.App/managedEnvironments/gridflex-environment"
+      + event_stream_endpoint        = (known after apply)
+      + id                           = (known after apply)
+      + location                     = "germanywestcentral"
+      + name                         = "gridflex-maintenance"
+      + outbound_ip_addresses        = (known after apply)
+      + replica_retry_limit          = 1
+      + replica_timeout_in_seconds   = 900
+      + resource_group_name          = "gridflex-rg"
+
+      + schedule_trigger_config {
+          + cron_expression          = "23 1,7,13,19 * * *"
+          + parallelism              = 1
+          + replica_completion_count = 1
+        }
+
+      + template {
+          + container {
+              + command           = [
+                  + "gridflex",
+                  + "maintenance",
+                ]
+              + cpu               = 0.5
+              + ephemeral_storage = (known after apply)
+              + image             = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b"
+              + memory            = "1Gi"
+              + name              = "maintenance"
+
+              + env {
+                  + name  = "GRIDFLEX_DATA_DIR"
+                  + value = "/app/data"
+                }
+
+              + volume_mounts {
+                  + name = "data"
+                  + path = "/app/data"
+                }
+            }
+          + volume {
+              + mount_options = "uid=10001,gid=10001,dir_mode=0700,file_mode=0600"
+              + name          = "data"
+              + storage_name  = "gridflex-data"
+              + storage_type  = "AzureFile"
+            }
+        }
+    }
+
+Plan: 4 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + dashboard_url  = (known after apply)
+# exit 0
+

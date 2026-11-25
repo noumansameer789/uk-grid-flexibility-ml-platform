@@ -1,0 +1,82 @@
+# UTC 2026-11-24T21:09:36Z
+# $ az containerapp job start --name gridflex-maintenance --resource-group gridflex-rg --query {name:name} -o json
+{
+  "name": "gridflex-maintenance-gfheh4h"
+}
+# exit 0
+
+# UTC 2026-11-24T21:11:02Z
+# $ az containerapp job execution show --name gridflex-maintenance --resource-group gridflex-rg --job-execution-name gridflex-maintenance-gfheh4h --query {name:name,status:properties.status,startTime:properties.startTime,endTime:properties.endTime} -o json
+{
+  "endTime": null,
+  "name": "gridflex-maintenance-gfheh4h",
+  "startTime": "2026-11-24T21:09:41+00:00",
+  "status": "Failed"
+}
+# exit 0
+
+# UTC 2026-11-24T21:11:04Z
+# $ timeout 90 az containerapp job logs show --name gridflex-maintenance --resource-group gridflex-rg --execution gridflex-maintenance-gfheh4h --container maintenance --format text --tail 300
+WARNING: Preview version of extension is disabled by default for extension installation, enabled for modules without stable versions. 
+WARNING: Please run 'az config set extension.dynamic_install_allow_preview=true or false' to config it specifically. 
+WARNING: The command requires the extension containerapp. It will be installed first.
+WARNING: No stable version of 'containerapp' to install. Preview versions allowed.
+WARNING: The installed extension 'containerapp' is in preview.
+WARNING: Command group 'containerapp job logs' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+WARNING: No replica provided, defaulting to latest replica: gridflex-maintenance-gfheh4h-lh4l2
+2026-11-24T21:11:28.39609  Connecting to the container 'maintenance'...
+2026-11-24T21:11:28.51697  Successfully Connected to container: 'maintenance' [Execution: 'gridflex-maintenance-gfheh4h', Replica: 'gridflex-maintenance-gfheh4h-lh4l2']
+2026-11-24T21:10:05.5657546Z stdout F {
+2026-11-24T21:10:05.5657885Z stdout F   "generated_at": "2026-11-24T21:10:05.481321+00:00",
+2026-11-24T21:10:05.5658068Z stdout F   "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+2026-11-24T21:10:05.5658095Z stdout F   "drift_reference_sha256": "6a1b2f91cbaf6454c140e1d889f0a6211a82cca540c0d6668b9169dd1b033502",
+2026-11-24T21:10:05.5658116Z stdout F   "drift": {
+2026-11-24T21:10:05.5658136Z stdout F     "status": "alert",
+2026-11-24T21:10:05.5658156Z stdout F     "samples": 84,
+2026-11-24T21:10:05.5658192Z stdout F     "features": {
+2026-11-24T21:10:05.5658209Z stdout F       "latest": 3.08622,
+2026-11-24T21:10:05.5658226Z stdout F       "mean_24h": 5.33877,
+2026-11-24T21:10:05.5658244Z stdout F       "std_24h": 0.58784
+2026-11-24T21:10:05.5658261Z stdout F     },
+2026-11-24T21:10:05.5658278Z stdout F     "threshold": 0.25,
+2026-11-24T21:10:05.5658295Z stdout F     "note": "PSI is a heuristic alert, not proof of model failure."
+2026-11-24T21:10:05.5658313Z stdout F   },
+2026-11-24T21:10:05.5658330Z stdout F   "performance": {
+2026-11-24T21:10:05.5658349Z stdout F     "status": "insufficient_data",
+2026-11-24T21:10:05.5658366Z stdout F     "scored_forecasts": 0,
+2026-11-24T21:10:05.5658383Z stdout F     "distinct_origins": 0,
+2026-11-24T21:10:05.5658400Z stdout F     "distinct_targets": 0,
+2026-11-24T21:10:05.5658418Z stdout F     "target_days": 0
+2026-11-24T21:10:05.5658435Z stdout F   },
+2026-11-24T21:10:05.5658463Z stdout F   "data_freshness": {
+2026-11-24T21:10:05.5658482Z stdout F     "status": "ok",
+2026-11-24T21:10:05.5658499Z stdout F     "latest_actual_end": "2026-11-24T20:30:00+00:00",
+2026-11-24T21:10:05.5658517Z stdout F     "age_hours": 0.67,
+2026-11-24T21:10:05.5658534Z stdout F     "maximum_age_hours": 2.5
+2026-11-24T21:10:05.5658550Z stdout F   },
+2026-11-24T21:10:05.5658567Z stdout F   "data_quality": {
+2026-11-24T21:10:05.5658584Z stdout F     "rows": 1440,
+2026-11-24T21:10:05.5658602Z stdout F     "start": "2026-10-25T21:00:00+00:00",
+2026-11-24T21:10:05.5658621Z stdout F     "end": "2026-11-24T21:00:00+00:00",
+2026-11-24T21:10:05.5658640Z stdout F     "missing_intervals": 0,
+2026-11-24T21:10:05.5658658Z stdout F     "missing_actuals": 1,
+2026-11-24T21:10:05.5658676Z stdout F     "coverage": 1.0
+2026-11-24T21:10:05.5658693Z stdout F   },
+2026-11-24T21:10:05.5659868Z stdout F   "feature_quality": {
+2026-11-24T21:10:05.5660101Z stdout F     "origins": 84,
+2026-11-24T21:10:05.5660198Z stdout F     "skipped_origins": 0,
+2026-11-24T21:10:05.5660216Z stdout F     "observation_delay_hours": 2
+2026-11-24T21:10:05.5660229Z stdout F   },
+2026-11-24T21:10:05.5660240Z stdout F   "status": "alert",
+2026-11-24T21:10:05.5660251Z stdout F   "forecast_issuance": {
+2026-11-24T21:10:05.5660261Z stdout F     "status": "ok",
+2026-11-24T21:10:05.5660271Z stdout F     "error": null
+2026-11-24T21:10:05.5660281Z stdout F   },
+2026-11-24T21:10:05.5660291Z stdout F   "weather_ingestion": {
+2026-11-24T21:10:05.5660302Z stdout F     "status": "ok",
+2026-11-24T21:10:05.5660313Z stdout F     "error_type": null
+2026-11-24T21:10:05.5660323Z stdout F   },
+2026-11-24T21:10:05.5660333Z stdout F   "execution_status": "failed"
+2026-11-24T21:10:05.5660343Z stdout F }
+# exit 0
+

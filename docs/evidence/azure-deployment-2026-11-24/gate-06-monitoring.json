@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-11-24T21:10:39.962693+00:00",
+  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",
+  "drift_reference_sha256": "6a1b2f91cbaf6454c140e1d889f0a6211a82cca540c0d6668b9169dd1b033502",
+  "drift": {
+    "status": "alert",
+    "samples": 84,
+    "features": {
+      "latest": 3.08622,
+      "mean_24h": 5.33877,
+      "std_24h": 0.58784
+    },
+    "threshold": 0.25,
+    "note": "PSI is a heuristic alert, not proof of model failure."
+  },
+  "performance": {
+    "status": "insufficient_data",
+    "scored_forecasts": 0,
+    "distinct_origins": 0,
+    "distinct_targets": 0,
+    "target_days": 0
+  },
+  "data_freshness": {
+    "status": "ok",
+    "latest_actual_end": "2026-11-24T20:30:00+00:00",
+    "age_hours": 0.68,
+    "maximum_age_hours": 2.5
+  },
+  "data_quality": {
+    "rows": 1440,
+    "start": "2026-10-25T21:00:00+00:00",
+    "end": "2026-11-24T21:00:00+00:00",
+    "missing_intervals": 0,
+    "missing_actuals": 1,
+    "coverage": 1.0
+  },
+  "feature_quality": {
+    "origins": 84,
+    "skipped_origins": 0,
+    "observation_delay_hours": 2
+  },
+  "status": "alert",
+  "forecast_issuance": {
+    "status": "ok",
+    "error": null
+  },
+  "weather_ingestion": {
+    "status": "ok",
+    "error_type": null
+  },
+  "execution_status": "failed"
+}

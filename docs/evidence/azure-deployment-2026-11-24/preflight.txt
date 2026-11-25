@@ -1,0 +1,131 @@
+# UTC 2026-11-24T19:56:04Z
+# $ git -C /home/<shell-user>/gf log -1 --format=%H %cI %s
+da3e1f3524b9c62ceb3e85e936ea3c19d95eea15 2026-11-23T23:15:42Z Publish verified Power BI source tables and the GridFlex release record (#17)
+# exit 0
+
+# UTC 2026-11-24T19:56:04Z
+# $ az version --query "azure-cli" -o tsv
+2.91.0
+# exit 0
+
+# UTC 2026-11-24T19:56:05Z
+# $ terraform version
+Terraform v1.17.0
+on linux_amd64
+
+Your version of Terraform is out of date! The latest version
+is 1.17.2. You can update by downloading from https://developer.hashicorp.com/terraform/install
+
+# exit 0
+
+# UTC 2026-11-24T19:56:06Z
+# $ az account show --query {name:name,state:state,subscription:id,tenant:tenantId} -o json
+{
+  "name": "Azure for Students",
+  "state": "Enabled",
+  "subscription": "<subscription-ending-b7ec>",
+  "tenant": "<tenant-ending-4a53>"
+}
+# exit 0
+
+# UTC 2026-11-24T19:56:07Z
+# $ az policy assignment list --scope /subscriptions/<subscription-ending-b7ec> --filter atScope() --query [?displayName=='Allowed resource deployment regions'].{name:displayName,parameters:parameters} --output json
+[
+  {
+    "name": "Allowed resource deployment regions",
+    "parameters": {
+      "listOfAllowedLocations": {
+        "value": [
+          "italynorth",
+          "denmarkeast",
+          "germanywestcentral",
+          "spaincentral",
+          "norwayeast"
+        ]
+      }
+    }
+  }
+]
+# exit 0
+
+# UTC 2026-11-24T19:56:11Z
+# $ az group exists --name gridflex-rg
+false
+# exit 0
+
+# UTC 2026-11-24T19:56:14Z
+# $ az group list --query [].name -o tsv
+# exit 0
+
+# UTC 2026-11-24T19:56:16Z
+# $ az resource list --query length(@) -o tsv
+0
+# exit 0
+
+# UTC 2026-11-24T19:56:19Z
+# $ az provider register --namespace Microsoft.App --wait --output none
+# exit 0
+
+# UTC 2026-11-24T19:57:45Z
+# $ az provider show --namespace Microsoft.App --query {provider:namespace,state:registrationState} --output json
+{
+  "provider": "Microsoft.App",
+  "state": "Registered"
+}
+# exit 0
+
+# UTC 2026-11-24T19:57:47Z
+# $ az provider register --namespace Microsoft.OperationalInsights --wait --output none
+# exit 0
+
+# UTC 2026-11-24T19:59:03Z
+# $ az provider show --namespace Microsoft.OperationalInsights --query {provider:namespace,state:registrationState} --output json
+{
+  "provider": "Microsoft.OperationalInsights",
+  "state": "Registered"
+}
+# exit 0
+
+# UTC 2026-11-24T19:59:05Z
+# $ az provider register --namespace Microsoft.Storage --wait --output none
+# exit 0
+
+# UTC 2026-11-24T20:00:31Z
+# $ az provider show --namespace Microsoft.Storage --query {provider:namespace,state:registrationState} --output json
+{
+  "provider": "Microsoft.Storage",
+  "state": "Registered"
+}
+# exit 0
+
+# UTC 2026-11-24T20:00:33Z
+# $ az provider register --namespace Microsoft.Insights --wait --output none
+# exit 0
+
+# UTC 2026-11-24T20:02:00Z
+# $ az provider show --namespace Microsoft.Insights --query {provider:namespace,state:registrationState} --output json
+{
+  "provider": "microsoft.insights",
+  "state": "Registered"
+}
+# exit 0
+
+# UTC 2026-11-24T20:02:02Z
+# $ az consumption budget list --query [].{name:name,amount:amount,timeGrain:timeGrain} -o json
+WARNING: This command is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+[]
+# exit 0
+
+# UTC 2026-11-24T20:02:06Z
+# anonymous pull token from ghcr.io, then HEAD of the manifest for ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b
+HTTP/2 200 
+content-length: 856
+content-type: application/vnd.oci.image.index.v1+json
+docker-content-digest: sha256:1f16c9cddcf62b422d8f82fea4e263676cc59398f0c0febb5ec9db2bad18230b
+
+# UTC 2026-11-24T20:02:50Z
+# $ az provider show -n Microsoft.App: which of the allowed regions offer managedEnvironments, jobs and containerApps
+managedEnvironments: Germany West Central;Italy North;Norway East;Spain Central;
+jobs: Germany West Central;Italy North;Norway East;Spain Central;
+containerApps: Germany West Central;Italy North;Norway East;Spain Central;
+

@@ -1,0 +1,24 @@
+# UTC 2026-11-24T21:12:13Z
+# recursive listing of file share gridflex-data (path, bytes, last modified)
+issued/
+issued/20261124T2130Z_f9ebb7da92f86a8b.json  18964 bytes  2026-11-24T21:08:41+00:00
+processed/
+processed/carbon.csv  91755 bytes  2026-11-24T21:10:39+00:00
+processed/context.csv  101943 bytes  2026-11-24T21:10:39+00:00
+processed/monitoring.json  1304 bytes  2026-11-24T21:10:40+00:00
+processed/quality.json  165 bytes  2026-11-24T21:10:39+00:00
+raw/
+raw/neso/
+raw/neso/1e17e91c789aaad34b8cf30ea805e0cce6740a6021e353f6553807c91ce5f35a.json  97297 bytes  
+raw/neso/619258f431c3d023e4eac6232cb2193eaa1ab8bbb3b0eb25c9bd2c3e68d3a893.json  135979 bytes  
+raw/neso/7cacb0fe3e1249a59756edc70a252ccd8f2c7eac87f91a4bb73797a8f7611d45.json  19912 bytes  
+raw/neso/e8b8b3dd62e18fad6b3766a9427e143e8c964b4a0dbc13210b9d0f849ad70df4.json  136271 bytes  
+raw/open-meteo/
+raw/open-meteo/0515b4e6c4ed85c9145fca484944f1ce64927f306bb1a285222727ade732f21a.json  6835 bytes  
+raw/open-meteo/1b2fc08d07b3d50042bb04215eb74121d23fe660542d11219648641012ffed94.json  6877 bytes  
+raw/open-meteo/43dac2f5fa29305eb37a3c68d7bcdc5bba897d2f0582c73190e2c2f65207d804.json  6863 bytes  
+raw/open-meteo/78fe7ab85bb037a98f8a3628e8641614ea02214242a5a676ffd6bfd285fca32e.json  6833 bytes  
+raw/open-meteo/d4c3a13fa3669f6e3c1635d580db11ce86c61e0cb98785427d9005f3b9fcdf0c.json  6863 bytes  
+raw/open-meteo/e32e5c6efe859a5a492b1b94f1a6d9c0f8bc49a1e40441aa4d54bcb949fbf232.json  6877 bytes  
+gridflex.duckdb  1323008 bytes  2026-11-24T21:10:39+00:00
+

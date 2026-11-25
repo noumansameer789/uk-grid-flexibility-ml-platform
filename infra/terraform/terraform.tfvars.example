@@ -1,4 +1,5 @@
 subscription_id = "YOUR_AZURE_SUBSCRIPTION_ID"
 container_image = "ghcr.io/noumansameer789/uk-grid-flexibility-ml-platform@sha256:REPLACE_WITH_64_CHARACTER_DIGEST"
+# Azure for Students permits only the regions in its "Allowed resource deployment regions" policy.
 location        = "uksouth"
 # alert_email = "your-operator-email@example.com"

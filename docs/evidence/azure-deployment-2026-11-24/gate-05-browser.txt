@@ -1,0 +1,23 @@
+# Gate 5: the dashboard in a real browser, read from the page at 2026-11-24T21:12:32Z
+# Browser: the Claude desktop app's built-in Chromium pane on the owner's Windows PC, driven by Claude.
+# Steps: opened the address, pressed "Live forecast", pressed "Calculate charging plan" with the default inputs.
+# The values below were read from the page with JavaScript (location.href and element text). The pane's screenshot
+# shows the page only, not the address bar; a copy of that screenshot was sent to the repository owner.
+address: https://gridflex.greenbay-93c75dab.germanywestcentral.azurecontainerapps.io/
+title: GridFlex GB — Charge with the forecast
+user agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/6.28899.6 Chrome/156.0.8078.100 Safari/537.36 MSIX
+live mode selected: true
+mode note: Research forecast; prospective validation is still accumulating.
+forecast rows in the table: 48
+average carbon intensity shown: 123
+lowest forecast window shown: 94 at 13:00 · 25 Nov 2026
+forecast caption: 24 Nov 2026 · horizon starts 21:30 UK time
+charging plan panel visible: true
+plan headline: 27.4% lower estimated carbon, compared with immediate charging
+scheduled grid energy: 33.3 kWh
+estimated carbon: 3.21 kgCO2
+immediate charging: 4.42 kgCO2
+tariff cost: Not supplied
+schedule bars drawn: 48
+error banner: none
+CSV link: /api/v1/forecast.csv?mode=live&expected_forecast_id=b86ea649... (the forecast issued for the 21:30 origin)

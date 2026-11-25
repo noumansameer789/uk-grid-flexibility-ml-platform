@@ -4,7 +4,7 @@
 
 An independent portfolio project by **Nouman Sameer**, connecting electrical engineering, data science and energy operations. It retrieves real NESO and Open-Meteo data, evaluates a 24-hour LightGBM forecast, and serves a charging planner through FastAPI and a responsive dashboard.
 
-**Public demo:** [GridFlex GB](https://nouman-gridflex-gb.nimblepeony1.chatgpt.site) serves the seven-day baseline and charging planner on Cloudflare Workers. The separate Python FastAPI service has CI-validated Azure Terraform. The 23 November preflight stopped before deployment. Verification across seasons remains open. [Public API](docs/PUBLIC_DEMO.md) · [Azure gate record](docs/evidence/azure-deployment-2026-11-23/README.md)
+**Public demo:** [GridFlex GB](https://nouman-gridflex-gb.nimblepeony1.chatgpt.site) serves the seven-day baseline and charging planner on Cloudflare Workers. The separate Python FastAPI service was deployed to Azure Container Apps with Terraform on 24 November 2026, verified against ten gates (all passed), then removed to control cost. A single apply of the corrected Terraform from empty is untested. Verification across seasons remains open. [Public API](docs/PUBLIC_DEMO.md) · [Azure run record](docs/evidence/azure-deployment-2026-11-24/README.md)
 
 **Audit decision:** keep LightGBM as a research candidate. The seven-day clock-time average has lower error, and intervals miss their nominal coverage. See the [strict review and resolved findings](docs/AUDIT.md). This is an AI-assisted independent portfolio build, not commercial delivery or an assessed university result.
 

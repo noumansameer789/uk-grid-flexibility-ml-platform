@@ -1,0 +1,25 @@
+# UTC 2026-11-24T21:45:12Z
+# $ az group exists --name gridflex-rg
+false
+# exit 0
+
+# UTC 2026-11-24T21:45:15Z
+# $ az group list --query [].name -o tsv
+# exit 0
+
+# UTC 2026-11-24T21:45:17Z
+# $ az resource list --query length(@) -o tsv
+0
+# exit 0
+
+# UTC 2026-11-24T21:46:17Z
+# $ az monitor log-analytics workspace list-deleted-workspaces --query [].{name:name,location:location} -o tsv
+gridflex-logs	germanywestcentral
+# exit 0
+
+# UTC 2026-11-24T21:46:54Z
+# $ az consumption budget list --query [].{name:name,amount:amount,timeGrain:timeGrain} -o tsv
+WARNING: This command is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+gridflex-safety-net	5.0	Monthly
+# exit 0
+

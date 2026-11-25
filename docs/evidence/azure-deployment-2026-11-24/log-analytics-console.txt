@@ -1,0 +1,381 @@
+# UTC 2026-11-24T21:16:12Z
+# $ az monitor log-analytics query -w a9c6bd6d-f134-4c03-910a-dbd16d338d0a --analytics-query ContainerAppConsoleLogs_CL | where TimeGenerated > ago(6h) | project TimeGenerated, ContainerGroupName_s, ContainerName_s, Log_s | order by TimeGenerated asc | take 1500 -o tsv
+WARNING: Preview version of extension is disabled by default for extension installation, enabled for modules without stable versions. 
+WARNING: Please run 'az config set extension.dynamic_install_allow_preview=true or false' to config it specifically. 
+WARNING: The command requires the extension log-analytics. It will be installed first.
+WARNING: No stable version of 'log-analytics' to install. Preview versions allowed.
+WARNING: The installed extension 'log-analytics' is in preview.
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Waiting for application startup.	PrimaryResult	2026-11-24T21:07:57.6094388Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Started server process [1]	PrimaryResult	2026-11-24T21:07:57.6094388Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Application startup complete.	PrimaryResult	2026-11-24T21:07:57.6094388Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)	PrimaryResult	2026-11-24T21:07:57.6094388Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33570 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:05.5835707Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:04.262964+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.92, "error_type": null}	PrimaryResult	2026-11-24T21:08:05.5835707Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:04.233881+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 2.94, "error_type": null}	PrimaryResult	2026-11-24T21:08:05.5835707Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33584 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:05.5835707Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:34170 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:07.3746123Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:05.250882+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.6, "error_type": null}	PrimaryResult	2026-11-24T21:08:07.3746123Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:14.262226+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.69, "error_type": null}	PrimaryResult	2026-11-24T21:08:15.9566656Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:34184 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:15.9566656Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:15.254335+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.03, "error_type": null}	PrimaryResult	2026-11-24T21:08:16.9206984Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47250 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:16.9206984Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:24.263689+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 1.24, "error_type": null}	PrimaryResult	2026-11-24T21:08:25.8806743Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47256 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:25.8806743Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:38880 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:27.3723738Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:25.251717+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.74, "error_type": null}	PrimaryResult	2026-11-24T21:08:27.3723738Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:38890 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:36.0781087Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:34.263199+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:08:36.0781087Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:35.251727+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.73, "error_type": null}	PrimaryResult	2026-11-24T21:08:36.9062422Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:35110 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:36.9062422Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:38.720872+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.66, "error_type": null}	PrimaryResult	2026-11-24T21:08:39.8907817Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:34916 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:39.8907817Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:38.800323+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:08:39.8907817Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:34484 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:39.8907817Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:34916 - "POST /api/v1/schedule HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:34484 - "POST /api/v1/schedule HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.705304+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/schedule", "status": 200, "duration_ms": 9.31, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.429995+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2515.41, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:34502 - "GET /api/v1/forecast HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.781689+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/schedule", "status": 200, "duration_ms": 4.52, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:34918 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.520701+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.27, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.622058+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.77, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:34916 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:41.430777+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2514.28, "error_type": null}	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:34500 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:42.8739719Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:34918 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:44.958258Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:43.734990+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.88, "error_type": null}	PrimaryResult	2026-11-24T21:08:44.958258Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:35120 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:46.4989882Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:44.258899+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.78, "error_type": null}	PrimaryResult	2026-11-24T21:08:46.4989882Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:45.251278+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:08:47.3786083Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:54676 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:47.3786083Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:54692 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:55.9282821Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:54.258094+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.98, "error_type": null}	PrimaryResult	2026-11-24T21:08:55.9282821Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:46416 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:08:57.0693658Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:08:55.251463+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.87, "error_type": null}	PrimaryResult	2026-11-24T21:08:57.0693658Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:46424 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:06.0061126Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:04.258777+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.66, "error_type": null}	PrimaryResult	2026-11-24T21:09:06.0061126Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:05.250861+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.72, "error_type": null}	PrimaryResult	2026-11-24T21:09:06.9287152Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55776 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:06.9287152Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55786 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:16.4906175Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:14.262707+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 1.02, "error_type": null}	PrimaryResult	2026-11-24T21:09:16.4906175Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:15.251531+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.68, "error_type": null}	PrimaryResult	2026-11-24T21:09:16.906518Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:40996 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:16.906518Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:41000 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:25.8752877Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:24.262295+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 1.26, "error_type": null}	PrimaryResult	2026-11-24T21:09:25.8752877Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:45364 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:27.1297663Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:25.250268+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:09:27.1297663Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:34.263149+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.6, "error_type": null}	PrimaryResult	2026-11-24T21:09:35.9203995Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:45366 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:35.9203995Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:35.253646+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.62, "error_type": null}	PrimaryResult	2026-11-24T21:09:37.1286476Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:50454 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:37.1286476Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:44.266152+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.74, "error_type": null}	PrimaryResult	2026-11-24T21:09:45.8758815Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:50464 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:45.8758815Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47412 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:47.3095109Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:45.251386+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:09:47.3095109Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47428 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:56.2849039Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:54.263047+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.68, "error_type": null}	PrimaryResult	2026-11-24T21:09:56.2849039Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:09:55.253507+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:09:57.3187823Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:53630 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:09:57.3187823Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:05.253341+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.94, "error_type": null}	PrimaryResult	2026-11-24T21:10:05.9855124Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:04.267592+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.9, "error_type": null}	PrimaryResult	2026-11-24T21:10:05.9855124Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39922 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:05.9855124Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:53634 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:05.9855124Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "weather_ingestion": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "status": "alert",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "data_quality": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "performance": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "skipped_origins": 0,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "end": "2026-11-24T21:00:00+00:00",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "missing_intervals": 0,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "start": "2026-10-25T21:00:00+00:00",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "coverage": 1.0	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "features": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "feature_quality": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "error_type": null	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "execution_status": "failed"	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "threshold": 0.25,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "distinct_targets": 0,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "age_hours": 0.67,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "missing_actuals": 1,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "drift_reference_sha256": "6a1b2f91cbaf6454c140e1d889f0a6211a82cca540c0d6668b9169dd1b033502",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "rows": 1440,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "scored_forecasts": 0,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "maximum_age_hours": 2.5	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "distinct_origins": 0,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "forecast_issuance": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "note": "PSI is a heuristic alert, not proof of model failure."	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "status": "insufficient_data",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "drift": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	      "mean_24h": 5.33877,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	      "std_24h": 0.58784	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "status": "alert",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "observation_delay_hours": 2	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "data_freshness": {	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "latest_actual_end": "2026-11-24T20:30:00+00:00",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	{	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "samples": 84,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	}	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "target_days": 0	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "origins": 84,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	    "error": null	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  "generated_at": "2026-11-24T21:10:05.481321+00:00",	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	      "latest": 3.08622,	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex-maintenance-gfheh4h-lh4l2	maintenance	  },	PrimaryResult	2026-11-24T21:10:06.401215Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33036 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:16.5887659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:15.254779+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.77, "error_type": null}	PrimaryResult	2026-11-24T21:10:16.5887659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:14.262224+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:10:16.5887659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39926 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:16.5887659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33230 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:26.001396Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:25.257703+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.85, "error_type": null}	PrimaryResult	2026-11-24T21:10:26.001396Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33038 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:26.001396Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:24.264794+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:10:26.001396Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:34.264889+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.86, "error_type": null}	PrimaryResult	2026-11-24T21:10:35.0378253Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33232 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:35.0378253Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:57494 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:36.1132182Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:35.252655+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:10:36.1132182Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "rows": 1440,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "status": "alert",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	      "latest": 3.08622,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "start": "2026-10-25T21:00:00+00:00",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "feature_quality": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "missing_actuals": 1,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "scored_forecasts": 0,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	}	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "features": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "forecast_issuance": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "drift_reference_sha256": "6a1b2f91cbaf6454c140e1d889f0a6211a82cca540c0d6668b9169dd1b033502",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "distinct_origins": 0,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "maximum_age_hours": 2.5	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "status": "insufficient_data",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	{	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "drift": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "generated_at": "2026-11-24T21:10:39.962693+00:00",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "note": "PSI is a heuristic alert, not proof of model failure."	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "error_type": null	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "weather_ingestion": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	      "std_24h": 0.58784	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "samples": 84,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "data_freshness": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "error": null	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "origins": 84,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "observation_delay_hours": 2	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "execution_status": "failed"	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "model_sha256": "f9ebb7da92f86a8bdaa93c36434ef0bd9347ff0f65286e1dd4650416568f2f01",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "data_quality": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "performance": {	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "end": "2026-11-24T21:00:00+00:00",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	      "mean_24h": 5.33877,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "distinct_targets": 0,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "coverage": 1.0	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "skipped_origins": 0,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "threshold": 0.25,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  "status": "alert",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "latest_actual_end": "2026-11-24T20:30:00+00:00",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	  },	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "target_days": 0	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "status": "ok",	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "age_hours": 0.68,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex-maintenance-gfheh4h-mmg5g	maintenance	    "missing_intervals": 0,	PrimaryResult	2026-11-24T21:10:40.9260744Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:57498 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:45.2496491Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:44.262122+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.75, "error_type": null}	PrimaryResult	2026-11-24T21:10:45.2496491Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47044 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:47.0016622Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:45.253255+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.84, "error_type": null}	PrimaryResult	2026-11-24T21:10:47.0016622Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:47056 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:55.2538821Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:54.259794+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:10:55.2538821Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33518 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:10:55.9724134Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:10:55.257157+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.65, "error_type": null}	PrimaryResult	2026-11-24T21:10:55.9724134Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33530 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:04.8735986Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:04.259376+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.69, "error_type": null}	PrimaryResult	2026-11-24T21:11:04.8735986Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:05.252245+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.04, "error_type": null}	PrimaryResult	2026-11-24T21:11:06.054311Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:41310 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:06.054311Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:41318 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:15.6445631Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:14.259712+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.67, "error_type": null}	PrimaryResult	2026-11-24T21:11:15.6445631Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39372 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:16.1950524Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:15.251800+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.14, "error_type": null}	PrimaryResult	2026-11-24T21:11:16.1950524Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:24.260157+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.67, "error_type": null}	PrimaryResult	2026-11-24T21:11:24.8630457Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39388 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:24.8630457Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:25.255388+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.83, "error_type": null}	PrimaryResult	2026-11-24T21:11:26.796776Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:48570 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:26.796776Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:48586 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:35.3866554Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:34.264312+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:11:35.3866554Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:35.251254+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:11:35.9285667Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:43906 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:35.9285667Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:43922 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:45.3661072Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:44.259625+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:11:45.3661072Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:45.252098+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.82, "error_type": null}	PrimaryResult	2026-11-24T21:11:45.9754873Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39680 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:45.9754873Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39690 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:55.6329846Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:54.258596+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.82, "error_type": null}	PrimaryResult	2026-11-24T21:11:55.6329846Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33682 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:11:55.8942507Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:11:55.251107+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.73, "error_type": null}	PrimaryResult	2026-11-24T21:11:55.8942507Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:33694 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:05.1745106Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:04.258622+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:12:05.1745106Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:05.251383+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.56, "error_type": null}	PrimaryResult	2026-11-24T21:12:06.5862314Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39418 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:06.5862314Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46138 - "GET /static/style.css HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46150 - "GET /api/v1/model HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.685411+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 3.85, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.703212+00:00", "level": "INFO", "event": "http_request", "route": "unmatched", "status": 404, "duration_ms": 0.28, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.576314+00:00", "level": "INFO", "event": "http_request", "route": "unmatched", "status": 200, "duration_ms": 1.48, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46138 - "GET /api/v1/forecast?mode=replay HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.580376+00:00", "level": "INFO", "event": "http_request", "route": "unmatched", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46138 - "GET /static/app.js HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.535985+00:00", "level": "INFO", "event": "http_request", "route": "/", "status": 200, "duration_ms": 2.75, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46138 - "GET / HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:07.685938+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/model", "status": 200, "duration_ms": 3.81, "error_type": null}	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46150 - "GET /favicon.ico HTTP/1.1" 404 Not Found	PrimaryResult	2026-11-24T21:12:08.9925116Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:39428 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:14.9437796Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:14.258669+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.72, "error_type": null}	PrimaryResult	2026-11-24T21:12:14.9437796Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:15.253024+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.66, "error_type": null}	PrimaryResult	2026-11-24T21:12:15.9533088Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55712 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:15.9533088Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:15.711252+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.63, "error_type": null}	PrimaryResult	2026-11-24T21:12:16.9300989Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:46156 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:16.9300989Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:24.261809+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.89, "error_type": null}	PrimaryResult	2026-11-24T21:12:25.7508413Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55726 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:25.7508413Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:25.250598+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.0, "error_type": null}	PrimaryResult	2026-11-24T21:12:26.0817991Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:38154 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:26.0817991Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.127:33254 - "POST /api/v1/schedule HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:30.9091903Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:29.925903+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/schedule", "status": 200, "duration_ms": 5.75, "error_type": null}	PrimaryResult	2026-11-24T21:12:30.9091903Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:38156 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:34.9065486Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:34.259274+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:12:34.9065486Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:35.251716+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:12:36.2061365Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:48304 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:36.2061365Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:44.258730+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.58, "error_type": null}	PrimaryResult	2026-11-24T21:12:45.309389Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:48308 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:45.309389Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:45.251381+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.57, "error_type": null}	PrimaryResult	2026-11-24T21:12:45.9876224Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:56152 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:45.9876224Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:54.259123+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.62, "error_type": null}	PrimaryResult	2026-11-24T21:12:55.3811603Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:56156 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:55.3811603Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55226 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:56.3061659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:55.251226+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:12:56.3061659Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:57.828054+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.27, "error_type": null}	PrimaryResult	2026-11-24T21:12:59.1343278Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:12:57.677958+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:12:59.1343278Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:54216 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:59.1343278Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     100.100.0.40:54232 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:12:59.1343278Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:55234 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:04.8598497Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:04.258380+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.62, "error_type": null}	PrimaryResult	2026-11-24T21:13:04.8598497Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:05.251068+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.62, "error_type": null}	PrimaryResult	2026-11-24T21:13:06.1936269Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:54562 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:06.1936269Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:54566 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:14.9049589Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:14.259655+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.57, "error_type": null}	PrimaryResult	2026-11-24T21:13:14.9049589Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:24.259539+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.6, "error_type": null}	PrimaryResult	2026-11-24T21:13:25.2693226Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:51294 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:25.2693226Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:25.254660+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 3.44, "error_type": null}	PrimaryResult	2026-11-24T21:13:25.9674686Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:57500 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:25.9674686Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:57512 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:35.4803126Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:34.259485+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.89, "error_type": null}	PrimaryResult	2026-11-24T21:13:35.4803126Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:58176 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:36.0979974Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:35.250928+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:13:36.0979974Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:45.250005+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.68, "error_type": null}	PrimaryResult	2026-11-24T21:13:46.8966346Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:44676 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:46.8966346Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     Application startup complete.	PrimaryResult	2026-11-24T21:13:52.8288709Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)	PrimaryResult	2026-11-24T21:13:52.8288709Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     Waiting for application startup.	PrimaryResult	2026-11-24T21:13:52.8288709Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     Started server process [1]	PrimaryResult	2026-11-24T21:13:52.8288709Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:13:55.250544+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:13:56.728055Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:44396 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:13:56.728055Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:50524 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:01.0037062Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:50534 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:01.0037062Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:13:59.563597+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.99, "error_type": null}	PrimaryResult	2026-11-24T21:14:01.0037062Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:13:59.537314+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 2.1, "error_type": null}	PrimaryResult	2026-11-24T21:14:01.0037062Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:44402 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:05.2444926Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:14:04.259597+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.65, "error_type": null}	PrimaryResult	2026-11-24T21:14:05.2444926Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:49784 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:06.1934423Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:14:05.251955+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.6, "error_type": null}	PrimaryResult	2026-11-24T21:14:06.1934423Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:09.560755+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:14:10.5793235Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:46650 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:10.5793235Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:10.556021+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:14:11.7855732Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:46666 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:11.7855732Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:14:14.259911+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.73, "error_type": null}	PrimaryResult	2026-11-24T21:14:15.4042329Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:49792 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:15.4042329Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	{"timestamp": "2026-11-24T21:14:15.254051+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.93, "error_type": null}	PrimaryResult	2026-11-24T21:14:15.8637107Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     127.0.0.1:58882 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:15.8637107Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:19.564251+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.62, "error_type": null}	PrimaryResult	2026-11-24T21:14:20.4902806Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:33690 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:20.4902806Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:20.558955+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.73, "error_type": null}	PrimaryResult	2026-11-24T21:14:21.5668393Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:33700 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:21.5668393Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Finished server process [1]	PrimaryResult	2026-11-24T21:14:23.5512266Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Waiting for application shutdown.	PrimaryResult	2026-11-24T21:14:23.5512266Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Shutting down	PrimaryResult	2026-11-24T21:14:23.5512266Z
+gridflex--boxw0ws-6bd9fdb7df-pljkq	gridflex	INFO:     Application shutdown complete.	PrimaryResult	2026-11-24T21:14:23.5512266Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:58168 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:30.8581574Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:29.566385+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.9, "error_type": null}	PrimaryResult	2026-11-24T21:14:30.8581574Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:30.561640+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.89, "error_type": null}	PrimaryResult	2026-11-24T21:14:32.1130849Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:58184 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:32.1130849Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:32.146218+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 1.11, "error_type": null}	PrimaryResult	2026-11-24T21:14:33.6857061Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     100.100.0.40:40620 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:33.6857061Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     100.100.0.127:57592 - "GET /api/v1/monitoring HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:37.0763765Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:35.173008+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/monitoring", "status": 200, "duration_ms": 16.34, "error_type": null}	PrimaryResult	2026-11-24T21:14:37.0763765Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:35.345017+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 53.72, "error_type": null}	PrimaryResult	2026-11-24T21:14:37.0763765Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     100.100.0.127:57604 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:37.0763765Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:39.563625+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:14:40.5037121Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:43034 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:40.5037121Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:40.558843+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.63, "error_type": null}	PrimaryResult	2026-11-24T21:14:41.8862537Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:43040 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:41.8862537Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:42568 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:50.9050509Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:49.564897+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.91, "error_type": null}	PrimaryResult	2026-11-24T21:14:50.9050509Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:42578 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:14:51.5765468Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:50.562935+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 3.05, "error_type": null}	PrimaryResult	2026-11-24T21:14:51.5765468Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:14:59.564075+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:15:00.8763788Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:51356 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:00.8763788Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:51364 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:01.7401566Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:00.558151+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:15:01.7401566Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:09.564577+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.89, "error_type": null}	PrimaryResult	2026-11-24T21:15:10.5357037Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:59902 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:10.5357037Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:59908 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:11.5049562Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:10.560791+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.68, "error_type": null}	PrimaryResult	2026-11-24T21:15:11.5049562Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:19.563563+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.74, "error_type": null}	PrimaryResult	2026-11-24T21:15:21.7514609Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:49892 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:21.7514609Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:20.559784+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.79, "error_type": null}	PrimaryResult	2026-11-24T21:15:22.0012575Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:49900 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:22.0012575Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:49100 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:30.5736235Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:29.565718+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.74, "error_type": null}	PrimaryResult	2026-11-24T21:15:30.5736235Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:49106 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:32.8114328Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:30.559461+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.59, "error_type": null}	PrimaryResult	2026-11-24T21:15:32.8114328Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:38.691205+00:00", "level": "INFO", "event": "http_request", "route": "/api/v1/forecast", "status": 200, "duration_ms": 2.41, "error_type": null}	PrimaryResult	2026-11-24T21:15:39.5266065Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     100.100.0.127:38038 - "GET /api/v1/forecast?mode=live HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:39.5266065Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:43272 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:40.7553192Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:39.562874+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:15:40.7553192Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:40.558613+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.64, "error_type": null}	PrimaryResult	2026-11-24T21:15:41.4896996Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:43286 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:41.4896996Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     100.100.0.40:48208 - "GET / HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:45.6763806Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:44.673413+00:00", "level": "INFO", "event": "http_request", "route": "/", "status": 200, "duration_ms": 4.23, "error_type": null}	PrimaryResult	2026-11-24T21:15:45.6763806Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:33480 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:51.0210651Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:49.564009+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.81, "error_type": null}	PrimaryResult	2026-11-24T21:15:51.0210651Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:33488 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:15:51.5426215Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:50.559884+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.66, "error_type": null}	PrimaryResult	2026-11-24T21:15:51.5426215Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:15:59.564953+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.67, "error_type": null}	PrimaryResult	2026-11-24T21:16:00.6044582Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:44330 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:00.6044582Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:16:00.560283+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.69, "error_type": null}	PrimaryResult	2026-11-24T21:16:01.693076Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:44334 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:01.693076Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:16:09.564231+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.87, "error_type": null}	PrimaryResult	2026-11-24T21:16:10.7556843Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:40702 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:10.7556843Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:40716 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:11.6016277Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:16:10.559180+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.61, "error_type": null}	PrimaryResult	2026-11-24T21:16:11.6016277Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:16:19.564585+00:00", "level": "INFO", "event": "http_request", "route": "/ready", "status": 200, "duration_ms": 0.97, "error_type": null}	PrimaryResult	2026-11-24T21:16:20.6062786Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:36602 - "GET /ready HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:20.6062786Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	INFO:     127.0.0.1:36608 - "GET /health HTTP/1.1" 200 OK	PrimaryResult	2026-11-24T21:16:22.0132819Z
+gridflex--boxw0ws-7ccdc4644c-bp5lb	gridflex	{"timestamp": "2026-11-24T21:16:20.559983+00:00", "level": "INFO", "event": "http_request", "route": "/health", "status": 200, "duration_ms": 0.99, "error_type": null}	PrimaryResult	2026-11-24T21:16:22.0132819Z
+# exit 0
+

@@ -1,5 +1,20 @@
 # GridFlex completion record
 
+## 24 November 2026 UTC
+
+Nouman Sameer owns the Azure for Students subscription and approved the saved plan, the subscription budget and the GitHub connection. Claude (Anthropic, Fable 5.2) ran the session in Azure Cloud Shell through the owner's browser and wrote the changes below. The starting commit was `da3e1f3524b9c62ceb3e85e936ea3c19d95eea15`. This section supersedes the publication and Azure rows of the 23 November table.
+
+| Work | Observation | Evidence |
+|---|---|---|
+| Container publication | Publisher runs 45320148701 and 45320239601 succeeded on `main`. The package is public. Run 45320714585 pulled the release without credentials. The Azure preflight received 200 for the pinned digest's manifest using an anonymous token. | [Publisher run](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45320239601) · [Anonymous pull](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45320714585) · [Preflight](evidence/azure-deployment-2026-11-24/preflight.txt) |
+| Azure preflight | The subscription was Azure for Students. Its region policy excluded `uksouth`, so the run used Germany West Central. The four providers registered. A budget of 5 per month was created with alerts at 50% and 100%. | [Preflight](evidence/azure-deployment-2026-11-24/preflight.txt) · [Budget](evidence/azure-deployment-2026-11-24/budget.txt) |
+| Terraform | The first apply stopped at the storage link because Azure had created an express environment. The configuration now requests workload-profiles mode through AzAPI and declares the Consumption profile. The third apply completed, and a further plan reported no changes. A single apply from empty is untested. | [Run record](evidence/azure-deployment-2026-11-24/README.md) |
+| Azure gates | All ten passed between 21:08 and 21:16 UTC. The strict maintenance job exited 2 on a drift alert, as designed, with its three operational checks `ok`. | [Gate table](evidence/azure-deployment-2026-11-24/README.md#gates) |
+| Teardown | `terraform destroy` removed all 11 resources between 21:18 and 21:44 UTC. At 21:45 `az group exists --name gridflex-rg` returned `false`, and the subscription listed no resource group and 0 resources. Azure keeps the deleted Log Analytics workspace recoverable for 14 days. The budget remains. | [Teardown](evidence/azure-deployment-2026-11-24/teardown.txt) · [Destroy output](evidence/azure-deployment-2026-11-24/terraform-destroy.txt) |
+| Power BI | No change. Desktop authoring, report read-back, PDF and screenshots remain pending. | [Walkthrough](../powerbi/WALKTHROUGH.md) |
+
+Still untested on Azure: a single apply from empty, alert email delivery, the cron trigger and a scale-from-zero request. Check Cost analysis on 25 November.
+
 ## 23 November 2026 UTC
 
 Nouman Sameer supplied the Power BI kit and the release criteria. OpenAI Codex (GPT-6) made the repository changes and reviewed the results below. The starting commit was `36368206a77fca08d868138372e2baadcac58d84`.

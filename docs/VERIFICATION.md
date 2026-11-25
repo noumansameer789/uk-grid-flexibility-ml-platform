@@ -1,5 +1,11 @@
 # Verification record
 
+## 24 November 2026 update
+
+The Python service was deployed to Azure Container Apps with Terraform on 24 November 2026, verified against ten gates (all passed), then removed to control cost. The first apply failed because Azure created the environment in express mode, which supports neither Azure Files storage nor jobs. The configuration now requests workload-profiles mode. A single apply of that corrected configuration from empty is untested. Alert email delivery, the cron trigger and a scale-from-zero request are also untested. [Azure run record](evidence/azure-deployment-2026-11-24/README.md)
+
+Publisher runs [45320148701](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45320148701) and [45320239601](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45320239601) succeeded on `main` at `da3e1f3`. The package is public, and run [45320714585](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45320714585) pulled the release without credentials. The Azure preflight also received 200 for the pinned digest's manifest using an anonymous token. This supersedes the publication status in the 23 November entry. Desktop validation of the Power BI report remains pending.
+
 ## 23 November 2026 update
 
 The [completion record](COMPLETION_RECORD.md) updates the deployment and CI status in the earlier dated entries and [September audit](AUDIT.md). The Azure Terraform registry correction passed provider validation. The first PR run found an OpenTelemetry advisory. Regenerating the two locks in a clean Python 3.12 environment changed three development pins, and all three unmodified CI jobs passed. [Dependency repair](evidence/completion-2026-11-23/dependency-repair.txt) · [CI run](https://github.com/noumansameer789/uk-grid-flexibility-ml-platform/actions/runs/45283850543)
