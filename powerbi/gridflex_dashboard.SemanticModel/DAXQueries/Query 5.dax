@@ -1,0 +1,35 @@
+// Model read-back. Three result sets: measures, selected columns, relationships.
+EVALUATE
+SELECTCOLUMNS (
+    INFO.VIEW.MEASURES (),
+    "Table", [Table],
+    "Measure", [Name],
+    "Format", [FormatStringDefinition]
+)
+ORDER BY [Table], [Measure]
+
+EVALUATE
+SELECTCOLUMNS (
+    FILTER (
+        INFO.VIEW.COLUMNS (),
+        [Table] = "DimDate"
+            || [Name] IN { "hour", "fold", "horizon_hours", "start_hour", "date", "target_date", "inside_interval", "actual_gco2_kwh", "neso_forecast_gco2_kwh" }
+    ),
+    "Table", [Table],
+    "Column", [Name],
+    "Data type", [DataType],
+    "Summarize by", [SummarizeBy],
+    "Sort by", [SortByColumn]
+)
+ORDER BY [Table], [Column]
+
+EVALUATE
+SELECTCOLUMNS (
+    INFO.VIEW.RELATIONSHIPS (),
+    "From", [FromTable] & "[" & [FromColumn] & "]",
+    "From cardinality", [FromCardinality],
+    "To", [ToTable] & "[" & [ToColumn] & "]",
+    "To cardinality", [ToCardinality],
+    "Active", [IsActive],
+    "Cross-filter", [CrossFilteringBehavior]
+)

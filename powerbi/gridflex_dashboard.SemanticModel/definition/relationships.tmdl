@@ -1,0 +1,12 @@
+relationship ea0afd32-4dc1-a2b5-a7b8-3169a2daebf1
+	fromColumn: Carbon.date
+	toColumn: DimDate.Date
+
+relationship 7fe720de-7417-d9c8-3de8-e0edf72da364
+	fromColumn: Backtest.target_date
+	toColumn: DimDate.Date
+
+relationship 7bfc4d75-6c8a-28b6-f362-293227a44acd
+	fromColumn: Charging.date
+	toColumn: DimDate.Date
+

@@ -1,0 +1,93 @@
+table Carbon
+	lineageTag: 23cd1845-9ce0-4493-ac67-55ecdebdb9c6
+
+	measure 'Average intensity' = AVERAGE ( Carbon[actual_gco2_kwh] )
+		formatString: 0.0
+		lineageTag: 1cf33897-2c82-46b0-8b17-e5e12fc5b240
+
+	measure 'Average NESO forecast' = AVERAGE ( Carbon[neso_forecast_gco2_kwh] )
+		formatString: 0.0
+		lineageTag: c568aa1c-d2c1-4784-b67b-4c64208c61d3
+
+	measure Readings = COUNTROWS ( Carbon )
+		formatString: #,0
+		lineageTag: e2a3c3e2-315b-4f9c-9e0f-5402122f3045
+
+	measure 'NESO forecast MAE' =
+			
+			AVERAGEX ( Carbon, ABS ( Carbon[neso_forecast_gco2_kwh] - Carbon[actual_gco2_kwh] ) )
+		formatString: 0.0
+		lineageTag: 84460d60-a5de-4ba1-9092-83747c163997
+
+	measure 'Cleanest hour (UTC)' =
+			
+			MINX (
+			    TOPN ( 1, VALUES ( Carbon[hour] ), [Average intensity], ASC ),
+			    Carbon[hour]
+			)
+		formatString: 0
+		lineageTag: 7ecd0ea0-9809-49c0-9e92-7a36308274a5
+
+	column timestamp_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 568cf5a5-18e6-4eda-9d5c-63351cdfaa7b
+		summarizeBy: none
+		sourceColumn: timestamp_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 88a0a242-ed15-4396-bb96-cb404f2d5072
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a8772c4-9dda-434a-998e-df93326cfe78
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = User
+
+	column actual_gco2_kwh
+		dataType: double
+		lineageTag: 68f9fb6a-7a0d-4e3a-880d-fff9d829c66d
+		summarizeBy: sum
+		sourceColumn: actual_gco2_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column neso_forecast_gco2_kwh
+		dataType: double
+		lineageTag: daa1c54d-b485-4315-92ba-31bd4d476da4
+		summarizeBy: sum
+		sourceColumn: neso_forecast_gco2_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Carbon = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Hp\Documents\GitHub\uk-grid-flexibility-ml-platform\powerbi\data\Carbon.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"timestamp_utc", type datetime}, {"date", type date}, {"hour", Int64.Type}, {"actual_gco2_kwh", type number}, {"neso_forecast_gco2_kwh", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

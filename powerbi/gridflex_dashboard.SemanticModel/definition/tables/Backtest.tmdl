@@ -1,0 +1,178 @@
+table Backtest
+	lineageTag: 6019e54e-167e-4873-b926-332710ee014a
+
+	measure MAE = AVERAGE ( Backtest[abs_error] )
+		formatString: 0.00
+		lineageTag: 85a97129-6b07-48f1-8a55-2dadbf5d381b
+
+	measure RMSE = SQRT ( AVERAGE ( Backtest[squared_error] ) )
+		formatString: 0.00
+		lineageTag: 1f9547e8-fbc4-401d-9cb2-53a1e52afa2d
+
+	measure 'Interval coverage' =
+			
+			DIVIDE ( SUM ( Backtest[inside_interval] ), COUNT ( Backtest[inside_interval] ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0aa2b442-a0be-49ff-95aa-19c2bb993208
+
+	measure 'MAE vs live model' =
+			
+			[MAE] - CALCULATE ( [MAE], Backtest[model] = "Seven-day mean (live)" )
+		formatString: 0.00
+		lineageTag: 3a8ebaed-d023-4aae-bf2e-6ab7f2dc6704
+
+	measure 'Forecasts per model' =
+			
+			CALCULATE ( COUNTROWS ( Backtest ), Backtest[model] = "LightGBM (candidate)" )
+		formatString: #,0
+		lineageTag: 11e58d65-0452-48ad-9cd1-61747eb334b6
+
+	column origin_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 393a4051-548b-4500-83c9-888687a851a0
+		summarizeBy: none
+		sourceColumn: origin_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0694f535-2430-4583-a9e0-2e2a1a076894
+		summarizeBy: none
+		sourceColumn: target_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 10e966dd-0453-47b5-b718-96620af84d25
+		summarizeBy: none
+		sourceColumn: target_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fold
+		dataType: int64
+		formatString: 0
+		lineageTag: 14994c2b-347e-4edc-953f-45f019dcf91e
+		summarizeBy: none
+		sourceColumn: fold
+
+		annotation SummarizationSetBy = User
+
+	column horizon_hours
+		dataType: double
+		lineageTag: 999276a8-77c3-4364-ae87-15f9c6c4953a
+		summarizeBy: none
+		sourceColumn: horizon_hours
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column model
+		dataType: string
+		lineageTag: 9d5ddafe-d840-4a42-94c3-d8a7b7c33443
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_gco2_kwh
+		dataType: double
+		lineageTag: ea32b269-9067-4b6c-b50a-767cdff0b623
+		summarizeBy: sum
+		sourceColumn: actual_gco2_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column predicted_gco2_kwh
+		dataType: double
+		lineageTag: 0aa1d385-b754-41d7-a46f-ea9cf210ae2b
+		summarizeBy: sum
+		sourceColumn: predicted_gco2_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error
+		dataType: double
+		lineageTag: 90a62183-68af-41c2-9c88-5e76699f4df6
+		summarizeBy: sum
+		sourceColumn: error
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column abs_error
+		dataType: double
+		lineageTag: 0e0b9681-7c7e-46de-a079-6585327983aa
+		summarizeBy: sum
+		sourceColumn: abs_error
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column squared_error
+		dataType: double
+		lineageTag: d92cf8f5-b1b2-4636-b30f-098867283f8b
+		summarizeBy: sum
+		sourceColumn: squared_error
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column interval_lower
+		dataType: double
+		lineageTag: f3e7b2a2-51cb-4084-bbce-9685a5aecfd3
+		summarizeBy: sum
+		sourceColumn: interval_lower
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column interval_upper
+		dataType: double
+		lineageTag: 3d803886-9afb-43e0-bf40-a16166b52c77
+		summarizeBy: sum
+		sourceColumn: interval_upper
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inside_interval
+		dataType: int64
+		formatString: 0
+		lineageTag: 1eb15710-4bfd-46ce-ad2c-9ce40c292332
+		summarizeBy: sum
+		sourceColumn: inside_interval
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Backtest = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Hp\Documents\GitHub\uk-grid-flexibility-ml-platform\powerbi\data\Backtest.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"origin_utc", type datetime}, {"target_utc", type datetime}, {"target_date", type date}, {"fold", Int64.Type}, {"horizon_hours", type number}, {"model", type text}, {"actual_gco2_kwh", type number}, {"predicted_gco2_kwh", type number}, {"error", type number}, {"abs_error", type number}, {"squared_error", type number}, {"interval_lower", type number}, {"interval_upper", type number}, {"inside_interval", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

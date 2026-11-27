@@ -1,5 +1,18 @@
 # GridFlex completion record
 
+## 25 November 2026 UTC
+
+Nouman Sameer owns the PC and the repository and granted the session control of Power BI Desktop and GitHub Desktop. Claude (Anthropic, Fable 5.2) operated both through the Claude desktop app and wrote the changes below. The starting commit was `16ed736c2de936ca190132c00a3c28771765dac8`. This section supersedes the Power BI rows of the 23 and 24 November tables.
+
+| Work | Observation | Evidence |
+|---|---|---|
+| Power BI model | Desktop 2.160.1151.0 loaded 9,792, 40,320 and 168 rows. The calendar table has 204 dates and three one-to-many relationships. The 17 saved measures equal `measures.dax` token for token. | [How the report was built](evidence/powerbi-desktop-2026-11-25/README.md#how-the-report-was-built) |
+| Power BI pages | A script wrote the three pages as project files and Desktop loaded them. The first version had five display faults. The second loaded cleanly with 26 visuals. | [Generator](../powerbi/build_report_pages.py) · [Differences from the walkthrough](evidence/powerbi-desktop-2026-11-25/README.md#differences-from-the-walkthrough) |
+| Read-back | The saved `.pbix` was closed and reopened. Every acceptance figure matched on the pages and in DAX queries, including April at 93.4 and fold 3 at 51.08 and 81.1%. | [Read-back](evidence/powerbi-desktop-2026-11-25/README.md#read-back) |
+| Exports | Three page captures were taken from the reopened file. Desktop exported the PDF to a temporary folder that the session could not read. Copying it into the repository is an owner action and its pages are unchecked. | [Exports](evidence/powerbi-desktop-2026-11-25/README.md#exports) |
+
+Still untested for the report: a refresh on another PC and the Power BI service. The Azure items listed on 24 November are unchanged.
+
 ## 24 November 2026 UTC
 
 Nouman Sameer owns the Azure for Students subscription and approved the saved plan, the subscription budget and the GitHub connection. Claude (Anthropic, Fable 5.2) ran the session in Azure Cloud Shell through the owner's browser and wrote the changes below. The starting commit was `da3e1f3524b9c62ceb3e85e936ea3c19d95eea15`. This section supersedes the publication and Azure rows of the 23 November table.

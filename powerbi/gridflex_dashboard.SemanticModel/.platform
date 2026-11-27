@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "gridflex_dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ce1e178b-24c7-408e-9d25-f8a705f5c65d"
+  }
+}

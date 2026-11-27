@@ -1,0 +1,8 @@
+EVALUATE
+SUMMARIZECOLUMNS (
+    Backtest[model],
+    "Mean absolute error", [MAE],
+    "Root mean squared error", [RMSE],
+    "Difference from live", [MAE vs live model]
+)
+ORDER BY [Mean absolute error] ASC

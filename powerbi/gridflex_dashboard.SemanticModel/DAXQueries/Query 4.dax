@@ -1,0 +1,25 @@
+// Extra checks at full precision. Percentages are scaled so the results grid shows enough digits.
+EVALUATE
+{
+    ( "01 Average NESO forecast", [Average NESO forecast] ),
+    ( "02 Interval hits", SUM ( Backtest[inside_interval] ) ),
+    ( "03 Interval flags", COUNT ( Backtest[inside_interval] ) ),
+    ( "04 Interval coverage x 1000", 1000 * [Interval coverage] ),
+    ( "05 Fold 3 coverage x 1000", 1000 * CALCULATE ( [Interval coverage], Backtest[fold] = 3 ) ),
+    ( "06 Carbon saving x 10000", 10000 * [Carbon saving %] ),
+    ( "07 Win rate x 1000", 1000 * [Win rate] ),
+    ( "08 Share of best x 1000", 1000 * [Share of best possible saving] ),
+    ( "09 Avg immediate kg", [Avg immediate kg] ),
+    ( "10 Avg scheduled kg", [Avg scheduled kg] ),
+    ( "11 Scheduled better", CALCULATE ( [Scenarios], Charging[result] = "Scheduled better" ) ),
+    ( "12 Immediate better", CALCULATE ( [Scenarios], Charging[result] = "Immediate better" ) ),
+    ( "13 Intensity at 12 UTC", CALCULATE ( [Average intensity], Carbon[hour] = 12 ) ),
+    ( "14 Intensity at 19 UTC", CALCULATE ( [Average intensity], Carbon[hour] = 19 ) ),
+    ( "15 Saturday 12 UTC", CALCULATE ( [Average intensity], Carbon[hour] = 12, DimDate[Weekday] = "Sat" ) ),
+    ( "16 Monday 19 UTC", CALCULATE ( [Average intensity], Carbon[hour] = 19, DimDate[Weekday] = "Mon" ) ),
+    ( "17 LightGBM MAE at 0.5 h", CALCULATE ( [MAE], Backtest[model] = "LightGBM (candidate)", Backtest[horizon_hours] = 0.5 ) ),
+    ( "18 LightGBM MAE at 24 h", CALCULATE ( [MAE], Backtest[model] = "LightGBM (candidate)", Backtest[horizon_hours] = 24 ) ),
+    ( "19 April intensity by Month label", CALCULATE ( [Average intensity], DimDate[Month] = "Apr 2026" ) ),
+    ( "20 DimDate rows", COUNTROWS ( DimDate ) )
+}
+ORDER BY [Value1]

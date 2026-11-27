@@ -1,0 +1,116 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "carbon.average_intensity": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Carbon",
+			          "ConceptualProperty": "Average intensity"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Average intensity (gCO₂/kWh)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "carbon.readings": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Carbon",
+			          "ConceptualProperty": "Readings"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Half-hourly readings": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "carbon.neso_forecast_mae": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Carbon",
+			          "ConceptualProperty": "NESO forecast MAE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "NESO forecast MAE (gCO₂/kWh)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "backtest.interval_coverage": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Backtest",
+			          "ConceptualProperty": "Interval coverage"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Interval coverage (nominal 90%)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "backtest.fold": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Backtest",
+			          "ConceptualProperty": "fold"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Fold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

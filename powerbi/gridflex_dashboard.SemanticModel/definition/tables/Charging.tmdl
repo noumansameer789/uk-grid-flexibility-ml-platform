@@ -1,0 +1,147 @@
+table Charging
+	lineageTag: 35f64c59-469a-4e5e-b453-23137a9f351f
+
+	measure Scenarios = COUNTROWS ( Charging )
+		formatString: 0
+		lineageTag: 839a599b-30cc-41ae-9661-9504a9f6648f
+
+	measure 'Carbon saving %' =
+			
+			DIVIDE (
+			    SUM ( Charging[immediate_kg] ) - SUM ( Charging[scheduled_kg] ),
+			    SUM ( Charging[immediate_kg] )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b531bb28-65b2-44de-b86f-6d8350ea15bb
+
+	measure 'Win rate' =
+			
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( Charging ), Charging[result] = "Scheduled better" ),
+			    COUNTROWS ( Charging )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: f1e1c516-52d2-4013-9fdc-7726c0d5e141
+
+	measure 'Share of best possible saving' =
+			
+			DIVIDE (
+			    SUM ( Charging[immediate_kg] ) - SUM ( Charging[scheduled_kg] ),
+			    SUM ( Charging[immediate_kg] ) - SUM ( Charging[perfect_information_kg] )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d4b3ef9e-0f1a-41e7-9fa1-171c5f03dc2e
+
+	measure 'Avg immediate kg' = AVERAGE ( Charging[immediate_kg] )
+		formatString: 0.00
+		lineageTag: 6d6fe691-9eb8-4044-aaab-3a28e2c71001
+
+	measure 'Avg scheduled kg' = AVERAGE ( Charging[scheduled_kg] )
+		formatString: 0.00
+		lineageTag: cb2ab8a9-dfdf-4b42-89bd-09b4ea37b284
+
+	measure 'Total saving kg' = SUM ( Charging[saving_kg] )
+		formatString: 0.00
+		lineageTag: 7fc9b3e6-5396-43be-b17c-63425b670cf0
+
+	column scenario_start_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 89c59b1f-6646-415c-86f8-b45227d92ab2
+		summarizeBy: none
+		sourceColumn: scenario_start_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 384d28f2-077f-4cc7-ba17-379c0963aebe
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column start_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: d184b58e-b9bd-4735-bb6b-ad956a466200
+		summarizeBy: none
+		sourceColumn: start_hour
+
+		annotation SummarizationSetBy = User
+
+	column immediate_kg
+		dataType: double
+		lineageTag: f2f4ddb9-4adb-4faf-87c8-59246293d59a
+		summarizeBy: sum
+		sourceColumn: immediate_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column scheduled_kg
+		dataType: double
+		lineageTag: 19c8cbc2-d973-473b-aa67-bbf74448bfa2
+		summarizeBy: sum
+		sourceColumn: scheduled_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column seven_day_mean_schedule_kg
+		dataType: double
+		lineageTag: 1936ca2e-7801-4755-8e2c-088fe119d5c4
+		summarizeBy: sum
+		sourceColumn: seven_day_mean_schedule_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column perfect_information_kg
+		dataType: double
+		lineageTag: 440dd10c-dd07-493c-a71b-b4c22917b260
+		summarizeBy: sum
+		sourceColumn: perfect_information_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saving_kg
+		dataType: double
+		lineageTag: eef30b50-0114-4e6a-bf97-2255aa197225
+		summarizeBy: sum
+		sourceColumn: saving_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column result
+		dataType: string
+		lineageTag: 47f7a6d5-2776-46ba-875a-06eeed509340
+		summarizeBy: none
+		sourceColumn: result
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Charging = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Hp\Documents\GitHub\uk-grid-flexibility-ml-platform\powerbi\data\Charging.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"scenario_start_utc", type datetime}, {"date", type date}, {"start_hour", Int64.Type}, {"immediate_kg", type number}, {"scheduled_kg", type number}, {"seven_day_mean_schedule_kg", type number}, {"perfect_information_kg", type number}, {"saving_kg", type number}, {"result", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

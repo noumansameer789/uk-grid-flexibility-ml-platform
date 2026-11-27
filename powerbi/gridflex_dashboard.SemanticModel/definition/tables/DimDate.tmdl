@@ -1,0 +1,66 @@
+table DimDate
+	lineageTag: 45bf2506-2f2d-4892-bc8d-0ccb19f94ef2
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: Long Date
+		lineageTag: 52a89575-f7da-4a21-81e6-1abbd4470e7b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		lineageTag: 14c50516-fa06-41ac-a7a9-1062a4b5d3a3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month no'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month no'
+		formatString: 0
+		lineageTag: 7372ffec-f544-47c8-9fc8-7a6ba2c9b623
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month no]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		lineageTag: 6e47da06-3e38-4ac2-8afa-4b0c99be2580
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Weekday]
+		sortByColumn: 'Weekday no'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday no'
+		formatString: 0
+		lineageTag: b0bfbec5-6ea9-43f1-8edc-d36b135e155d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Weekday no]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDAR ( MIN ( Carbon[date] ), MAX ( Carbon[date] ) ),
+				    "Month", FORMAT ( [Date], "MMM yyyy" ),
+				    "Month no", MONTH ( [Date] ),
+				    "Weekday", FORMAT ( [Date], "ddd" ),
+				    "Weekday no", WEEKDAY ( [Date], 2 )
+				)
+
+	annotation PBI_Id = d4f4d121d1304dc09376831ebe0b5ed5
+

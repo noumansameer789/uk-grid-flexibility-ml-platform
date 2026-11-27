@@ -1,0 +1,10 @@
+EVALUATE
+ROW (
+    "Scenarios", [Scenarios],
+    "Carbon saving", [Carbon saving %],
+    "Win rate", [Win rate],
+    "Share of best", [Share of best possible saving],
+    "Total saving in kg", [Total saving kg],
+    "18 UTC immediate kg", CALCULATE ( [Avg immediate kg], Charging[start_hour] = 18 ),
+    "18 UTC scheduled kg", CALCULATE ( [Avg scheduled kg], Charging[start_hour] = 18 )
+)
