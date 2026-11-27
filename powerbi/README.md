@@ -11,7 +11,7 @@
 | File | Contents |
 |---|---|
 | [gridflex_dashboard.pbix](gridflex_dashboard.pbix) | The report: three tables, a calendar table, 17 measures, three pages and five saved DAX queries |
-| `gridflex_dashboard.pdf` | Desktop's PDF export. Exported on 25 November and not yet copied into this folder. |
+| [gridflex_dashboard.pdf](gridflex_dashboard.pdf) | Desktop's PDF export of the three pages, made on 27 November from the same file |
 | [screenshots](screenshots) | One capture of each page from the reopened report |
 | [gridflex_dashboard.pbip](gridflex_dashboard.pbip), [Report](gridflex_dashboard.Report) and [SemanticModel](gridflex_dashboard.SemanticModel) | The same report as text. The model is in TMDL and each visual is a JSON file. |
 | [build_report_pages.py](build_report_pages.py) | Writes the three pages into the project |
@@ -56,4 +56,4 @@ The inputs are the [reference carbon series](../data/reference/carbon.csv), [ext
 
 Nouman Sameer supplied the report kit. Its original notes credit AI assistance for the preparation script, DAX definitions and page plan. OpenAI Codex (GPT-6) rebuilt the tables, checked the numbers independently from the CSVs and wrote the Desktop walkthrough. The verification record identifies the source revision and distinguishes those calculations from a future read-back in Power BI Desktop. [Verification output](../docs/evidence/completion-2026-11-23/powerbi-data.txt)
 
-On 25 November 2026 Claude (Anthropic, Fable 5.2) operated Power BI Desktop on Nouman Sameer's PC through the Claude desktop app. It loaded the data, built the model and the measures through the Desktop interface from the supplied DAX, wrote the page generator, loaded the pages, ran the read-back and made the exports. The owner granted the access and reviews the result. [Desktop record](../docs/evidence/powerbi-desktop-2026-11-25/README.md)
+On 25 November 2026 Claude (Anthropic, Fable 5.2) operated Power BI Desktop on Nouman Sameer's PC through the Claude desktop app. It loaded the data, built the model and the measures through the Desktop interface from the supplied DAX, wrote the page generator, loaded the pages, ran the read-back and took the page captures. On 27 November it exported the PDF from the same file, and the owner saved that copy. The owner granted the access and reviews the result. [Desktop record](../docs/evidence/powerbi-desktop-2026-11-25/README.md)

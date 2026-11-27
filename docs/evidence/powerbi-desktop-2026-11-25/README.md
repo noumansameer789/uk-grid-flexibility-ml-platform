@@ -60,12 +60,12 @@ The five queries are saved in the file and in the [project's DAXQueries folder](
 
 | File | Detail |
 |---|---|
-| `gridflex_dashboard.pdf` | Not in this folder yet. Desktop exported the PDF at 08:35 to a temporary folder and opened it in the default PDF viewer. The session could not read that folder, so copying the file into the repository is left to the owner. Its page count and legibility are unchecked. |
-| [page1-carbon.png](../../../powerbi/screenshots/page1-carbon.png) | 572,815 bytes, SHA-256 `5e1b88bc538deb376daf39840690cf4cbbb01e33fc94526a28af1a3a3abc9246` |
-| [page2-accuracy.png](../../../powerbi/screenshots/page2-accuracy.png) | 347,502 bytes, SHA-256 `a512eb6d293ab64c71d6eee07f611ce76e255773e61a95bd5a314ebb416b6686` |
-| [page3-charging.png](../../../powerbi/screenshots/page3-charging.png) | 284,938 bytes, SHA-256 `930947e1caf07f32554fd945f8ecc5540d7fb61f8ce52139a8c7cee3e573f9a7` |
+| [gridflex_dashboard.pdf](../../../powerbi/gridflex_dashboard.pdf) | 294,394 bytes, 3 pages, SHA-256 `42c228be8e08b54c78eff4751f3b769c1e7200547525594140835514b602d183`. Exported on 27 November from the unchanged `.pbix`. [Addendum](#27-november-addendum-the-pdf-export) |
+| [page1-carbon.png](../../../powerbi/screenshots/page1-carbon.png) | 578,585 bytes, SHA-256 `bf6671abddda58fa3e936aae4068be5fdc9a0bff39c2a8926441f00b60fcc18d` |
+| [page2-accuracy.png](../../../powerbi/screenshots/page2-accuracy.png) | 353,272 bytes, SHA-256 `44e9b507b1e03df18142114793eb87c14165058a33b78ae84b963520d5df045e` |
+| [page3-charging.png](../../../powerbi/screenshots/page3-charging.png) | 290,708 bytes, SHA-256 `0249d9176d75cc9f7709674481f8e35964e1f1880a3174f1ce2fcd695264cb2d` |
 
-The three images are captures of the reopened `.pbix` in Report view at 90% zoom with the panes collapsed and no slicer selected. The capture tool returned JPEG images of the Desktop window. Each was cropped to the page and saved as a 1,415 by 793 pixel PNG. Nothing else was altered.
+The three images are captures of the reopened `.pbix` in Report view at 90% zoom with the panes collapsed and no slicer selected. The capture tool returned JPEG images of the Desktop window. Each was cropped to the page and saved as a 1,415 by 793 pixel PNG. Nothing else in the image was altered. Each file also carries a C2PA content credentials block of 5,758 bytes, added when the session's file store delivered it to the PC. The sizes and hashes above are those of the delivered files.
 
 ## Differences from the walkthrough
 
@@ -82,3 +82,20 @@ The three images are captures of the reopened `.pbix` in Report view at 90% zoom
 - **The Power BI service.** Nothing was published. Mobile layout, alt text and tab order were not set or checked.
 - **Other Desktop versions**, and opening the project files anywhere but on this PC.
 - **A second run of the generator.** Its output was loaded once per version. A rebuild from the script needs Desktop to open and save the project again.
+
+## 27 November addendum: the PDF export
+
+Desktop's first export, at 08:35 on 25 November, went to a temporary folder that the session could not read. That copy was not kept.
+
+On 27 November at 15:24 UTC the saved `.pbix` was opened again in Desktop 2.160.1151.0. Page 1 showed 116.3, 9,792, 10.4 and 12. File → Export → Export to PDF wrote the PDF at 15:25 and opened it in the default PDF viewer. The owner saved that copy and gave the session access to it. The session copied it into the repository unchanged. The `.pbix` was not saved again and its SHA-256 is still the one above.
+
+| Check on `gridflex_dashboard.pdf` | Result |
+|---|---|
+| Pages | 3, each 996 by 576 points |
+| Page 1 text | Holds 116.3, 9,792, 10.4 and 12, and the matrix values 65.9, 164.8, 78.6 and 153.5 |
+| Page 2 text | Holds 86.3%, 8,064 and all 15 cells of the model table |
+| Page 3 text | Holds 168, 30.75%, 88.1%, 80.1%, 4.77, 2.63, `Scheduled better 148` and `Immediate better 20` |
+| Appearance | Each page was rendered and compared by eye with its page capture. The visuals and values are the same. |
+| Document properties | Creation time and `PDFium` only. No name, account or file path. |
+
+The text was extracted with pypdf and the pages were rendered with Poppler.
