@@ -1,6 +1,6 @@
 # Working on GridFlex GB
 
-The Python service and collector live in `src/gridflex/`. Run their tests in `tests/`. The independent Cloudflare demo lives in `public-demo/`. The Azure configuration is in `infra/terraform/`. The retrospective Power BI inputs are in `powerbi/`. Start with the [README](README.md) and [verification record](docs/VERIFICATION.md).
+The Python service and collector live in `src/gridflex/`. Run their tests in `tests/`. The independent Cloudflare demo lives in `public-demo/`. The Azure configuration is in `infra/terraform/`. The retrospective Power BI report, its project files and its inputs are in `powerbi/`. Start with the [README](README.md) and [verification record](docs/VERIFICATION.md).
 
 ## Checks
 
@@ -20,4 +20,5 @@ Follow [ci.yml](.github/workflows/ci.yml) for the pinned action revisions and co
 - Describe charging as a simulation using average grid intensity. Treat overlapping forecast horizons as dependent. Record the promotion decision and distinguish retrospective from as-issued evidence. [Model card](docs/MODEL_CARD.md)
 - Keep tests, coverage, audit checks, action pins and failure conditions intact. In a clean Python 3.12 Linux environment regenerate both locks with `scripts/lock_requirements.py` after audit-driven dependency changes. Use Ruff's 110-character line length, LF and British spelling.
 - Before a commit, check the staged diff and `git status`. Keep tokens, private identifiers, `.env`, Azure inputs, state, plans and provider caches out of Git. Attribute AI-assisted work to the tool and model used. [Security](SECURITY.md)
+- The Power BI `.pbix` is saved from the project in `powerbi/`. After a change, reopen the saved file in Desktop, repeat the [walkthrough](powerbi/WALKTHROUGH.md) read-back and record the Desktop version and observed values in a new dated folder. Keep `.pbi/localSettings.json` and `.pbi/cache.abf` out of Git.
 - The live Cloudflare service and the Python deployment are separate. For authorised Azure work follow the [deployment guide](docs/DEPLOYMENT.md). Release claims require saved results from the platform in question.

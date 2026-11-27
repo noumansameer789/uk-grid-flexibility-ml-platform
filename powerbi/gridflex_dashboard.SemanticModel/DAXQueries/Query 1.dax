@@ -1,0 +1,17 @@
+EVALUATE
+ROW (
+    "Average intensity", [Average intensity],
+    "Readings", [Readings],
+    "NESO MAE", [NESO forecast MAE],
+    "Cleanest hour", [Cleanest hour (UTC)],
+    "April intensity", CALCULATE (
+        [Average intensity],
+        DATESBETWEEN ( DimDate[Date], DATE ( 2026, 4, 1 ), DATE ( 2026, 4, 30 ) )
+    ),
+    "Interval coverage", [Interval coverage],
+    "Forecasts per model", [Forecasts per model],
+    "Fold 3 LightGBM MAE", CALCULATE (
+        [MAE], Backtest[fold] = 3, Backtest[model] = "LightGBM (candidate)"
+    ),
+    "Fold 3 interval coverage", CALCULATE ( [Interval coverage], Backtest[fold] = 3 )
+)

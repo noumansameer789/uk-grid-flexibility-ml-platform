@@ -29,3 +29,5 @@ data/issued/
 !terraform.tfvars.example
 playwright-report/
 test-results/
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

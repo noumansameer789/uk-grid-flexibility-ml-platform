@@ -1,6 +1,6 @@
 # Rebuild the GridFlex report in Power BI Desktop
 
-Use the three files in [data](data/), the [original DAX](measures.dax), and the [theme](gridflex-theme.json). The [CSV read-back](../docs/evidence/completion-2026-11-23/powerbi-data.txt) gives the comparison values. Desktop read-back and the three-page export are pending.
+Use the three files in [data](data/), the [original DAX](measures.dax), and the [theme](gridflex-theme.json). The [CSV read-back](../docs/evidence/completion-2026-11-23/powerbi-data.txt) gives the comparison values. A report built to this walkthrough was read back in Desktop 2.160 on 25 November 2026. [Desktop record](../docs/evidence/powerbi-desktop-2026-11-25/README.md)
 
 ## Build the model
 
@@ -12,7 +12,7 @@ Use the three files in [data](data/), the [original DAX](measures.dax), and the 
 6. In Column tools, select `DimDate[Month]` and **Sort by column → Month no**. Sort `DimDate[Weekday]` by **Weekday no** in the same way. This yields chronological months within this single-year study and weekdays from Monday to Sunday.
 7. Set the default summarisation of `Carbon[hour]`, `Backtest[fold]`, `Backtest[horizon_hours]` and `Charging[start_hour]` to **Don't summarise**. These values identify groups or positions on an axis, so adding them would give meaningless totals.
 8. Select the relevant table, choose **New measure**, and paste one named expression at a time from the DAX file. Make five measures under Carbon, five under Backtest, and seven under Charging, using the names and formulas as supplied. Apply the formats below so a reader can compare values at the intended precision.
-9. Open **View → Themes → Browse for themes** and load the supplied JSON. On cards set **Display units** to **None**, then set the shown decimal places to match each measure. This keeps 9,792 and 8,064 readable as exact counts.
+9. Load the supplied JSON as the report theme. In Desktop 2.160 choose **Design → Import theme**. Earlier versions have **View → Themes → Browse for themes**. On cards set **Display units** to **None**, then set the shown decimal places to match each measure. This keeps 9,792 and 8,064 readable as exact counts.
 
 ### Import types
 
@@ -160,5 +160,5 @@ ROW (
 ## Save and export
 
 1. Save the report as `powerbi/gridflex_dashboard.pbix`, close it and reopen it in Desktop. Check every page for visual errors and repeat the read-back from the saved file. Save the observed values and the Desktop version in the dated verification record.
-2. Clear the slicers and visual selections. Use **File → Export → Export to PDF** and save the result as `powerbi/gridflex_dashboard.pdf`. Open the PDF and check that it has three legible pages in report order.
+2. Clear the slicers and visual selections. Use **File → Export → Export to PDF** and save the result as `powerbi/gridflex_dashboard.pdf`. Desktop 2.160 writes the PDF to a temporary folder and opens it in the default PDF viewer, so save a copy from there. Open the copy and check that it has three legible pages in report order.
 3. Create `powerbi/screenshots/` if needed. Capture the report canvas directly from the reopened PBIX, one page at a time, and save the images as `page1-carbon.png`, `page2-accuracy.png` and `page3-charging.png`. Check each image against its Desktop page before marking the report complete.

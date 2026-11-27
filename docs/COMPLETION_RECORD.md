@@ -1,5 +1,28 @@
 # GridFlex completion record
 
+## 27 November 2026 UTC
+
+Claude (Anthropic, Fable 5.2) read Azure Cost analysis in the owner's signed-in browser session, exported the Power BI PDF and opened the pull request for the report. Nouman Sameer saved the PDF and chose the commit email. Nothing was deployed.
+
+| Work | Observation | Evidence |
+|---|---|---|
+| Azure cost | Cost analysis for November 2026 showed a total under £0.01. `gridflex-rg` in Azure for Students was the only resource group listed. This closes the cost check listed on 24 November. | [Cost check](evidence/azure-followup-2026-11-27/README.md#cost-check) |
+| Gate 5 screenshot | The capture of the dashboard running in Azure on 24 November is now in the repository. Its values match the page record. | [Screenshot](evidence/azure-followup-2026-11-27/README.md#gate-5-screenshot) |
+| Power BI PDF | Desktop exported the PDF from the unchanged `.pbix`. It has three pages and each holds the acceptance values for that page. | [Addendum](evidence/powerbi-desktop-2026-11-25/README.md#27-november-addendum-the-pdf-export) |
+
+## 25 November 2026 UTC
+
+Nouman Sameer owns the PC and the repository and granted the session control of Power BI Desktop and GitHub Desktop. Claude (Anthropic, Fable 5.2) operated both through the Claude desktop app and wrote the changes below. The starting commit was `16ed736c2de936ca190132c00a3c28771765dac8`. This section supersedes the Power BI rows of the 23 and 24 November tables.
+
+| Work | Observation | Evidence |
+|---|---|---|
+| Power BI model | Desktop 2.160.1151.0 loaded 9,792, 40,320 and 168 rows. The calendar table has 204 dates and three one-to-many relationships. The 17 saved measures equal `measures.dax` token for token. | [How the report was built](evidence/powerbi-desktop-2026-11-25/README.md#how-the-report-was-built) |
+| Power BI pages | A script wrote the three pages as project files and Desktop loaded them. The first version had five display faults. The second loaded cleanly with 26 visuals. | [Generator](../powerbi/build_report_pages.py) · [Differences from the walkthrough](evidence/powerbi-desktop-2026-11-25/README.md#differences-from-the-walkthrough) |
+| Read-back | The saved `.pbix` was closed and reopened. Every acceptance figure matched on the pages and in DAX queries, including April at 93.4 and fold 3 at 51.08 and 81.1%. | [Read-back](evidence/powerbi-desktop-2026-11-25/README.md#read-back) |
+| Exports | Three page captures were taken from the reopened file. On 27 November Desktop exported the PDF from the same unchanged file. The owner saved it and the session copied it into the repository. It has three pages, and each holds the acceptance values for that page. | [Exports](evidence/powerbi-desktop-2026-11-25/README.md#exports) |
+
+Still untested for the report: a refresh on another PC and the Power BI service. The Azure items listed on 24 November are unchanged.
+
 ## 24 November 2026 UTC
 
 Nouman Sameer owns the Azure for Students subscription and approved the saved plan, the subscription budget and the GitHub connection. Claude (Anthropic, Fable 5.2) ran the session in Azure Cloud Shell through the owner's browser and wrote the changes below. The starting commit was `da3e1f3524b9c62ceb3e85e936ea3c19d95eea15`. This section supersedes the publication and Azure rows of the 23 November table.

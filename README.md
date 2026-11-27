@@ -16,7 +16,7 @@ An independent portfolio project by **Nouman Sameer**, connecting electrical eng
 
 The committed reference dataset contains **9,792 half-hour observations**, from **1 March through 20 September 2026**. Source checks found **zero missing intervals and zero missing actuals** in this training snapshot.
 
-The [Power BI inputs and Desktop walkthrough](powerbi/README.md) reproduce the three planned pages' figures from the committed evidence. Desktop verification is pending.
+The [Power BI report](powerbi/README.md) shows these figures on three pages. It was built and read back in Power BI Desktop on 25 November 2026, and every acceptance figure matched. [Desktop record](docs/evidence/powerbi-desktop-2026-11-25/README.md)
 
 | Model | Walk-forward MAE ↓ | RMSE ↓ |
 |---|---:|---:|

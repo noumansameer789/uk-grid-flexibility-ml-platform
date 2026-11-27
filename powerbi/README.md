@@ -1,10 +1,25 @@
-# GridFlex GB Power BI report inputs
+# GridFlex GB Power BI report
 
-The three prepared tables reproduce the portfolio's retrospective back-test. Power BI Desktop authoring and validation are pending. The supplied kit contains the data, DAX and theme. There is no verified PBIX, PDF or page capture in this directory.
+[gridflex_dashboard.pbix](gridflex_dashboard.pbix) is a three-page Power BI report of the portfolio's retrospective back-test. It was built, saved, reopened and read back in Power BI Desktop 2.160 on 25 November 2026. Every acceptance figure matched on the pages and in DAX queries. [Desktop record](../docs/evidence/powerbi-desktop-2026-11-25/README.md)
+
+![Grid carbon intensity page](screenshots/page1-carbon.png)
+
+![Forecast accuracy page](screenshots/page2-accuracy.png)
+
+![Smart charging back-test page](screenshots/page3-charging.png)
+
+| File | Contents |
+|---|---|
+| [gridflex_dashboard.pbix](gridflex_dashboard.pbix) | The report: three tables, a calendar table, 17 measures, three pages and five saved DAX queries |
+| [gridflex_dashboard.pdf](gridflex_dashboard.pdf) | Desktop's PDF export of the three pages, made on 27 November from the same file |
+| [screenshots](screenshots) | One capture of each page from the reopened report |
+| [gridflex_dashboard.pbip](gridflex_dashboard.pbip), [Report](gridflex_dashboard.Report) and [SemanticModel](gridflex_dashboard.SemanticModel) | The same report as text. The model is in TMDL and each visual is a JSON file. |
+| [build_report_pages.py](build_report_pages.py) | Writes the three pages into the project |
+| [WALKTHROUGH.md](WALKTHROUGH.md), [measures.dax](measures.dax), [gridflex-theme.json](gridflex-theme.json), [data](data) | The kit for building the report by hand |
 
 ## What the data shows
 
-| Planned report page | Result reproduced from the CSVs |
+| Report page | Result reproduced from the CSVs |
 |---|---|
 | Grid carbon intensity | Across 9,792 half-hours, mean GB intensity was 116.3 gCO₂/kWh. The lowest hourly mean was 78.6 at 12:00 UTC and the highest was 153.5 at 19:00 UTC. The April mean was 93.4. |
 | Forecast accuracy | The seven-day mean had the lowest overall MAE, 35.46 gCO₂/kWh, against 36.61 for LightGBM. LightGBM's nominal 90% intervals covered 86.3% of targets. |
@@ -14,9 +29,11 @@ LightGBM had lower MAE than the seven-day mean at each half-hour horizon through
 
 The charging comparison uses a fixed default battery and historical average grid intensity. It measures a carbon proxy in simulation. Physical charging, marginal emissions and commercial outcomes require separate evidence. [Charging evaluation](../docs/evidence/charging-evaluation.csv) · [Study limitations](../README.md)
 
-## Build the three pages
+## Open, refresh and rebuild
 
-Follow the [Desktop walkthrough](WALKTHROUGH.md) for the import types, relationships, 17 measures, visual fields, DAX checks and export steps. The [calculated table and measures](measures.dax) and [GridFlex theme](gridflex-theme.json) are supplied with the kit.
+Open the `.pbix` in Power BI Desktop. It holds the data it was saved with. Its three queries read the CSVs from the folder where the report was built, so choose **Transform data → Data source settings → Change source** for each query before a refresh on another PC. That refresh is untested.
+
+To rebuild the report by hand, follow the [Desktop walkthrough](WALKTHROUGH.md) for the import types, relationships, 17 measures, visual fields, DAX checks and export steps. To rebuild only the pages, close the project in Desktop, run `python powerbi/build_report_pages.py powerbi/gridflex_dashboard.Report/definition/pages` from the repository root, then open `gridflex_dashboard.pbip` in Desktop, check each page and save.
 
 | Input | Rows | One row represents |
 |---|---:|---|
@@ -38,3 +55,5 @@ The inputs are the [reference carbon series](../data/reference/carbon.csv), [ext
 ## How it was made
 
 Nouman Sameer supplied the report kit. Its original notes credit AI assistance for the preparation script, DAX definitions and page plan. OpenAI Codex (GPT-6) rebuilt the tables, checked the numbers independently from the CSVs and wrote the Desktop walkthrough. The verification record identifies the source revision and distinguishes those calculations from a future read-back in Power BI Desktop. [Verification output](../docs/evidence/completion-2026-11-23/powerbi-data.txt)
+
+On 25 November 2026 Claude (Anthropic, Fable 5.2) operated Power BI Desktop on Nouman Sameer's PC through the Claude desktop app. It loaded the data, built the model and the measures through the Desktop interface from the supplied DAX, wrote the page generator, loaded the pages, ran the read-back and took the page captures. On 27 November it exported the PDF from the same file, and the owner saved that copy. The owner granted the access and reviews the result. [Desktop record](../docs/evidence/powerbi-desktop-2026-11-25/README.md)
