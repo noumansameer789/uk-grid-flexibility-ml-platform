@@ -1,5 +1,9 @@
 # Verification record
 
+## 27 November 2026 update
+
+Azure Cost analysis showed under £0.01 for November 2026, all of it against `gridflex-rg`, the resource group of the 24 November run. The gate 5 screenshot from that run is now in the repository. The Power BI PDF export was added the same day. [Azure follow-up](evidence/azure-followup-2026-11-27/README.md) · [Desktop record](evidence/powerbi-desktop-2026-11-25/README.md#27-november-addendum-the-pdf-export)
+
 ## 25 November 2026 update
 
 The Power BI report was built, saved, reopened and read back in Power BI Desktop 2.160.1151.0 on the owner's PC. All the walkthrough's acceptance figures were observed on the three pages and in DAX queries, including the April and fold 3 selections. Three page captures are in the same folder as the report. So is the PDF, which Desktop exported from the unchanged file on 27 November. Claude operated Desktop and wrote the page files. A refresh on another PC and the Power BI service are untested. This supersedes the pending Desktop validation in the 23 and 24 November entries. [Desktop record](evidence/powerbi-desktop-2026-11-25/README.md)

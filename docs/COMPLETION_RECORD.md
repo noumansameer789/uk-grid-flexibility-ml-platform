@@ -1,5 +1,15 @@
 # GridFlex completion record
 
+## 27 November 2026 UTC
+
+Claude (Anthropic, Fable 5.2) read Azure Cost analysis in the owner's signed-in browser session, exported the Power BI PDF and opened the pull request for the report. Nouman Sameer saved the PDF and chose the commit email. Nothing was deployed.
+
+| Work | Observation | Evidence |
+|---|---|---|
+| Azure cost | Cost analysis for November 2026 showed a total under £0.01. `gridflex-rg` in Azure for Students was the only resource group listed. This closes the cost check listed on 24 November. | [Cost check](evidence/azure-followup-2026-11-27/README.md#cost-check) |
+| Gate 5 screenshot | The capture of the dashboard running in Azure on 24 November is now in the repository. Its values match the page record. | [Screenshot](evidence/azure-followup-2026-11-27/README.md#gate-5-screenshot) |
+| Power BI PDF | Desktop exported the PDF from the unchanged `.pbix`. It has three pages and each holds the acceptance values for that page. | [Addendum](evidence/powerbi-desktop-2026-11-25/README.md#27-november-addendum-the-pdf-export) |
+
 ## 25 November 2026 UTC
 
 Nouman Sameer owns the PC and the repository and granted the session control of Power BI Desktop and GitHub Desktop. Claude (Anthropic, Fable 5.2) operated both through the Claude desktop app and wrote the changes below. The starting commit was `16ed736c2de936ca190132c00a3c28771765dac8`. This section supersedes the Power BI rows of the 23 and 24 November tables.
